@@ -61,20 +61,40 @@ jobs:
           pnpm install hexo-cli -g
           hexo clean
           hexo generate
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./public
 
-  # 部署工作
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    name: Deploy
-    steps:
+    # 部署工作
+        # 4a. 部署到 GitHub 仓库（可选）
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # 将之前在Github账号内录入过公钥的SSH生成的密钥添加到当前仓库的 Secrets 中
+          # 在 GitHub 仓库页面的 Settings > Secrets and variables > Actions > Repository secrets 中，点击 “New repository secret”，
+          # 然后将密钥名称设置为 SSH_PRIVATE_KEY，密钥值设置为之前在Github账号内录入过公钥的SSH生成的密钥。
+          deploy_key: ${{ secrets.SSH_PRIVATE_KEY }}
+          external_repository: jlower/jlower.github.io.git
+          publish_branch: gh-pages
+          publish_dir: ./public
+          commit_message: ${{ github.event.head_commit.message }}
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+      # # 4b. 部署到服务器（可选）
+      # - name: Deploy to Server
+      #   uses: easingthemes/ssh-deploy@v3
+      #   env:
+      #     SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+      #     ARGS: "-rltgoDzvO --delete"
+      #     EXCLUDE: ".well-known, .user.ini"
+      #     SOURCE: public/
+      #     REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+      #     REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+      #     REMOTE_USER: ${{ secrets.REMOTE_USER }}
+      #     TARGET: ${{ secrets.TARGET }}
+      # # 4c. 部署到阿里云OSS（可选）
+      # - name: Setup Aliyun OSS
+      #   uses: manyuanrong/setup-ossutil@master
+      #   with:
+      #     endpoint: oss-cn-hongkong.aliyuncs.com
+      #     access-key-id: ${{ secrets.OSS_ACCESSKEY_ID }}
+      #     access-key-secret: ${{ secrets.OSS_ACCESSKEY_SECRET }}
+      # - name: Deploy to  Aliyun OSS
+      #   run: ossutil cp -rf ./public oss://xaoxuu-com/
