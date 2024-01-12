@@ -6,7 +6,7 @@
 # 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
 # Commit 并 push 到默认分支上。
 # 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
-url: http://jlower.github.io
+url: http://jlower.github.io/blog
 ```
 
 ```yaml
