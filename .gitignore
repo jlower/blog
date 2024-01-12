@@ -1,4 +1,12 @@
-# 本项目工程忽略的文件及目录
+# 本项目Hexo工程忽略的文件及目录
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+_multiconfig.yml
 
 
 # 忽略以下文件和目录
