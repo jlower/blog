@@ -71,7 +71,7 @@ jobs:
           # 在 GitHub 仓库页面的 Settings > Secrets and variables > Actions > Repository secrets 中，点击 “New repository secret”，
           # 然后将密钥名称设置为 SSH_PRIVATE_KEY，密钥值设置为之前在Github账号内录入过公钥的SSH生成的密钥。
           deploy_key: ${{ secrets.SSH_PRIVATE_KEY }}
-          external_repository: jlower/jlower.github.io.git
+          external_repository: git@github.com:jlower/jlower.github.io.git
           publish_branch: gh-pages
           publish_dir: ./public
           commit_message: ${{ github.event.head_commit.message }}
