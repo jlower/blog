@@ -11,8 +11,8 @@ archive_generator:
 
 ```yaml
 - name: Build with Hexo
-        # pnpm install hexo-cli -g   加 -g 可以解决GitHub Action 报的 hexo: command not found 的错误
 
+        # pnpm 解决方法: [GitHub Action中 pnpm不可以加 -g ]
         # 加 ./node_modules/.bin/ 文件路径解决GitHub Action 报的 hexo: command not found 的错误
         # ./node_modules/.bin/hexo clean
         # ./node_modules/.bin/hexo generate
@@ -93,8 +93,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
-        # pnpm install hexo-cli -g   加 -g 可以解决GitHub Action 报的 hexo: command not found 的错误
 
+        # pnpm 解决方法: [GitHub Action中 pnpm不可以加 -g ]
         # 加 ./node_modules/.bin/ 文件路径解决GitHub Action 报的 hexo: command not found 的错误
         # ./node_modules/.bin/hexo clean
         # ./node_modules/.bin/hexo generate
