@@ -45,11 +45,6 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-on:
-  push:
-    branches:
-      - main # default branch
-
 jobs:
   # 构建工作
   build:
