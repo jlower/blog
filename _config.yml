@@ -5,7 +5,15 @@ keywords: null
 author: John Doe
 language: en
 timezone: ''
-url: http://example.com
+
+# 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
+# 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
+# 编辑你的 _config.yml，将 url: 更改为 <你的 GitHub 用户名>.github.io/<repository 的名字>。
+# 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
+# Commit 并 push 到默认分支上。
+# 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
+url: http://jlower.github.io
+
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
 pretty_urls:
