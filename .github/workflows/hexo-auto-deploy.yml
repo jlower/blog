@@ -50,9 +50,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
+        # pnpm install hexo-cli -g    加 -g 解决 hexo: command not found
         run: |
           pnpm install hexo
-          pnpm install hexo-cli
+          pnpm install hexo-cli -g
           hexo clean && hexo generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
