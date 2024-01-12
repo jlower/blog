@@ -51,8 +51,8 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
         run: |
-          pnpm install
-          pnpm install hexo-cli -g
+          pnpm install hexo
+          pnpm install hexo-cli
           hexo clean && hexo generate
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
