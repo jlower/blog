@@ -56,7 +56,7 @@ jobs:
           # ./node_modules/.bin/hexo generate
         run: |
           pnpm install hexo
-          pnpm install hexo-cli
+          pnpm install hexo-cli -g
           hexo clean
           hexo generate
       - name: Upload artifact
