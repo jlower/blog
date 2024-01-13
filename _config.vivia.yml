@@ -41,6 +41,9 @@ links:        # 访问 https://fontawesome.com/search 获取图标代码
   - name: WeChat
     icon: fa-brands fa-weixin
     url: 
+  - name: QQ
+    icon: fa-brands fa-qq
+    url: https://res.abeim.cn/api/qq/?qq=
   - name: Email
     icon: fa-solid fa-envelope
     url: mailto:name@email.com
