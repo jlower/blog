@@ -12,7 +12,7 @@ timezone: 'Asia/Hong_Kong'
 # 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
 # Commit 并 push 到默认分支上。
 # 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
-url: http://jlower.github.io/blog
+url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 
 permalink: ':year/:month/:day/:title/'
 permalink_defaults: null
