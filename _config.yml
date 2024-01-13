@@ -1,10 +1,10 @@
-title: Hexo
-subtitle: ''
-description: ''
+title: Lowo's blog
+subtitle: 'blog'
+description: 'blog'
 keywords: null
-author: John Doe
-language: en
-timezone: ''
+author: Lowo
+language: zh-CN
+timezone: 'Asia/Hong_Kong'
 
 # 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
 # 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
@@ -74,7 +74,6 @@ theme: vivia # butterfly vivia
 # 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
 archive_generator:
   per_page: 0
-
 
 deploy:
   type: ''

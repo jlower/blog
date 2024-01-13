@@ -1,4 +1,6 @@
-
+---
+title: Hexo配置笔记
+---
 ```yaml
 # 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
 # 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
