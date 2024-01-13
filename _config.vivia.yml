@@ -22,7 +22,7 @@ hue: 180                          # 主题色调 (例如：红: 0，橙: 60，�
                                   # 可访问 `saicaca.github.io/vivia-preview` 预览颜色设置
 
 # 个人信息
-avatar: /imgs/avart1.png                       # 头像图片文件路径，相对于 /source 目录
+avatar: /imgs/avart1.jpg                       # 头像图片文件路径，相对于 /source 目录
 author: Lowo
 subtitle: This is the subtitle
 links:        # 访问 https://fontawesome.com/search 获取图标代码
