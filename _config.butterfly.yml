@@ -33,25 +33,25 @@ code_word_wrap: false
 # formal:
 #   icon: link || the description || color
 social:
-  # fab fa-github: https://github.com/xxxxx || Github || '#24292e'
-  # fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
+  fab fa-github: https://github.com/jlower || Github || '#24292e'
+  fas fa-envelope: mailto:xxxxxx@gmail.com || Email || '#4a7dbe'
 
 # Image (圖片設置)
 # --------------------------------------
 
 # Favicon（網站圖標）
-favicon: /img/favicon.png
+favicon: /imgs/favicon-dark-128.png
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  img: /imgs/avatar1.jpg
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img:
+index_img: /imgs/banner1.png
 
 # If the banner of page not setting, it will show the top_img
 default_top_img:
