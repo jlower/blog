@@ -12,18 +12,18 @@ type: "link"
       link: https://hexo.io/zh-tw/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 快速、简单且强大的网志框架
-    - name: 博客
+    - name: 我的博客
       link: https://blog.lowoneko.eu.org
       avatar:
       descr:
-    - name: 简历
+    - name: 我的简历
       link: https://resume.lowoneko.eu.org
       avatar:
       descr:
 - class_name: 网站
   class_desc: 值得推荐的网站
   link_list:
-    - name: 装备前线 zFrontier
+    <!-- - name: 装备前线 zFrontier
       link: https://www.zfrontier.com/app/#info
       avatar:
       descr:
@@ -66,7 +66,7 @@ type: "link"
     - name: Exhentai male:gender+change
       link: https://exhentai.org/tag/male:gender+change
       avatar:
-      descr:
+      descr: -->
     - name: Youtube
       link: https://www.youtube.com/
       avatar:
@@ -75,7 +75,7 @@ type: "link"
       link: https://twitter.com/
       avatar:
       descr: 社交分享平台
-    - name: pixiv
+    <!-- - name: pixiv
       link: https://www.pixiv.net
       avatar:
       descr:
@@ -86,5 +86,5 @@ type: "link"
     - name: Twitch
       link: https://www.twitch.tv
       avatar:
-      descr:
+      descr: -->
 {% endflink %}
