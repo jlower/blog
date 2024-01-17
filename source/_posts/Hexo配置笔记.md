@@ -1,6 +1,7 @@
 ---
 title: Hexo配置笔记
 date: 2024-01-05 04:00:00
+categories: 笔记
 ---
 
 # Hexo配置
