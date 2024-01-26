@@ -6,25 +6,7 @@ categories: 笔记
 
 # Hexo配置
 
-```yaml
-# 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
-# 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
-# 编辑你的 _config.yml，将 url: 更改为 <你的 GitHub 用户名>.github.io/<repository 的名字>。
-# 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
-# Commit 并 push 到默认分支上。
-# 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
-url: http://jlower.github.io/blog
-```
-
-```yaml
-# 会优先查找 ./themes 中有没有xxx同名文件夹(若有里面得放GitHub下载的源码，否则生成页面为空)
-# 若无则查找 ./node_moudules 中有没有 hexo-theme-xxx 
-# (推荐全用 npm/pnpm 下载，省的GitHub Action每次 都要改，因为有些主题作者自己的.gitignore设置了不上传GitHub)
-theme: vivia # butterfly vivia
-# 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
-archive_generator:
-  per_page: 0
-```
+## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
 ```yaml
 # 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
@@ -179,4 +161,38 @@ jobs:
       #     access-key-secret: ${{ secrets.OSS_ACCESSKEY_SECRET }}
       # - name: Deploy to  Aliyun OSS
       #   run: ossutil cp -rf ./public oss://xaoxuu-com/
+```
+
+## 使用 Github Bot 拉取最新依赖更新
+
+```yaml
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 20
+```
+
+## Hexo 的 _config.yml 配置注意事项
+
+```yaml
+# 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
+# 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
+# 编辑你的 _config.yml，将 url: 更改为 <你的 GitHub 用户名>.github.io/<repository 的名字>。
+# 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
+# Commit 并 push 到默认分支上。
+# 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
+url: http://jlower.github.io/blog
+```
+
+```yaml
+# 会优先查找 ./themes 中有没有xxx同名文件夹(若有里面得放GitHub下载的源码，否则生成页面为空)
+# 若无则查找 ./node_moudules 中有没有 hexo-theme-xxx 
+# (推荐全用 npm/pnpm 下载，省的GitHub Action每次 都要改，因为有些主题作者自己的.gitignore设置了不上传GitHub)
+theme: vivia # butterfly vivia
+# 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
+archive_generator:
+  per_page: 0
 ```
