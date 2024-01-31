@@ -4,9 +4,7 @@ date: 2024-01-31 03:00:00
 categories: 机器学习
 ---
 
-# 用 pandas 包处理 csv、txt 数据
-
-## 用 pandas 包导入 csv、txt 数据集
+# 用 pandas 包导入 csv、txt 数据集
 
 ```python
 import os
@@ -49,13 +47,13 @@ df_total = pd.concat(data_list, ignore_index=False)
 data = df_total.iloc[:, :].values
 ```
 
-## 确认GPU
+# 确认GPU
 
 ```bash
 !nvidia-smi
 ```
 
-## kaggle 默认说明
+# kaggle 默认说明
 
 ```python
 # This Python 3 environment comes with many helpful analytics libraries installed

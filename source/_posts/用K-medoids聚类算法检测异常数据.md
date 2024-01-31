@@ -4,37 +4,39 @@ date: 2024-01-31 03:00:00
 categories: 机器学习
 ---
 
-# 用K-medoids聚类算法检测异常数据
+# 操作过程
 
-## 操作过程
-
-### 确定聚类的簇数K
+## 确定聚类的簇数K
 
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
-#### 轮廓系数(Silhouette Coefficient)
+### 轮廓系数(Silhouette Coefficient)
 
 > Silhouette Coefficient 是一个衡量聚类效果的指标，其值在 -1 到 1 之间。具体而言，对于每个数据点，Silhouette Coefficient 考虑了该点与同簇其他点的相似度和该点与最近的其他簇的点的不相似度。一个高的 Silhouette Coefficient 表示簇内的样本相似度高且簇间的样本相似度低。
 > 在曲线中，轮廓系数越接近1表示聚类效果越好。可以选择具有最高轮廓系数的K值。
 
 ![20240131213741](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131213741.png>)
 
-#### 肘部法则(Elbow Method)
+### 肘部法则(Elbow Method)
 
 > 肘部法则通过绘制不同K值下的聚类模型的损失函数（如簇内平方和）的图形来帮助选择合适的K值。K的选择通常发生在损失函数开始减缓的"肘部"位置。
 > 在图形中，你会看到一个肘部，选择这个肘部对应的K值作为最优的聚类数目。需要注意的是，这个方法并不总是完全明显，有时可能需要主观判断。
 
 ![20240131220326](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131220326.png>)
 
-### 训练-聚类分簇并计算找出异常点
+## 训练-聚类分簇并计算找出异常点
 
-#### 聚类分簇的结果
+### 聚类分簇的结果
+
 ![20240131221333](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131221333.png>)
-#### 找出异常点的结果
-![20240131221418](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131221418.png>)
-## 操作代码
 
-### 确定聚类的簇数K
+### 找出异常点的结果
+
+![20240131221418](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131221418.png>)
+
+# 操作代码
+
+## 确定聚类的簇数K
 
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
@@ -78,7 +80,7 @@ plt.title('Elbow Method for Optimal K')
 plt.show()
 ```
 
-### 使用ChatGPT(单文件执行)
+## 使用ChatGPT(单文件执行)
 
 ```python
 from sklearn_extra.cluster import KMedoids

@@ -4,9 +4,7 @@ date: 2024-01-05 04:00:00
 categories: 笔记
 ---
 
-# Hexo配置
-
-## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
+# 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
 ```yaml
 # 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
@@ -40,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
       
@@ -52,19 +50,19 @@ jobs:
 
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: pnpm # 或 pnpm / yarn / npm
       - name: Setup Pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v4
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
         run: |
           pnpm build # 或 npm run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
@@ -81,7 +79,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
 
 
 # 老式部署用ssh可以部署到服务器上，要配置ssh密钥
@@ -163,7 +161,7 @@ jobs:
       #   run: ossutil cp -rf ./public oss://xaoxuu-com/
 ```
 
-## 使用 Github Bot 拉取最新依赖更新
+# 使用 Github Bot 拉取最新依赖更新
 
 ```yaml
 version: 2
@@ -175,7 +173,7 @@ updates:
   open-pull-requests-limit: 20
 ```
 
-## Hexo 的 _config.yml 配置注意事项
+# Hexo 的 _config.yml 配置注意事项
 
 ```yaml
 # 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
