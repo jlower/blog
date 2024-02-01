@@ -6,45 +6,71 @@ categories: 机器学习
 
 # 用 pandas 包导入 csv、txt 数据集
 
+## 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame```对象
+
 ```python
 import os
 import pandas as pd
 
 
-def each_file(filedir, data_list):
- '''
-    递归读取每个文件夹，将 csv txt 文件的数据读取并保存到 data_list 中
-    :param filepath: 想要获取的文件的目录
-    :param data_list: 读取每个csv文件保存的pandas的DataFrame列表
-    :return: null
+def read_files_in_directory(directory):
     '''
- l_dir = os.listdir(filedir)  # 读取目录下的文件或文件夹
- for one_dir in l_dir:  # 进行循环
-  full_path = os.path.join('%s/%s' % (filedir, one_dir))  # 构造路径
-  if os.path.isfile(full_path):  # 如果是文件类型就执行操作
-   # 只操作 csv txt 文件，修改相应后缀就可以操作不同的文件
-   if (one_dir.split('.')[-1] == 'csv') or (one_dir.split('.')[-1] == 'txt'):
-    # 这个是操作的语句，最关键的
-    # 读取csv文件并保存到列表
-    df_tmp = pd.read_csv(full_path, header=None)  # 不带标题
-    # df_tmp = pd.read_csv(full_path)  # 每个文件带标题
-    data_list.append(df_tmp)
-  else:  # 不为文件类型就继续递归
-   each_file(full_path, data_list)  # 如果是文件夹类型就有可能下面还有文件，要继续递归
+    获取文件夹(包括他的子目录)中所有文件的文件对象,并组成列表返回
+    :param directory: 目标文件夹地址
+    :return all_files: 返回获取到的所有文件的文件对象列表
+    '''
+    all_files = []
+
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if file.endswith('.csv') or file.endswith('.txt'):  # 只操作 csv、txt 文件，修改相应后缀就可以操作不同的文件
+                file_path = os.path.join(root, file)
+                all_files.append(file_path)
+
+    return all_files
 
 
-# 获取当前脚本文件所在文件夹夹的路径
-# filedir = os.getcwd()
+def merge_files_to_dataframe(files):
+    '''
+    读取文件对象列表中的所有文件,生成每个文件对应的 DataFrame 对象组成列表返回
+    :param files: 所要读取的文件对象列表
+    :return all_dataframes: 返回读取每个文件分别生成的所有 DataFrame 对象列表
+    '''
+    all_dataframes = []
 
-# 指定要遍历的目录路径
-filedir = "/kaggle/input/ncep-test-1"
-data_list = []
-each_file(filedir, data_list)
-df_total = pd.concat(data_list, ignore_index=False)
-# print(df_total)
+    for file in files:
+        if file.endswith('.csv'):
+            df = pd.read_csv(file)
+            # df = pd.read_csv(file, header=None)  # 若没有标题则用这句代码, 不带标题
+        elif file.endswith('.txt'):
+            df = pd.read_csv(file, delimiter='\t')  # 假设 txt 中用 制表符 分隔数据
+            # df = pd.read_csv(file, delimiter='\t', header=None)  # 若没有标题则用这句代码, 不带标题
+        all_dataframes.append(df)
 
-# 转换成二维numpy.ndarray列表
-data = df_total.iloc[:, :].values
+    merged_dataframe = pd.concat(all_dataframes, ignore_index=True)
+    return merged_dataframe
+
+
+# 定义目标目录
+target_directory = '/path/to/your/directory'
+
+# 获取所有CSV和TXT文件的路径
+file_paths = read_files_in_directory(target_directory)
+
+# 合并文件为一个DataFrame
+dataframe_total = merge_files_to_dataframe(file_paths)
+
+# 打印结果
+# print(dataframe_total)
+```
+
+## 将 ```DataFrame``` 对象转换为其他易于处理的对象
+
+### 将 ```DataFrame``` 对象转换为 ```numpy.ndarray``` 对象
+
+```python
+# 转换成二维 numpy.ndarray 列表
+data = dataframe_total.iloc[:, :].values
 ```
 
 # 确认GPU

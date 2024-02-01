@@ -4,7 +4,11 @@ date: 2024-01-31 03:00:00
 categories: 机器学习
 ---
 
-# 操作过程
+# 一维数据操作过程
+
+# 一维数据操作代码
+
+# 二维数据操作过程
 
 ## 确定聚类的簇数K
 
@@ -34,7 +38,7 @@ categories: 机器学习
 
 ![20240131221418](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131221418.png>)
 
-# 操作代码
+# 二维数据操作代码
 
 ## 确定聚类的簇数K
 
@@ -142,5 +146,4 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.legend()
 plt.show()
-
 ```
