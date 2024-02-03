@@ -45,6 +45,9 @@ categories: 机器学习
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
 ```python
+# 转换成二维numpy.ndarray列表
+data = dataframe_total.iloc[:, :].values
+
 from sklearn_extra.cluster import KMedoids
 from sklearn.metrics import silhouette_score
 import matplotlib.pyplot as plt

@@ -6,11 +6,27 @@ categories: 机器学习
 
 # 用 pandas 包导入 csv、txt 数据集
 
-## 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame```对象
+## 读入单个 csv、txt 文件为 ```DataFrame``` 对象
 
 ```python
+# 导入单个文件
+import pandas as pd
+import numpy as np
+
+dataframe_total = pd.read_csv("/path/to/target/file")
+
+# 打印结果
+print(dataframe_total)
+```
+
+## 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
+
+```python
+# 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
+
 import os
 import pandas as pd
+import numpy as np
 
 
 def read_files_in_directory(directory):
@@ -52,7 +68,7 @@ def merge_files_to_dataframe(files):
 
 
 # 定义目标目录
-target_directory = '/path/to/your/directory'
+target_directory = '/path/to/target/directory'
 
 # 获取所有CSV和TXT文件的路径
 file_paths = read_files_in_directory(target_directory)
@@ -61,7 +77,7 @@ file_paths = read_files_in_directory(target_directory)
 dataframe_total = merge_files_to_dataframe(file_paths)
 
 # 打印结果
-# print(dataframe_total)
+print(dataframe_total)
 ```
 
 ## 将 ```DataFrame``` 对象转换为其他易于处理的对象
@@ -69,8 +85,25 @@ dataframe_total = merge_files_to_dataframe(file_paths)
 ### 将 ```DataFrame``` 对象转换为 ```numpy.ndarray``` 对象
 
 ```python
-# 转换成二维 numpy.ndarray 列表
+# 用 .values 转换成 numpy.ndarray 列表
 data = dataframe_total.iloc[:, :].values
+```
+
+> ```.reshape()``` 是一个用于调整数组形状的NumPy方法。在这里，它被用于将一维数组转换为二维列向量。
+> ```.reshape(-1, 1)``` 将⼀维数据变成只有1列，⾏数不知道多少[ -1 代表根据剩下的维度计算出数组的另外⼀个shape属性值]。
+> 具体而言，如果有一个形状为 (n,) 的一维数组，使用 ```.reshape(-1, 1)``` 将会将其转换为形状为 (n, 1) 的二维数组，其中每个元素都是一个单独的行向量。这在某些机器学习算法中是必要的，因为它们通常期望输入数据是一个二维数组。
+> 在下面示例中，```data = dataframe_total['value'].values.reshape(-1, 1)``` 就是将 'value' 列的一维数据转换为一个列向量。这样，data 变量将成为一个二维数组，每个行代表一个数据点，每个列代表一个特征。在 K-medoids 聚类算法中，这种形式的输入通常是必需的。
+
+```python
+# 提取'value'列作为特征 并重新组成二维 numpy.ndarray 列表
+data = dataframe_total['value'].values.reshape(-1, 1)
+```
+
+```python
+# 提取 'value' 列作为特征
+data = dataframe_total['value'].values
+# 复制 'value' 列的值，生成 data 的第二列
+data = np.hstack([data, data])
 ```
 
 # 确认GPU
