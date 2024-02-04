@@ -222,6 +222,136 @@ plt.tight_layout()
 plt.show()
 ```
 
+## 批量读取文件夹下每个文件,分别训练;将结果保存到文件里,且可视化
+
+```python
+import os
+import pandas as pd
+import numpy as np
+from sklearn_extra.cluster import KMedoids
+from sklearn.metrics import confusion_matrix, accuracy_score, precision_score, recall_score, f1_score
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# 指定输入文件夹路径和输出文件夹路径
+input_folder_path = '/kaggle/input/ncep-test-2-anomaly01'
+output_folder_path = '/kaggle/working/output'
+os.makedirs(output_folder_path, exist_ok=True)
+
+# 获取输入文件夹下所有文件的文件名
+file_names = os.listdir(input_folder_path)
+
+# 存储每个数据集的关键指标
+summary_results = []
+
+# 遍历每个文件
+for file_name in file_names:
+    # 构建文件的完整输入路径
+    input_file_path = os.path.join(input_folder_path, file_name)
+
+    # 读取文件数据
+    dataframe_total = pd.read_csv(input_file_path)
+
+    # 提取 'value' 列作为特征
+    data = dataframe_total['value'].values.reshape(-1, 1)
+
+    # 选择 K 值
+    k = 3
+
+    # 使用 K-Medoids 进行聚类
+    kmedoids = KMedoids(n_clusters=k, random_state=42)
+    kmedoids.fit(data)
+
+    # 获取聚类结果和异常点
+    cluster_labels = kmedoids.labels_
+    medoid_indices = kmedoids.medoid_indices_
+    cluster_centers = data[medoid_indices]
+    distances = np.linalg.norm(data - data[medoid_indices[cluster_labels]], axis=1)
+    threshold = 0.8
+    outliers_kmedoids = dataframe_total.index[distances > threshold]
+
+    # 与 'anomaly' 列进行比较
+    true_labels = dataframe_total['anomaly'].values
+
+    # 计算混淆矩阵和指标
+    conf_matrix = confusion_matrix(true_labels, [1 if idx in outliers_kmedoids else 0 for idx in dataframe_total.index])
+    accuracy = accuracy_score(true_labels, [1 if idx in outliers_kmedoids else 0 for idx in dataframe_total.index])
+    precision = precision_score(true_labels, [1 if idx in outliers_kmedoids else 0 for idx in dataframe_total.index])
+    recall = recall_score(true_labels, [1 if idx in outliers_kmedoids else 0 for idx in dataframe_total.index])
+    f1 = f1_score(true_labels, [1 if idx in outliers_kmedoids else 0 for idx in dataframe_total.index])
+
+    # 将关键指标存储到列表中
+    summary_results.append({
+        'Dataset': file_name,
+        'Confusion Matrix': conf_matrix,
+        'True Negative (TN)': conf_matrix[0, 0],
+        'False Positive (FP):': conf_matrix[0, 1],
+        'False Negative (FN)': conf_matrix[1, 0],
+        'True Positive (TP)': conf_matrix[1, 1],
+        'Accuracy': accuracy,
+        'Precision': precision,
+        'Recall': recall,
+        'F1 Score': f1
+    })
+
+    # 构建输出文件的完整输出路径
+    output_file_path = os.path.join(output_folder_path, os.path.splitext(file_name)[0] + '_kmedoids_results.txt')
+    # print(output_file_path)
+
+    # 输出结果到文件
+    with open(output_file_path, 'w') as file:
+        file.write("Confusion Matrix:\n{}\n".format(conf_matrix))
+        file.write("True Negative (TN): {}\n".format(conf_matrix[0, 0]))
+        file.write("False Positive (FP): {}\n".format(conf_matrix[0, 1]))
+        file.write("False Negative (FN): {}\n".format(conf_matrix[1, 0]))
+        file.write("True Positive (TP): {}\n".format(conf_matrix[1, 1]))
+        file.write("Accuracy: {}\n".format(accuracy))
+        file.write("Precision: {}\n".format(precision))
+        file.write("Recall: {}\n".format(recall))
+        file.write("F1 Score: {}\n".format(f1))
+        file.write("====================================================\n")
+        file.write("Medoids: {}\n".format(kmedoids.cluster_centers_.flatten()))
+        file.write("Outliers: {}\n".format(outliers_kmedoids))
+
+# 将关键指标汇总并输出到文件
+summary_df = pd.DataFrame(summary_results)
+summary_df.to_csv(os.path.join(output_folder_path, '../summary_results.csv'), index=False)
+
+# 输出适应情况总结
+print("Summary Results:")
+print(summary_df)
+
+# 可视化关键指标
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Dataset', y='Precision', data=summary_df, palette='viridis')
+plt.title('Precision Across Datasets')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Dataset', y='Recall', data=summary_df, palette='viridis')
+plt.title('Recall Across Datasets')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Dataset', y='F1 Score', data=summary_df, palette='viridis')
+plt.title('F1 Score Across Datasets')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Dataset', y='Accuracy', data=summary_df, palette='viridis')
+plt.title('Accuracy Across Datasets')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+```
+
+
 # 二维数据操作
 
 ## 确定聚类的簇数K
