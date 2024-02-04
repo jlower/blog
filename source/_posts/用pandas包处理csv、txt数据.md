@@ -4,9 +4,9 @@ date: 2024-01-31 03:00:00
 categories: 机器学习
 ---
 
-# 用 pandas 包导入 csv、txt 数据集
+## 用 pandas 包导入 csv、txt 数据集
 
-## 读入单个 csv、txt 文件为 ```DataFrame``` 对象
+### 读入单个 csv、txt 文件为 ```DataFrame``` 对象
 
 ```python
 # 导入单个文件
@@ -19,7 +19,7 @@ dataframe_total = pd.read_csv("/path/to/target/file")
 print(dataframe_total)
 ```
 
-## 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
+### 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
 
 ```python
 # 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
@@ -80,9 +80,9 @@ dataframe_total = merge_files_to_dataframe(file_paths)
 print(dataframe_total)
 ```
 
-## 将 ```DataFrame``` 对象转换为其他易于处理的对象
+### 将 ```DataFrame``` 对象转换为其他易于处理的对象
 
-### 将 ```DataFrame``` 对象转换为 ```numpy.ndarray``` 对象
+#### 将 ```DataFrame``` 对象转换为 ```numpy.ndarray``` 对象
 
 ```python
 # 用 .values 转换成 numpy.ndarray 列表
@@ -106,13 +106,13 @@ data = dataframe_total['value'].values
 data = np.hstack([data, data])
 ```
 
-# 确认GPU
+## 确认GPU
 
 ```bash
 !nvidia-smi
 ```
 
-# kaggle 默认说明
+## kaggle 默认说明
 
 ```python
 # This Python 3 environment comes with many helpful analytics libraries installed

@@ -4,13 +4,13 @@ date: 2024-01-31 03:00:00
 categories: 机器学习
 ---
 
-# K-medoids聚类算法
+## K-medoids聚类算法
 
-## K-Medoids 介绍
+### K-Medoids 介绍
 
 > K-Medoids 是 K-Means 的一种改进版本，用于聚类分析。与 K-Means 不同，K-Medoids 选择实际数据点作为聚类的中心，而不是取均值。这样的中心点被称为“medoids”。
 
-### K-Medoids 算法步骤
+#### K-Medoids 算法步骤
 
 1. **选择初始中心点：** 从数据集中随机选择 k 个数据点作为初始中心点。
 
@@ -20,13 +20,13 @@ categories: 机器学习
 
 4. **重复步骤 2 和 3：** 重复执行分配和更新步骤，直至簇的分配不再改变或达到预定的迭代次数。
 
-### 优点
+#### 优点
 
 - **对异常值较为鲁棒：** 由于中心点是实际的数据点，K-Medoids 对异常值较为敏感，这使得它对于异常值的存在有一定的鲁棒性。
 
 - **适用于离散型数据：** 由于 K-Medoids 使用实际数据点作为中心，因此它适用于离散型数据。
 
-## K-Medoids 时间复杂度
+### K-Medoids 时间复杂度
 
 > K-Medoids 算法的时间复杂度取决于其迭代次数和每次迭代的计算成本。总体而言，K-Medoids 是一个迭代的优化算法，其主要步骤包括选择中心点（medoids）和更新簇的分配，直至收敛。
 
@@ -38,32 +38,32 @@ categories: 机器学习
 
 > 综合考虑，K-Medoids 算法的总体时间复杂度通常在 O(iter \* k \* n \* d) 的数量级，其中 iter、k、n、d 分别是迭代次数、簇的数量、数据点的数量和数据点的维度。
 
-# 一维数据操作
+## 一维数据操作
 
-## 确定聚类的簇数K
+### 确定聚类的簇数K
 
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
-### 轮廓系数(Silhouette Coefficient)
+#### 轮廓系数(Silhouette Coefficient)
 
 > Silhouette Coefficient 是一个衡量聚类效果的指标，其值在 -1 到 1 之间。具体而言，对于每个数据点，Silhouette Coefficient 考虑了该点与同簇其他点的相似度和该点与最近的其他簇的点的不相似度。一个高的 Silhouette Coefficient 表示簇内的样本相似度高且簇间的样本相似度低。
 > 在曲线中，轮廓系数越接近1表示聚类效果越好。可以选择具有最高轮廓系数的K值。
 
-### 肘部法则(Elbow Method)
+#### 肘部法则(Elbow Method)
 
 > 肘部法则通过绘制不同K值下的聚类模型的损失函数（如簇内平方和）的图形来帮助选择合适的K值。K的选择通常发生在损失函数开始减缓的"肘部"位置。
 > 在图形中，你会看到一个肘部，选择这个肘部对应的K值作为最优的聚类数目。需要注意的是，这个方法并不总是完全明显，有时可能需要主观判断。
 
-# 一维数据操作代码
+## 一维数据操作代码
 
-## 数据预处理
+### 数据预处理
 
 ```python
 # 提取'value'列作为特征
 data = dataframe_total['value'].values.reshape(-1, 1)
 ```
 
-## 确定聚类的簇数K
+### 确定聚类的簇数K
 
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
@@ -110,7 +110,7 @@ plt.title('Elbow Method for Optimal K')
 plt.show()
 ```
 
-## 训练、执行并进行分析可视化
+### 训练、执行并进行分析可视化
 
 ```python
 # 提取'value'列作为特征
@@ -222,7 +222,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-## 批量读取文件夹下每个文件,分别训练;将结果保存到文件里,且可视化
+### 批量读取文件夹下每个文件,分别训练;将结果保存到文件里,且可视化
 
 ```python
 import os
@@ -351,40 +351,39 @@ plt.tight_layout()
 plt.show()
 ```
 
+## 二维数据操作
 
-# 二维数据操作
-
-## 确定聚类的簇数K
+### 确定聚类的簇数K
 
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
-### 轮廓系数(Silhouette Coefficient)
+#### 轮廓系数(Silhouette Coefficient)
 
 > Silhouette Coefficient 是一个衡量聚类效果的指标，其值在 -1 到 1 之间。具体而言，对于每个数据点，Silhouette Coefficient 考虑了该点与同簇其他点的相似度和该点与最近的其他簇的点的不相似度。一个高的 Silhouette Coefficient 表示簇内的样本相似度高且簇间的样本相似度低。
 > 在曲线中，轮廓系数越接近1表示聚类效果越好。可以选择具有最高轮廓系数的K值。
 
 ![20240131213741](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131213741.png>)
 
-### 肘部法则(Elbow Method)
+#### 肘部法则(Elbow Method)
 
 > 肘部法则通过绘制不同K值下的聚类模型的损失函数（如簇内平方和）的图形来帮助选择合适的K值。K的选择通常发生在损失函数开始减缓的"肘部"位置。
 > 在图形中，你会看到一个肘部，选择这个肘部对应的K值作为最优的聚类数目。需要注意的是，这个方法并不总是完全明显，有时可能需要主观判断。
 
 ![20240131220326](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131220326.png>)
 
-## 训练-聚类分簇并计算找出异常点
+### 训练-聚类分簇并计算找出异常点
 
-### 聚类分簇的结果
+#### 聚类分簇的结果
 
 ![20240131221333](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131221333.png>)
 
-### 找出异常点的结果
+#### 找出异常点的结果
 
 ![20240131221418](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/20240131221418.png>)
 
-# 二维数据操作代码
+## 二维数据操作代码
 
-## 确定聚类的簇数K
+### 确定聚类的簇数K
 
 > 可以通过尝试不同的K值并使用合适的评估指标（如轮廓系数、肘部法则等）来选择最佳的K值。
 
@@ -431,7 +430,7 @@ plt.title('Elbow Method for Optimal K')
 plt.show()
 ```
 
-## 使用ChatGPT(单文件执行)
+### 使用ChatGPT(单文件执行)
 
 ```python
 from sklearn_extra.cluster import KMedoids

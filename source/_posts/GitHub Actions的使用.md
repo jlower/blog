@@ -1,12 +1,64 @@
 ---
-title: Hexo配置笔记
-date: 2024-01-05 04:00:00
-categories: 笔记
+title: GitHub Actions的使用
+date: 2024-02-05 03:00:00
+categories: 实用脚本与解决方案
 ---
 
-## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
+## dependabot.yml 依赖拉取机器人
 
-```yaml
+```yml
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 20
+```
+
+## 设置GitHub Actions定时任务
+
+```yml
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: xxx
+
+on:
+  schedule:
+    # 设置启动时间，为 UTC 时间, UTC 2点 对应 北京时间早上 10 点
+    - cron : '58 01 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Shanghai
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        pip install datetime
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run Message send
+      run: |
+        python 脚本/xxx.py
+```
+
+## GitHub Actions 自动部署网页到 GitHub Pages
+
+```yml
 # 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
 name: Deploy Hexo site to Pages
@@ -159,38 +211,4 @@ jobs:
       #     access-key-secret: ${{ secrets.OSS_ACCESSKEY_SECRET }}
       # - name: Deploy to  Aliyun OSS
       #   run: ossutil cp -rf ./public oss://xaoxuu-com/
-```
-
-## 使用 Github Bot 拉取最新依赖更新
-
-```yaml
-version: 2
-updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 20
-```
-
-## Hexo 的 _config.yml 配置注意事项
-
-```yaml
-# 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
-# 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
-# 编辑你的 _config.yml，将 url: 更改为 <你的 GitHub 用户名>.github.io/<repository 的名字>。
-# 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
-# Commit 并 push 到默认分支上。
-# 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
-url: http://jlower.github.io/blog
-```
-
-```yaml
-# 会优先查找 ./themes 中有没有xxx同名文件夹(若有里面得放GitHub下载的源码，否则生成页面为空)
-# 若无则查找 ./node_moudules 中有没有 hexo-theme-xxx 
-# (推荐全用 npm/pnpm 下载，省的GitHub Action每次 都要改，因为有些主题作者自己的.gitignore设置了不上传GitHub)
-theme: vivia # butterfly vivia
-# 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
-archive_generator:
-  per_page: 0
 ```
