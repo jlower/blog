@@ -9,6 +9,12 @@ categories: 实用脚本与解决方案
 ```python
 import requests, sys
 
+"""
+    /etc/crontab 中添加定时任务
+    1  10 * * *   root    python "/root/py_script/实现企业微信API发消息.py" >/dev/null 2>&1
+    每天 10:01 执行脚本
+"""
+
 
 class SendWeiXinWork:
     def __init__(self):
