@@ -11,8 +11,8 @@ categories: 实用脚本与解决方案
 ## Rclone "rsync for cloud storage"【Rclone也支持不少网盘，方便挂载硬盘与增量同步文件夹, 功能强大 ; 但对国内的网盘支持较少，命令行操作适合Linux, 可以配合AList使用】
 
 > Rclone与AList配合WebDAV同步 , 实现多网盘同步文件夹
-> 程序崩溃后可能会在 /root 文件夹下生成 core 文件, **占用空间很大** 直接删除
 
+- Rclone 程序崩溃后可能会在 /root 文件夹下生成 core 文件, **占用空间很大** 直接删除
 - Linux上执行 [rclone 的下载脚本](https://rclone.org/install/) ```curl https://rclone.org/install.sh | sudo bash```
 - Linux上执行命令时路径如果 **有空格** 要用 ""/'' 引号 包起来
 - rclone 可以使用 ```rclone config``` 交互式配置 ; ```rclone config file``` 可以查看配置文件存放的位置, 默认配置完成的后的配置信息保存在 ```/root/.config/rclone/rclone.conf``` 中
