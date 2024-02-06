@@ -11,10 +11,10 @@ categories: 实用脚本与解决方案
 
 ## 脚本与 AList 联合使用
 
-> ```subprocess``` 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理
-> ```subprocess``` 默认将输出打印到控制台 ; 可以更改方法中 ```stdout=``` 参数控制输出
-> ```subprocess.run``` 是阻塞的，会一直卡着等待程序运行
-> ```subprocess.Popen``` 后台执行，不阻塞
+> *subprocess* 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理
+> *subprocess* 默认将输出打印到控制台 ; 可以更改方法中 ```stdout=``` 参数控制输出
+> *subprocess.run* 是阻塞的，会一直卡着等待程序运行
+> *subprocess.Popen* 后台执行，不阻塞
 
 ```python
 from github import Github

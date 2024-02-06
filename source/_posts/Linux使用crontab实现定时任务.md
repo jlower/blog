@@ -6,12 +6,12 @@ categories: 实用脚本与解决方案
 
 ## 注意: cron定时任务一般结尾加上 ```>/dev/null 2>&1``` 将输出抛弃不打印到控制台上, 否则会占用大量资源, 卡
 
-> 例如 向/etc/crontab 中添加定时任务 : 每周二 1:51 执行脚本
+> 例如 向/etc/crontab 中添加定时任务 : ***每周二 1:51 执行脚本***
 > ```51  1   ? * 2   root    python "/x/xx/xxx.py" >/dev/null 2>&1```
 
 ## Linux中 如果文件路径 有空格 需要用双引号将路径括起来 或 加上转义字符\
 
-> ```subprocess``` 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理
+> *subprocess* 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理
 
 ```bash
 cd "/etc/alist/storage/_Git Repository backup"
