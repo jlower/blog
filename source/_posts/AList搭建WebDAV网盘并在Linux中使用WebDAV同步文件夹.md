@@ -55,13 +55,10 @@ import subprocess
     - "_Git Repository backup" 文件夹由 VPS 每星期拉取 GitHub 仓库并备份
     - 其他文件夹 ["_WebDAV", "_常用设置留档", "应用"] 是从 OneDrive 上同步
     
-    ["OneDrive", "谷歌云盘", "Yandex网盘"] 不同步 "LAPTOP-" 文件夹 只同步 ["_Git Repository backup", "_WebDAV", "_常用设置留档", "应用"] 文件夹
-    ["阿里云盘Open", "中国移动云盘", "百度网盘", "迅雷云盘", "天翼云盘客户端"] 同步 ["LAPTOP-", "_Git Repository backup", "_WebDAV", "_常用设置留档", "应用"] 文件夹
-    
     执行流程
     - 先把 VPS 上 手动 备份的 ["_Git Repository backup"] 文件夹 从本地 根目录'/' 同步到 OneDrive 根目录'/'下
     - 再从 OneDrive 根目录'/' 同步 ["_WebDAV", "_常用设置留档", "应用"] 文件夹 到 本地 根目录'/'下
-    - 再从 本地 根目录'/' 同步 ["_Git Repository backup", "_WebDAV", "_常用设置留档", "应用"] 文件夹 到 ["谷歌云盘", "Yandex网盘", "阿里云盘Open", "中国移动云盘", "天翼云盘客户端", "百度网盘", "迅雷云盘"] 的 "/_同步/" 目录下
+    - 再从 本地 根目录'/' 同步 ["_Git Repository backup", "_WebDAV", "_常用设置留档", "应用"] 文件夹 到 remote_names 的 "/_同步/" 目录下
     
 """
 
@@ -92,7 +89,7 @@ for backup_floder in backup_floders:
                     "--check-first", "--progress"])
 
 # WebDAV 云端远程名称（根据你的配置设置）
-remote_names = ["谷歌云盘", "Yandex网盘", "阿里云盘Open", "中国移动云盘", "天翼云盘客户端", "百度网盘", "迅雷云盘"]
+remote_names = ["谷歌云盘", "阿里云盘Open", "中国移动云盘", "天翼云盘客户端", "百度网盘", "迅雷云盘"]  # [, "Yandex网盘"]
 # 使用 rclone 从 本地 根目录'/' 同步 ["_Git Repository backup", "_WebDAV", "_常用设置留档", "应用"] 文件夹 到 remote_names 的 "/_同步/" 目录下
 backup_floders = ["_Git Repository backup", "_WebDAV", "_常用设置留档", "应用"]
 for remote_name in remote_names:
