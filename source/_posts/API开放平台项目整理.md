@@ -121,7 +121,7 @@ http {
 给每个用户维护其调用各个接口的历史记录(最新调用时间、总次数......)，使用逻辑删除，
 ```totalInvokes``` 也可以用 Redis 存当前用户调用某接口的次数，之后此字段可以废弃(，或通过定时任务刷写到 MySQL 数据库中，Redis 宕机后可以查 MySQL 的数据)
 1. ```lowo_api_platform.product_info``` ```lowo_api_platform.product_order``` ```lowo_api_platform.payment_info``` ```lowo_api_platform.recharge_activity``` 支付相关的功能还没开发完(借鉴别人的设计)
-```lowo_api_platform.recharge_activity``` 大致显示用户的订单(不查详细信息，可以再增加一个订单是否完成的状态，省的查两次才能显示是否成功)，要具体信息时可以通过其中的id查找对应 ```lowo_api_platform.product_order``` 的订单信息和 ```lowo_api_platform.payment_info``` 的支付信息
+```lowo_api_platform.recharge_activity``` 大致显示用户的订单(先查需要的基本信息，若需要详细信息再查详细信息)(不查详细信息，可以再增加一个订单是否完成的状态，省的查两次才能显示是否成功)，要具体信息时可以通过其中的id查找对应 ```lowo_api_platform.product_order``` 的订单信息和 ```lowo_api_platform.payment_info``` 的支付信息
 
 ### 为什么使用 Spring Session + Redis 而不用 JWT？单点登录（SSO）？
 
@@ -146,12 +146,12 @@ http {
 
 1. 签名是不可逆的，不存储原数据，只能做签名验证 ; 加密是可逆的，能够解密
 1. 为防止重放攻击，加上了timestamp字段
-1. 保存在数据库里的 **登录密码** 不用明文，而保存用MD5生成的签名，网页表单Post提交用户输入的密码，将提交的密码用MD5签名，把生成的签名与保存在数据库里的签名对比，相同则登录成功
-**登录密码** 通过网络传输了，而 **secret_key** 不通过网络传输，所以在数据库中是否保存明文、校验合法的方法 **登录密码** 和 **secret_key** 使用的设计不一样
+1. 在数据库里的 **登录密码** 不用 **明文** 保存，保存用**MD5**算法对 **明文密码+盐值** 数据生成的 **签名**，网页表单Post提交用户输入的密码，将 **提交的密码加上盐值** 后用MD5生成签名，把生成的签名与保存在数据库里的签名对比，相同则登录成功
+**登录密码** 通过网络传输了，而 **secret_key** 不通过网络传输，所以在数据库中是否保存明文、用于校验合法的方法...... 对于 **登录密码** 和 **secret_key** 使用的设计不一样
 1. MD5签名没有信息所以传输时参数要包含原数据(Base64编码包裹传输)，例如access_key(方便服务器通过access_key查到secret_key)、timestamp......(请求头字段，但密钥secret_key别放在请求头明文传输)，secret_key包含在生成并传递过来的MD5签名中了 ; 服务器通过access_key查到secret_key用secret_key再加上**请求头的JSON**作为参数进行MD5签名与传递来的MD5签名对比，相同则签名验证通过(secret_key正确)
     - 为防止请求头被篡改：使用**请求头的JSON**加上**secret_key**一起签名，保证请求头没被篡改
 1. MD5秒传(提取文件签名，对比签名，相同 {认为文件一致} 则秒传)
-1. RSA也可用于签名，MD5不够安全
+1. **RSA**也可用于签名，**MD5**不够安全
 1. Spring Boot使用HTTPS保证POST请求中传递的密码安全 ; 签名验证的网关接口有防重放保护，请求时secret_key不在网络上传递，无论使用的是 HTTP 还是 HTTPS 都能保证安全
 1. Spring Boot配置SSL证书开启HTTPS请求，并将HTTP请求转换成HTTPS请求。用acme.sh脚本自动生成泛域名SSL证书，并自动续期【生成证书前必须将认证服务设置为letsencrypt（Let's Encrypt）】
 
@@ -162,6 +162,12 @@ http {
 1. MQ实现RPC会造成更大通讯开销，不要强行替代
 1. MQ异步有自动重传重试，与http同步调用相比能提高系统的可靠性，http要自己实现重传重试的补偿定时任务
 1. MQ削峰/限流
+
+### 搜索怎么实现？
+
+1. 在上线第一个版本，因为流量很少，搜索模块直接采用多字段分别模糊匹配的方案
+1. 后续流量增长后，设计了mysql主从分离，并在从库进行全文检索(从 MySQL5.6 开始，InnoDB 开始支持全文检索{Full-Text Search}，看看索引介绍)
+1. 超大流量才用 ElasticSearch 全文检索，会增加运营成本
 
 ### Token核心字段？
 
