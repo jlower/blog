@@ -112,7 +112,7 @@ http {
 ```gender``` ```userRole``` ```status``` ```isDelete``` 字段都可以统一为 ```tinyint``` 类型(还没有改)
 使用逻辑删除的原因是：即使误删还有机会恢复反悔，可以设定定时任务自动删除被标记删除的行
 1. ```lowo_api_platform.daily_check_in``` 表中
-```description``` 字段可以废弃(浪费空间)，描述能用固定模板与查出的 ```addPoints``` 字段值组合自动生成
+```description``` 字段可以废弃(浪费空间)，描述能用固定的模板消息与查出的 ```addPoints``` 字段值组合自动生成描述
 1. ```lowo_api_platform.interface_info``` 表中
 使用逻辑删除
 ```requestHeader``` ```responseHeader``` 前端暂时没展示
@@ -146,6 +146,8 @@ http {
 
 1. 签名是不可逆的，不存储原数据，只能做签名验证 ; 加密是可逆的，能够解密
 1. 为防止重放攻击，加上了timestamp字段
+1. 保存在数据库里的 **登录密码** 不用明文，而保存用MD5生成的签名，网页表单Post提交用户输入的密码，将提交的密码用MD5签名，把生成的签名与保存在数据库里的签名对比，相同则登录成功
+**登录密码** 通过网络传输了，而 **secret_key** 不通过网络传输，所以在数据库中是否保存明文、校验合法的方法 **登录密码** 和 **secret_key** 使用的设计不一样
 1. MD5签名没有信息所以传输时参数要包含原数据(Base64编码包裹传输)，例如access_key(方便服务器通过access_key查到secret_key)、timestamp......(请求头字段，但密钥secret_key别放在请求头明文传输)，secret_key包含在生成并传递过来的MD5签名中了 ; 服务器通过access_key查到secret_key用secret_key再加上**请求头的JSON**作为参数进行MD5签名与传递来的MD5签名对比，相同则签名验证通过(secret_key正确)
     - 为防止请求头被篡改：使用**请求头的JSON**加上**secret_key**一起签名，保证请求头没被篡改
 1. MD5秒传(提取文件签名，对比签名，相同 {认为文件一致} 则秒传)

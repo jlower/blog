@@ -26,6 +26,9 @@ dependencies:
   hexo-generator-tag:
     specifier: ^2.0.0
     version: 2.0.0
+  hexo-pdf:
+    specifier: ^1.1.1
+    version: 1.1.1
   hexo-renderer-ejs:
     specifier: ^2.0.0
     version: 2.0.0
@@ -550,6 +553,11 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
+  /ejs@1.0.0:
+    resolution: {integrity: sha512-hK3tEqj0pP7UF5UHKNiRvm3zCaYk7UI4EBJ6wwN5O2qX1WdSovmqvUHEbNOJuglXzVkk/H0r7vgst3mVcQXrPA==}
+    deprecated: Critical security bugs fixed in 2.5.5
+    dev: false
+
   /ejs@3.1.9:
     resolution: {integrity: sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ==}
     engines: {node: '>=0.10.0'}
@@ -827,6 +835,13 @@ packages:
   /hexo-pagination@3.0.0:
     resolution: {integrity: sha512-8oo1iozloZo7TojPVYg4IxL3SJKCBdSJ908fTlIxIK7TWJIKdYnQlW31+12DBJ0NhVZA/lZisPObGF08wT8fKw==}
     engines: {node: '>=14'}
+    dev: false
+
+  /hexo-pdf@1.1.1:
+    resolution: {integrity: sha512-oC5HMJ8KcJF7zTMe8l+BbXPY0myFMAbWiqQOAuEpR9ZegurAkjVAAT97rJl/idF3yIL5iJg5KXPX0tkjZd0tyA==}
+    engines: {node: '>= 0.10.0'}
+    dependencies:
+      ejs: 1.0.0
     dev: false
 
   /hexo-renderer-ejs@2.0.0:
