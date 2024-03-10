@@ -111,14 +111,16 @@ http {
 1. ```lowo_api_platform.user``` 表中
 ```gender``` ```userRole``` ```status``` ```isDelete``` 字段都可以统一为 ```tinyint``` 类型(还没有改)
 使用逻辑删除的原因是：即使误删还有机会恢复反悔，可以设定定时任务自动删除被标记删除的行
-2. ```lowo_api_platform.interface_info``` 表中
+1. ```lowo_api_platform.daily_check_in``` 表中
+```description``` 字段可以废弃(浪费空间)，描述能用固定模板与查出的 ```addPoints``` 字段值组合自动生成
+1. ```lowo_api_platform.interface_info``` 表中
 使用逻辑删除
 ```requestHeader``` ```responseHeader``` 前端暂时没展示
 ```totalInvokes``` 用 Redis 存接口的总调用次数后此字段可以废弃(，或通过定时任务刷写到 MySQL 数据库中，Redis 宕机后可以查 MySQL 的数据)
-3. ```lowo_api_platform.user_interface_invoke``` 表中
+1. ```lowo_api_platform.user_interface_invoke``` 表中
 给每个用户维护其调用各个接口的历史记录(最新调用时间、总次数......)，使用逻辑删除，
 ```totalInvokes``` 也可以用 Redis 存当前用户调用某接口的次数，之后此字段可以废弃(，或通过定时任务刷写到 MySQL 数据库中，Redis 宕机后可以查 MySQL 的数据)
-4. ```lowo_api_platform.product_info``` ```lowo_api_platform.product_order``` ```lowo_api_platform.payment_info``` ```lowo_api_platform.recharge_activity``` 支付相关的功能还没开发完(借鉴别人的设计)
+1. ```lowo_api_platform.product_info``` ```lowo_api_platform.product_order``` ```lowo_api_platform.payment_info``` ```lowo_api_platform.recharge_activity``` 支付相关的功能还没开发完(借鉴别人的设计)
 ```lowo_api_platform.recharge_activity``` 大致显示用户的订单(不查详细信息，可以再增加一个订单是否完成的状态，省的查两次才能显示是否成功)，要具体信息时可以通过其中的id查找对应 ```lowo_api_platform.product_order``` 的订单信息和 ```lowo_api_platform.payment_info``` 的支付信息
 
 ### 为什么使用 Spring Session + Redis 而不用 JWT？单点登录（SSO）？

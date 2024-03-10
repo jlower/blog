@@ -51,7 +51,6 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
         run: |
-          pnpm install --save hexo-pdf
           pnpm build # 或 npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

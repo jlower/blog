@@ -1,6 +1,6 @@
 ---
 title: Linux的Cpp服务器项目记录
-date: 2024-03-02 03:00:00
+date: 2024-03-10 03:00:00
 categories: Cpp项目
 ---
 
@@ -68,4 +68,4 @@ writev分散写，写入buffer内容或用mmap内存映射的用户请求文件�
 
 ## 实战笔记 PDF 浏览
 
-{% pdf ./Linux的Cpp服务器项目实战笔记.pdf %}
+{% pdf /_posts/Linux的Cpp服务器项目实战笔记.pdf %}
