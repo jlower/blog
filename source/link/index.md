@@ -14,6 +14,9 @@ type: "link"
       link: https://hexo.io/zh-cn/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 快速、简洁且高效的博客框架
+    - name: 我的主页
+      link: https://www.lowoneko.eu.org/
+      descr:
     - name: 我的博客
       link: https://blog.lowoneko.eu.org
       avatar:
@@ -25,22 +28,26 @@ type: "link"
 - class_name: 网站
   class_desc: 值得推荐的网站
   link_list:
+    - name: 凑利普贝当的直播间–凑利普贝当-哗哩哗哩直播，二次元弹幕直播平台
+      link: https://live.bilibili.com/25045043
+      avatar:
+      descr:
     - name: 装备前线 zFrontier
       link: https://www.zfrontier.com/app/#info
       avatar:
       descr:
-    # - name: iKuuu
-    #   link: https://ikuuu.me/user
-    #   avatar:
-    #   descr:
-    # - name: 北+ 社区论坛任务
-    #   link: https://bbs.imoutolove.me/plugin.php?H_name-tasks.html
-    #   avatar:
-    #   descr:
-    # - name: 维咔VikACG
-    #   link: https://www.vikacg.com/post
-    #   avatar:
-    #   descr:
+    - name: iKuuu
+      link: https://ikuuu.me/user
+      avatar:
+      descr:
+    - name: 南+ 社区论坛任务
+      link: https://bbs.imoutolove.me/plugin.php?H_name-tasks.html
+      avatar:
+      descr:
+    - name: 维咔VikACG
+      link: https://www.vikacg.com/post
+      avatar:
+      descr:
     - name: 真白萌
       link: https://masiro.me/admin/novels
       avatar:
@@ -65,10 +72,10 @@ type: "link"
       link: https://www.amazon.com/sendtokindle
       avatar:
       descr:
-    # - name: Exhentai male:gender+change
-    #   link: https://exhentai.org/tag/male:gender+change
-    #   avatar:
-    #   descr:
+    - name: Exhentai male:gender+change
+      link: https://exhentai.org/tag/male:gender+change
+      avatar:
+      descr:
     - name: Youtube
       link: https://www.youtube.com/
       avatar:
@@ -87,6 +94,10 @@ type: "link"
       descr:
     - name: Twitch
       link: https://www.twitch.tv
+      avatar:
+      descr:
+    - name: GitHub
+      link: https://github.com/jlower
       avatar:
       descr:
 {% endflink %}
