@@ -4,6 +4,41 @@ date: 2024-01-05 04:00:00
 categories: 笔记
 ---
 
+## Hexo中插入PDF
+
+### 安装hexo-pdf
+
+```bash
+npm install --save hexo-pdf
+pnpm install --save hexo-pdf
+```
+
+### 本地PDF引用
+
+#### 引用本地文件夹中的pdf文件
+
+```md
+{% pdf /文件夹名称/引用文档名字.pdf %}
+```
+
+> 在source文件夹下创建一个叫pdf的文件夹，把xxx.pdf文件放在这里，然后在_post文件夹中的xxx.md直接使用
+
+```md
+{% pdf /pdf/xxx.pdf %}
+```
+
+#### 最简单的引用方法：把相应pdf文件存到source文件夹下，引用格式为
+
+```md
+{% pdf /引用文档名字.pdf %}
+```
+
+### 引用网络上的PDF文件
+
+```md
+{% pdf https://bugs.python.org/file47781/Tutorial_EDIT.pdf %}
+```
+
 ## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
 ```yaml
