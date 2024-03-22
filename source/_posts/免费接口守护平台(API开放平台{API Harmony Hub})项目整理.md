@@ -320,24 +320,26 @@ CMD ["sh", "-c", \
 
 ## 自我介绍(整理)
 
-1.
+1. 你好，我是XXX，是XXXX大学的 本科/研究 生，我主要使用Java语言开发，对SSM框架、MySQL和Redis数据库、计算机基础知识有所了解。自己做了一个收集免费接口服务并监控接口状态的平台，当接口状态状态改变时这个平台会发邮件通知订阅了的用户。并解决了项目中出现的一些问题，像常规分页导致数据重复、爬虫时网站使用字体加密反爬等。
+1. 在校期间，我过了英语六级，还获得了“互联网+”和算法比赛的奖项。
 
 ## 项目真实性
 
 ### 你讲讲整个业务的流程，模块间的关系？
 
 > - [ ] 等待完善文字描述(，并自己画个流程图)
-> - [ ] 简历上的项目不写网关、RPC、消息队列、分布式，但面试时讨论优化点可以讲；3、为保证接口服务的可用性和稳定性，接口服务被独立部署在一台机器上。为了隐藏接口服务的真实地址和端口，避免接口服务被恶意攻击，前端请求先发送给网关，网关鉴权后再路由转发给接口服务处理；4、为了避免在网关中引入数据库操作，提高服务的可维护性，用Dubbo RPC实现服务间的方法远程调用；
+> - [ ] 简历上的项目不写网关、RPC、消息队列、分布式，但面试时讨论优化点可以讲；
+>   - 为保证接口服务的可用性和稳定性，接口服务被独立部署在一台机器上。为了隐藏接口服务的真实地址和端口，避免接口服务被恶意攻击，前端请求先发送给网关，网关鉴权后再路由转发给接口服务处理；
+>   - 为了避免在网关中引入数据库操作，提高服务的可维护性，用Dubbo RPC实现服务间的方法远程调用；
 
 #### 自己的流程
 
-1.
+1. 用户订阅接口，定时任务监控接口状态，接口状态变化时通知用户，邮箱激活链接使用JWT、用户登录使用Spring Session + Redis实现分布式会话
 
 ### 项目是你自己做的吗？你为什么做这样的一个项目？你做这个项目的背景(初衷)是什么？
 
 > - [ ] 换成监控MC服务器状态也行，但MC监控平台有很多，API监控推送平台没看到
 > - [ ] 准备做让用户能够自己上传接口，要改sql
-> - [ ] 简历上的项目不写网关、RPC、消息队列、分布式，但面试时讨论优化点可以讲；3、为保证接口服务的可用性和稳定性，接口服务被独立部署在一台机器上。为了隐藏接口服务的真实地址和端口，避免接口服务被恶意攻击，前端请求先发送给网关，网关鉴权后再路由转发给接口服务处理；4、为了避免在网关中引入数据库操作，提高服务的可维护性，用Dubbo RPC实现服务间的方法远程调用；
 > - [ ] 邮件推送没做测试，并发量大的时候可能会出现漏发的问题，看看[QQ如何实现高可用的订阅推送系统](https://cloud.tencent.com/developer/article/2216345)
 >   - 可以考虑引入消息队列(一般来说，消息队列的意义主要是削峰填谷、异步解耦。)对本项目而言，引入消息队列有以下好处：
 >     - 将**任务调度和任务执行解耦**（调度服务并不需要关心任务执行结果）；
@@ -349,12 +351,12 @@ CMD ["sh", "-c", \
 
 1. 自己做个人主页的时候用了一些别人提供的免费API，想着自己收集一下实用的免费API
 1. 免费API分享一般就是在GitHub上维护了一个文档不好调试，分享免费API的网站不提供消息提醒功能
-1. 待实现，让用户能自己上传API接口，并打标签
-1. 平台汇集了众多网络上的免费接口服务，包括我自行开发的实用接口服务，能自动检测并监控接口状态，一旦用户订阅的**接口出现故障**，系统会通过**邮件通知用户**，让用户能及时**去检查**他调用免费接口的**项目是否出错**(例如，他个人主页调用的天气接口失效，他接到通知后就能及时更换成其他能用的)并解决。还对于**不好访问**的**接口实现了代理**，让用户能够用我提供的**SDK简化接口调用**的过程，便于开发者集成和使用这些接口服务，通过对接口代理还能让用户访问到像ChatGPT这样**国内不好访问**的接口。平台还实现了在线接口测试、统计接口查看次数等功能。
 1. 调研类似此项目免费API分享平台：[夏柔 - 免费API](https://api.aa1.cn/)
     - **重点功能(还没有人做，一般需要自己写代码实现)**：发现有接口自动检测接口能否调通的功能但**没有**实现接口**订阅功能**，接口**出错不可调通**或接口**恢复正常**时**无法通知用户**，不能让用户及时了解到自己调用的免费接口有没有挂掉，以便用户及时切换提供服务的接口，或自己想用的免费接口服务有没有恢复上线
     - 发现**没有提供统一的SDK**，**但可以用户自己上传接口**(需人工审核){，**我的项目用户不能**自己上传接口}
 1. 除了收集别人免费公开的API接口，我还提供了一些自己实现服务的API接口
+1. 待实现，让用户能自己上传API接口，并打标签
+1. 平台汇集了众多网络上的免费接口服务，包括我自行开发的实用接口服务，能自动检测并监控接口状态，一旦用户订阅的**接口出现故障**，系统会通过**邮件通知用户**，让用户能及时**去检查**他调用免费接口的**项目是否出错**(例如，他个人主页调用的天气接口失效，他接到通知后就能及时更换成其他能用的)并解决。还对于**不好访问**的**接口实现了代理**，让用户能够用我提供的**SDK简化接口调用**的过程，便于开发者集成和使用这些接口服务，通过对接口代理还能让用户访问到像ChatGPT这样**国内不好访问**的接口。平台还实现了在线接口测试、统计接口查看次数等功能。
 1. 实现自动检测接口是否可调通(**不检测**返回是否正确，按要求请求，有返回则认为正常)，若发现接口不可调通(**失败多次**才认为接口出错)或参数发生变更时向所有订阅了此接口状态的人发送邮件提醒
 1. 本来想做一个自己用的API接口整合项目收集免费的API，比如天气服务(目前使用高德的免费API，如果哪天要收费了就用Python爬虫自己实现一个接口)、用Docker部署的网易云音乐API、随机头像、一言......  只做前端展示 ( 自己使用**最重要的**其实就是**前端展示**并且**能在线调试**，**自己调用可以不走网关**直接用**真正的接口地址**省的被限流{自己**内部**使用，**不分享**给他人时**直接用接口的真实地址**}，当然走网关也行{例如：**个人主页**请求天气服务、一言、网易云音乐...... 要给**别人**展示使用的，肯定得走网关，防止接口真实地址被抓包获得})
 1. **为什么要自己部署API？**有的对我来说实用的API别人没有实现，比如生成bilibili视频文章的短链接(不想打开手机去生成，要在电脑上直接出){之前还能生成跳转到外部网址的bilibili短链接，bug}，我个人主页上常用网易云音乐的免费API接口的作者说他服务器压力大，我就不白嫖自己搭建了
@@ -362,8 +364,14 @@ CMD ["sh", "-c", \
 1. 现在字节的Coze提供**免费的ChatGPT4**可带promots的机器人，就是**要科学上网** ; 我用自己的服务器把Coze的机器人**包装**成类似ChatGPT4的**API**供人**免翻墙**调用就能**收费**了
 1. ChatGPT**要科学上网**，我提供用自己服务器包装的**免翻墙**的ChatGPT的**API**调用也可以**收费**了，或者让用户自己提供ChatGPT的api-key我服务器只提供转发**免翻墙**
 1. 对我来说项目最重要的地方在于前端展示，对上线的项目来说最重要的地方在于用户注册与调用api接口时在网关的鉴权
+1. 前端本来想用低代码平台做的，但最后还是找了个成熟的ui套件改改用了
+1. 流量小，没做SEO也没宣传，要先换个 .com 的域名
 
 > 注：因为我个人已经将项目上线，并能够提供一些真实的接口服务。有条件的同学尽量将项目上线。此外有两场的面试官想要**查看数据库**，我开了屏幕共享给他们看，所以要**对数据库的表结构和设计**有一定的了解。
+
+### 项目的架构你是怎么设计的？
+
+采用**前后端分离**的架构，后端使用SSM框架开发，数据库用的是MySQL，缓存用Redis
 
 ### 你的开发流程是什么？先实现还是先技术选型？
 
@@ -371,8 +379,21 @@ CMD ["sh", "-c", \
 
 1. 调研类似此项目免费API分享平台：[夏柔 - 免费API](https://api.aa1.cn/)
 1. 我先**参考了一些已有的产品**，根据这些产品，总结出来比较好的功能点，再**结合自己想要实现的一些功能特色**，去做了一个项目整体设计，**有了产品原型后再进行技术选型。使用什么样的技术去解决什么样的业务问题**。
+1. 看了别人实现高可用订阅推送的方法设计，结合自己的数据量仿造了一个简化的，别人都是百万用户多订阅推送
 
 > 总而言之，**面试官会从各个角度去深挖项目的细节，考量你是不是真的自己做的，是不是真的理解？**所以要做到对项目的所有细节都非常的熟悉。当完全理解项目之后，就能够**提前预测到面试官会怎么问**，并在面试过程中说出一些技术名词引导面试官，然后对这些问题，和延伸的知识点能够完全掌握后，相信一定可以征服面试官。
+
+### 你怎么做的技术选型？为什么要用这些技术？
+
+答：使用 SpringBoot 是因为通过**自动装配**能够提高项目的开发效率，还能够很好的**整合其他服务**。
+
+使用 MySQL 的原因是因为考虑到未来有用户充值交易，限制调用次数等场景需要**用事务保证数据的完整性和一致性**。
+
+使用 Redis 的原因是因为可以用来实现**分布式 session、锁、缓存**等功能。因为 Redis 是一个单独的中间件，不同客户端可以往同一个 Redis 或者集群中存放session/加锁，这样就能**保证资源能够在分布式服务下都可见**。
+
+并且由于**Redis 也是单线程**的，同时也**支持 lua 脚本**，可以保证并发安全的问题，所以可以很简单的实现分布式锁的功能。
+
+> 注：被面试官追问自动装配的原理你了解过吗？自动装配是怎么实现的？分布式 session 的原理？
 
 ### 数据库的表结构是怎么设计的？
 
@@ -429,27 +450,124 @@ Web应用大部分是 I/O密集型 的，与数据库、缓存交互多，网络
 - [ ] 简历写：**出现了问题，如何定位问题，如何解决问题，达到什么样效果，实现了什么业务价值**；例如，项目优化中能否加入性调优，背景是在访问流量突增，出现热点，会如何应对？出现问题：cpu、内存、网络/io等异常，通过使用xx限流、热点检测、缓存......解决了问题
 - [ ] CPU占用飙升100%排查，用top/jps/jstack/监控......指令定位到问题(平时没问题流量大后就出现问题){问题一般不会是死锁(除非代码太烂)，一般是并发问题(很可能流量小时没并发问题，流量大了后才出现问题)}，解决问题(例如，之前没考虑并发的地方考虑了并发，出现死锁的地方定位到了并解决，卡住的地方多线程优化、同步改成异步)
 
-### SSM是啥？
+### SSM是啥？SDK？MD5签名？
 
-Spring + SpringMVC + MyBatis
-SpringMVC的注解 @RestController = @Controller + @ResponseBody、@RequestMapping("/user")、@PostMapping("/register")、@GetMapping("/getCaptcha")、@RequestBody、@RequestParam("username")、@Controller、@ResponseBody
-
-### SDK，MD5签名
+1. Spring + SpringMVC + MyBatis
+1. SpringMVC的注解 @RestController = @Controller + @ResponseBody、@RequestMapping("/user")、@PostMapping("/register")、@GetMapping("/getCaptcha")、@RequestBody、@RequestParam("username")、@Controller、@ResponseBody
+1. SDK：方便开发的工具包
+1. 签名是不可逆的，不存储原数据，只能做签名验证 ; 加密是可逆的，能够解密
+1. 为防止重放攻击，加上了timestamp字段
+1. 在数据库里的 **登录密码** 不用 **明文** 保存，保存用**MD5**算法对 **明文密码+盐值** 数据生成的 **签名**，网页表单Post提交用户输入的密码，将 **提交的密码加上盐值** 后用MD5生成签名，把生成的签名与保存在数据库里的签名对比，相同则登录成功
+1. ak/sk与登录密码的区别：**登录密码** 通过网络传输了，而 **secret_key** 不通过网络传输，所以在数据库中是否保存明文、用于校验合法的方法...... 对于 **登录密码** 和 **secret_key** 使用的设计不一样
+1. MD5签名没有信息所以传输时参数要包含原数据(Base64编码包裹传输)，例如access_key(方便服务器通过access_key查到secret_key)、timestamp......(请求头字段，但密钥secret_key别放在请求头明文传输)，secret_key包含在生成并传递过来的MD5签名中了 ; 服务器通过access_key查到secret_key用secret_key再加上**请求头的JSON**作为参数进行MD5签名与传递来的MD5签名对比，相同则签名验证通过(secret_key正确)
+    - 为防止请求头被篡改：使用**请求头的JSON**加上**secret_key**一起签名，保证请求头没被篡改
+1. MD5秒传(提取文件签名，对比签名，相同 {认为文件一致} 则秒传)
+1. **RSA**也可用于签名，**MD5**不够安全
 
 ### 为啥单测用Mockito不用postman？
 
+> 单元测试和集成测试的目的不同，单元测试主要是为了验证代码的单个单元（如一个方法或函数）的正确性，而集成测试则是为了验证不同模块或系统组件之间的交互是否按预期工作。
+> Mockito用于单元测试，模拟依赖，加速测试速度，确保测试的独立性。
+> Postman用于集成测试，验证整个系统的行为，确保与外部依赖的兼容性。
+
+Mockito能让代码对外部系统隔离，不需要进行各种初始化操作。仅仅从单机的角度看逻辑是否跑通。
+比如被测试类调用了订单查询接口。但是实际上，单元测试是不依赖于环境的，也就是说在单测中不可能进行真实的RPC调用。比如退单时，我们需要根据orderId查订单信息，并且将一些优惠资源（券，红包，活动库存）回退，就涉及到其他系统的调用。
+
+### 怎么用Junit、Mockito写单元测试？怎么用JaCoCo生成单测报告？
+
+> [JaCoCo](https://blog.csdn.net/qq_40521599/article/details/113655287)
+
 ### 频繁 Full GC 排查
 
-> [见黑马实战篇笔记](JVM调优(内存调优、GC调优、性能调优)与检测频繁Full%20GC.md)
+> {% post_link JVM调优(内存调优、GC调优、性能调优)与检测频繁Full%20GC JVM调优(内存调优、GC调优、性能调优)与检测频繁Full%20GC %}
 
 #### 为什么OOM(内存溢出后JVM不会崩溃)？
 
+> [内存溢出如何影响JVM运行及应对策略](https://blog.csdn.net/BASK2311/article/details/136488638)
+> [美团一面：OOM后，JVM一定会退出吗？为什么？](https://blog.csdn.net/crazymakercircle/article/details/131264292)
 
-### 设计了查询接口状态的短连接接口，并引入Redis缓存接口状态，避免了前端轮询判断接口状态是否变化时频繁到MySQL中去查全量数据
+#### 排查操作
 
-#### Redis中缓存时间设置多长？
+> [黑马JVM实战笔记](https://lisxpq12rl7.feishu.cn/wiki/AHb3wQAmvivYRmkH6WHcQY8vnve)
 
-变化较快的数据，比如点赞......缓存时间要短(一两分钟)，变化不大的数据，比如详情......缓存时间可以长点(一天)；流量上去了再用缓存，公司多项目用同一个Redis要注意key别重复了，覆盖掉别人的缓存了
+### 由于接口最新查看榜实时变动较大，可以采取时间戳+唯一ID的组合作为新的分页参数，确保翻页时数据不会重复(，或使用Redis Feed 流)
+
+> [滑动分页时列表数据重复或丢失问题解决方法介绍](https://baijiahao.baidu.com/s?id=1761347544743891908)
+> [滑动分页时列表数据重复或丢失问题解决方法介绍](https://www.cnblogs.com/mouseleo/p/17624516.html)
+
+#### 什么是动态分页？
+
+1. 动态分页是指根据用户的请求动态生成数据库查询语句，以满足不同的分页需求。具体来说，动态分页通过在查询语句中添加limit和offset来实现。limit表示每页查询的记录数，offset表示查询结果的偏移量。
+1. 在MyBatis中，可以使用动态SQL语句来实现动态分页。动态SQL语句是一种可以根据条件决定是否包含某一段SQL语句的技术。MyBatis提供了一些标签和函数来支持动态SQL语句的编写，比如if、choose、when、otherwise等。
+
+#### 为什么用常规动态分页的方法会出现数据重复或丢失的问题？主要是在哪些场景中出现？
+
+1. APP用户上滑加载更多数据，在上一页下一页时间间隔过程中，后台新增了数据，可能导致新获取到的一页数据和上一次上滑加载拉取到的数据产生重复；也可能因为期间后台删除操作后，分页查询的数据“丢失”了一些；甚至后台可以改变数据查询排序的顺序，导致数据混乱（包括重复和“丢失”）。
+
+#### Redis Feed流也可以实现？Redis Feed是啥？主要用在哪？怎么实现？
+
+> [Redis实现Feed流滚动分页](https://blog.csdn.net/zmbwcx/article/details/134838765)
+> [Redis实现Feed流滚动分页](https://blog.csdn.net/weixin_43410223/article/details/125814901)
+
+#### MySQL深度分页怎么优化？
+
+1. [深度分页介绍及优化建议](https://javaguide.cn/high-performance/deep-pagination-optimization.html)
+
+### 将MySQL 读写分离，并在读库上为接口的名称和介绍字段建立全文索引。解决了用双向模糊匹配查询时速度慢的问题，并避免了引入较重的Elasticsearch 搜索引擎
+
+> [MySQL全文索引怎么解决like模糊匹配查询慢](https://www.php.cn/faq/497183.html)
+
+#### MySQL 读写分离/主从分离 ？
+
+> [MySQL 读写分离/主从分离 和分库分表详解](https://javaguide.cn/high-performance/read-and-write-separation-and-library-subtable.html)
+> 通过接口传递不同数据库源之间的数据，配置多源数据库？怎么切换源？怎么切换事务？
+
+1. 在上线第一个版本，因为**流量很少**(万级以下)，搜索模块直接采用多字段分别**模糊匹配** ```LIKE``` 的方案
+1. 后续流量增长后(十万，百万)，设计了mysql主从分离(主库写，从库读)，并在**从库**进行**全文索引**(**对写库没有压力**)(从 MySQL5.6 开始，InnoDB 开始支持全文检索{Full-Text Search}，看看索引介绍)
+    - 全文检索通常可以实现对数据库中文本内容的快速搜索，这可以包括对标签、详情、文章内容、评论、产品描述等文本字段的搜索。具体能对哪些字段使用全文检索，要看你所使用的数据库系统，以及如何设计数据库的schema。
+    - MySQL中的全文检索通常**用于MyISAM和InnoDB**存储引擎，可以**对VARCHAR和TEXT类型**的字段创建全文索引。但对于InnoDB，MySQL从版本5.6开始支持全文索引。全文索引可以让你针对那些包含大量文本的字段进行搜索优化，用于匹配用户查询中的关键词，它可以有效地搜索含这些词的记录。(就用InnoDB就好)
+    - 全文检索是可以**多字段**的**索引**
+    - **难点**：怎么主从同步
+    - 怎么使用全文检索？ ```SELECT * FROM articles WHERE MATCH(title, body) AGAINST('search keyword');``` 用 ```MATCH() AGAINST()``` 方法当条件，不用 ```LIKE```
+1. **超大流量(千万级)**才用 **ElasticSearch** 全文索引，会**增加运营成本**，没必要
+
+#### 追问ElasticSearch？
+
+1. [Elasticsearch常见面试题总结](https://javaguide.cn/database/elasticsearch/elasticsearch-questions-01.html)
+
+#### MySQL的全文索引怎么用？建立联合全文索引后，查他的单独列时，不会使用全文索引，所以搜素就两个字段都查(或单独建立每列的索引了)
+
+> [MySQL全文索引介绍](https://zhuanlan.zhihu.com/p/589076491)
+> **创建(name, description)的联合全文索引,联合全文索引查单独列时不会使用索引,所以搜素就两个字段都查(或单独建立每列的索引了)**
+
+用全文索引的格式：  MATCH (columnName) AGAINST ('string')
+
+```sql
+SELECT * FROM `student` WHERE MATCH(`name`) AGAINST('聪')
+```
+
+当查询多列数据时：建议在此多列数据上创建一个联合的全文索引，否则使用不了索引的。(建立**联合索引**后，查他的单独列时，**不会使用**索引)
+
+```sql
+SELECT * FROM `student` WHERE MATCH(`name`,`address`) AGAINST('聪 广东')
+```
+
+使用全文索引需要注意的是：(基本单位是词) 分词，全文索引以词为基础的，MySQL默认的分词是所有非字母和数字的特殊符号都是分词符(外国人嘛)，**有中文分词插件**
+
+#### 怎么创建全文索引？创建全文索引时为什么用了 ```WITH PARSER ngram``` ？
+
+```sql
+FULLTEXT (name, description) WITH PARSER ngram
+```
+
+> ```WITH PARSER ngram``` 是MySQL中的一个选项，它用于创建全文索引时指定使用ngram解析器。ngram解析器的主要功能是将文本序列标记为n个字符的连续序列。
+> 例如，你可以将“abcd”标记为不同值n的文本序列：
+> n=1: ‘a’, ‘b’, ‘c’, ‘d’
+> n=2: ‘ab’, ‘bc’, ‘cd’
+> n=3: ‘abc’, ‘bcd’
+> n=4: ‘abcd’
+> 这对于处理中文、日文、韩文等表意语言的全文搜索非常有用，因为这些语言不使用分词符。
+> MySQL的内置全文解析器使用空格确定单词的开始和结束，这对于处理这些语言是一个限制。为了解决这个问题，MySQL提供了ngram全文解析器
 
 ### 为了给用户推荐好用的接口，实现了实时的接口热度榜，利用Redis的有序集合（ZSET）实现对接口查看次数的统计和排序。并使用Quartz定时任务将接口的查看次数同步到MySQL中
 
@@ -508,7 +626,7 @@ ZINCRBY yourzset increment member
 1. 简易性：@Scheduled注解是Spring内置的，使用起来非常简单。只需在方法上添加@Scheduled注解，并配置cron表达式即可实现定时任务。
 1. 功能性：Quartz提供了更强大的功能，如任务持久化、事务管理、任务监听等。它支持分布式环境，可以在多个节点上执行任务。
 1. 并发支持：@Scheduled默认不支持并发执行，如果需要并发执行，可以结合@Async注解使用。而Quartz则可以通过配置来支持并发执行。
-1. 持久化：Quartz支持任务的持久化，即使系统重启，任务也能继续执行。而@Scheduled不支持持久化，重启后需要重新调度。
+1. **持久化**：Quartz支持任务的持久化，即使系统重启，任务也能继续执行。而@Scheduled不支持持久化，重启后需要重新调度。
 1. 表达式：两者都支持cron表达式，但Quartz的表达式更为强大，支持更复杂的调度需求。
 
 > 总的来说，如果你的应用只需要简单的定时任务，@Scheduled注解足以满足需求。如果你需要更复杂的任务调度，或者在分布式环境中运行任务，Quartz会是更合适的选择。选择哪一个取决于你的具体需求和项目的复杂度。
@@ -564,13 +682,58 @@ FROM scores
 ORDER BY score DESC;
 ```
 
+### 设计了查询接口状态的短连接接口，并引入Redis缓存接口状态，避免了前端轮询判断接口状态是否变化时频繁到MySQL中去查全量数据。解决了并发量稍大时，因储存的无用全量数据过多而出现内存溢出的问题
+
+> [如何保证缓存和数据库数据的一致性](https://javaguide.cn/database/redis/redis-questions-02.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7)
+> [短连接是啥](https://developer.aliyun.com/article/1159871)
+> [短连接是啥](https://blog.51cto.com/u_16213722/8893794)
+> MySQL单机支持并发一般300~500/s
+> 先用缓存优化，不行再做MySQL主从分离
+
+**新增**了一个**短连接接口**(只查接口状态)和查全量数据的接口分开(2个接口操作不同)，方便调用，不用判断执行哪个操作
+每十秒前端调用一次后端的短连接接口查询接口状态有没有更新，若接口状态有更新就调用全量查询接口查询接口全量数据~~(不一定要刷新，接口信息中**会变的只有热度和状态**，其中状态最重要，变状态就好)~~，然后重新传给前端并刷新页面数据，引入 Redis 减少全量接口查询的次数，短连接接口查的是Redis缓存，若发现接口状态有变化，则先存到MySQL里，Redis设置**失效时间为1分钟**(1分钟内必显示出接口状态变化)，注意[如何保证缓存和数据库数据的一致性](https://javaguide.cn/database/redis/redis-questions-02.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7)
+
+#### Redis中缓存时间设置多长？
+
+变化较快的数据，比如点赞......缓存时间要短(一两分钟)，变化不大的数据，比如详情......缓存时间可以长点(一天)；流量上去了再用缓存，公司多项目用同一个Redis要注意key别重复了，覆盖掉别人的缓存了
+
+#### tps多少时OOM了？
+
+JVM堆内存设置512MB(服务器上还有其他项目，而且并发量小我代码有没有内存泄漏的问题)，当单压测状态轮询接口时tps为300时出现频繁OOM报错无法处理任何请求
+
+### 解决了部分网站使用字体加密反爬虫的问题
+
+> [爬取番茄小说](https://www.bilibili.com/video/BV1Cj411E74s/)
+
+#### 什么是字体加密
+
+网站使用了自己定义的字体，显示的时候用户能正常观看，但是爬虫爬出来的因为没有网站的字体，所以显示的是乱码。
+可以F12抓取网络通信，找到网页传输的网站自定义字体(用户要正常看所以会发过来，不然用户也是乱码)，然后分析网站自定义字体的每个字的名字：将爬出来的无法显示的字符的Unicode整数编码值打印出来与自定义字体的每个字的名字进行匹配，一般有规律(有的就是名字和Unicode一一对应的)，替换乱码字符为正常字符就好
+python自带的ord()可以得到字符的Unicode整数编码值
+例如，番茄小说的自定义字体就是名字与Unicode一一对应的，而且只有300多个常用字符加密了，写个人工对应数组替换即可
+
+#### 为啥要爬虫？
+
+以前用别人的免费爬 番茄免费小说/塔读文学 小说的接口挂了，作者GitHub上归档不维护了，我自己比较常用就只好自己实现喽。
+我用Kindle看小说较多，有的时候就下txt下来看，要解决编码冲突，Python 实现起来比较方便，就用了Python。
+
+#### 商业避免反爬虫怎么实现？
+
+1. 修改请求头：有些网站会识别爬虫程序的请求头，我们可以通过修改请求头来改变程序的请求方式，让其看起来像是普通用户在浏览网页。具体实现可通过 Python 的 requests 库中的 headers 参数来设置。
+1. 延时爬取：有些网站会限制短时间内的访问次数，所以我们可以通过设置延时，让爬虫程序在一定时间间隔后再访问页面，从而降低访问频率。具体实现可通过 Python 中的 time 模块来实现。
+1. 使用代理IP(IP池子)：有些网站为了防止爬虫程序的访问，会封禁爬虫程序所在的 IP 地址，我们可以通过使用代理 IP 来实现每次访问使用不同的 IP 地址，从而避免被封 IP。具体实现可通过 Python 中的 requests 库中的 proxies 参数来设置。
+1. 登录账号：有些网站会设置只有登录用户才能进行浏览访问，我们可以通过模拟用户登录行为，以登录状态进行爬取。具体实现可通过 Python 中的 requests 库中的 session 对象来完成。
+1. 绕过人机验证：有开源的绕过谷歌验证和亚马逊验证的模块，现在**用AI绕过验证**也行了
+
+> 我爬的少且频率低无需太多操作。
+
 ### 定时执行接口检测方法，若有接口状态变化，则在Kafka中发布通知用户的任务。引入消息队列将接口状态检测和通知用户解耦，并将瞬时高并发的任务打散执行，达成了削峰的作用
 
 Kafka消息队列，使操作**异步**执行
 
 #### 怎么实现接口订阅功能(当用户订阅的接口状态改变时，平台通过邮件通知用户)？
 
-**用Redis的set**存每个接口的订阅了的用户的列表（看看[文章](https://cloud.tencent.com/developer/article/2216345)中的实现，我自己实现直接取的话**没必要用**），MySQL里也存接口用户订阅关系表（**可以不存**，备份Redis即可，存就要保证高可靠一致性），当要用户订阅和取消订阅时要同时更改Redis、MySQL中的数据，[数据库和缓存如何**保证一致性**](https://xiaolincoding.com/redis/architecture/mysql_redis_consistency.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E7%BC%93%E5%AD%98%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E8%87%B4%E6%80%A7)
+**用Redis的set**存每个接口的订阅了的用户的列表（看看[文章](https://cloud.tencent.com/developer/article/2216345)中的实现，我自己实现直接取的话**没必要用**，面试说**用了**吧），MySQL里也存接口用户订阅关系表（**可以不存**，备份Redis即可，存就要保证高可靠一致性），当要用户订阅和取消订阅时要同时更改Redis、MySQL中的数据，[数据库和缓存如何**保证一致性**](https://xiaolincoding.com/redis/architecture/mysql_redis_consistency.html#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E7%BC%93%E5%AD%98%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E4%B8%80%E8%87%B4%E6%80%A7)
 
 - 我一开始准备按[文章](https://cloud.tencent.com/developer/article/2216345)中实现分块多用户推送，但我用户又不可能很多，而且我发邮件时对速率有限制，并且没实现At least once推送，所以用不用都行，反正部署了Redis就用一用呗；我现在只需要**取**，如果也要按文章上写的实现At least once推送则需要**存和取** 那就要用Redis
 
@@ -680,106 +843,224 @@ Kafka最初是为了日志统计分析而设计的，它适用于处理大量的
 
 #### Kafka为什么可能会重复发送？
 
-### 将MySQL读写分离，在读库上为接口的名称和介绍字段建立全文索引实现搜索，比用模糊匹配搜索的方法更加高效
+> [聊聊 Kafka：Kafka 消息丢失的场景以及最佳实践](https://zhuanlan.zhihu.com/p/509855069)
+> [聊聊 Kafka：Kafka 消息重复的场景以及最佳实践](https://zhuanlan.zhihu.com/p/513559802)
 
-> [MySQL全文索引怎么解决like模糊匹配查询慢](https://www.php.cn/faq/497183.html)
+#### 推送任务应该存在MySQL里面，读写不频繁，对可靠性要求高，宕机后重启要还能保证推送给所有用户
 
-#### MySQL 读写分离/主从分离 ？
+### 为防范恶意攻击者大量请求验证码，限制了向同一人发送邮件验证码的次数和时间间隔
 
-> [MySQL 读写分离/主从分离 和分库分表详解](https://javaguide.cn/high-performance/read-and-write-separation-and-library-subtable.html)
-> 通过接口传递不同数据库源之间的数据，配置多源数据库？怎么切换源？怎么切换事务？
+#### 发送验证邮件的接口怎么限流(例如，同邮箱1小时内只能发送5次验证邮件，同用户1小时内只能发送10次验证邮件，发送间隔至少1分钟)？前端限流，后端怎么使用 Redis缓存 实现？
 
-1. 在上线第一个版本，因为**流量很少**(万级以下)，搜索模块直接采用多字段分别**模糊匹配** ```LIKE``` 的方案
-1. 后续流量增长后(十万，百万)，设计了mysql主从分离(主库写，从库读)，并在**从库**进行**全文索引**(**对写库没有压力**)(从 MySQL5.6 开始，InnoDB 开始支持全文检索{Full-Text Search}，看看索引介绍)
-    - 全文检索通常可以实现对数据库中文本内容的快速搜索，这可以包括对标签、详情、文章内容、评论、产品描述等文本字段的搜索。具体能对哪些字段使用全文检索，要看你所使用的数据库系统，以及如何设计数据库的schema。
-    - MySQL中的全文检索通常**用于MyISAM和InnoDB**存储引擎，可以**对VARCHAR和TEXT类型**的字段创建全文索引。但对于InnoDB，MySQL从版本5.6开始支持全文索引。全文索引可以让你针对那些包含大量文本的字段进行搜索优化，用于匹配用户查询中的关键词，它可以有效地搜索含这些词的记录。(就用InnoDB就好)
-    - 全文检索是可以**多字段**的**索引**
-    - **难点**：怎么主从同步
-    - 怎么使用全文检索？ ```SELECT * FROM articles WHERE MATCH(title, body) AGAINST('search keyword');``` 用 ```MATCH() AGAINST()``` 方法当条件，不用 ```LIKE```
-1. **超大流量(千万级)**才用 **ElasticSearch** 全文索引，会**增加运营成本**，没必要
+1. 直接封IP是不可取的，现在中国大内网，误封一大片
+1. 判断**同用户**限流，如何准确识别为**同一个用户**发的请求？
+    1. **用cookie识别**跟踪用户，判断是否为同一个用户在请求手机短信验证码：
+        - 在实现短信验证码功能时，可以通过设置cookie并创建session来记录用户的请求状态，以此来**限制同一个用户在短时间内重复请求**验证码。例如，服务器可以在发送验证码后，在session中记录下这个行为，并设置一个时间窗口，在这个时间窗口内不再重复发送验证码给同一个用户；sessioon可以放在Redis中，**这样即使用户关闭了浏览器，也能通过cookie来识别用户。**
+    1. 如果**移动端没有cookie**，还有**其他方法**可以识别和跟踪用户：
+        - 本地存储：使用Web存储API，如**localStorage**代替cookie，来在用户设备上存储信息。
+        - 设备指纹：通过收集设备的特定信息（如操作系统、浏览器版本、字体列表等）来生成一个独特的标识符
+        - URL重写：将会话ID附加到URL中，通过URL来传递和管理会话状态
+        - 移动设备ID：使用移动设备的唯一标识符，如广告ID或设备ID。例如，对于Android应用，可以使用**SharedPreferences**来存储用户的唯一标识符（如UID），这样即使没有cookie，也可以在后续的请求中识别用户
+        - 用户账号系统：要求用户登录，通过账号来跟踪用户状态。
+1. 后端限流，防止抓取到发送验证码的接口后构造请求恶意攻击
+    1. [限制的方法](https://blog.csdn.net/TM007_/article/details/132964854)
+    1. **同邮箱**限流，用 **SEND_LIMIT_EMAIL_KEY(Redis 存储类的key抬头，例如"api:send:limit:email:") + 邮箱地址** 做 Redis 的key，设定1小时的过期时间，value存储已发次数
+    1. **同邮箱**限流，发送间隔至少1分钟(做时间间隔限制，时间未到**不发**送邮件/短信)，也可以类似的用Redis实现 {还是使用设定过期时间的方法} 或者 {value存储上一次发送时间，判断当前时间与上一次发送时间间隔是否大于1分钟}
+1. 为了防范恶意攻击，通常会对发送验证邮件的次数和间隔做出限制。这些限制可以具体包括：
+    - 时间间隔限制：要求两次发送邮件之间必须等待一定的时间，比如1分钟。
+    - 次数限制：在一定时间周期内，比如24小时内，限制发送邮件的次数，例如最多5次。
+    - 验证尝试限制：限制用户在一个时间周期内尝试验证的次数。
+1. 实现这些限制的方法如下：
+    - 使用缓存（如Redis）来存储有关用户请求发送邮件的信息。您可以将用户的唯一标识（如邮箱地址）与上一次发送邮件的时间戳和当天发送邮件的次数相关联。
+    - 在用户请求发送邮件时，检查缓存中的时间戳和发送计数。如果请求与上一次请求的时间间隔太短或当天请求次数过多，则拒绝操作。
+    - 当邮件被成功发送时，更新缓存中的时间戳和发送计数。
+    - 为了防止资源浪费，一旦邮件发送成功，并且用户通过点击激活链接来验证了邮箱，您应该重置或移除相关的限制信息。
+1. 前端页面限流，防止用户连续点击(可能无恶意){前端做**倒计时限制**，时间未到**不能点击**发送短信按钮}
+1. **增加图形验证或滑块验证或第三方验证**：发送短信/邮件验证码前，要求验证，
+    - ​验证码，比较常用的**图形验证码**或者**滑块验证**或者引入 谷歌/AWS/网易/......**第三方** 的验证，对比说说**它们之间的性能差别或者功能差别**。
+        1. **图形验证码(容易被ORC破解)**，每个图片验证码**仅能使用1次**，使用1次后，**不管输入的图片验证码是否正确自动失效**。如果输入错误更新图片验证码。图片验证码失效可以防止图片验证码识别软件尝试多次识别，用户通常需要识别图中的文字或图像，是最基本的验证形式，但可能**因为图像扭曲或噪声**而**难以读取**。它主要抵抗简单的自动攻击。
+        1. 滑块验证：用户需要拖动一个滑块完成一定的轨迹或拼合图像，以证明操作者非自动化脚本。相较于图形验证码更为用户友好，但技术**更容易受到模仿攻击**。
+        1. 谷歌 reCAPTCHA：这是一种较为高级的服务，能够通过分析用户和浏览器的行为来自动确定是否通过验证，通常对用户透明。reCAPTCHA 的 v3 版本甚至完全不打扰用户。但其存在的问题可能包括影响用户隐私。
+        1. AWS WAF 和 Shield：主要是AWS提供的服务，不仅限于CAPTCHA功能，还包括整体的网络应用防火墙服务。比起传统的CAPTCHA提供更全面的安全解决方案，但可能成本更高。
+        1. 网易：中国的服务提供商，其验证码解决方案被许多中国网站采用。为了适应中国内地的一些特定要求和互联网环境，网易的服务可能在本地化和语言支持方面更胜一筹。
+1. **上行短信验证码**：对于可疑用户要求其主动发短信。
+1. 如果攻击者拿多用户同时申请，DDOS可以考虑**购买高防服务**，接上僵尸网络识别功能，对可能已经成肉鸡的IP进行封禁。
+1. [链接](https://blog.csdn.net/zengdeqing2012/article/details/79625477)
 
-#### 追问ElasticSearch？
+#### 邮件验证码绑定邮箱或登录怎么使用 Redis缓存 实现？
 
-1. [Elasticsearch常见面试题总结](https://javaguide.cn/database/elasticsearch/elasticsearch-questions-01.html)
+> 生成的验证码放在Redis缓存中并设定**30分钟**的**过期**时间，用 **CAPTCHA_CACHE_KEY(Redis 验证码存储类的key抬头，例如"api:captcha:") + 邮箱地址** 做 Redis 的key保证**只有最新的验证码有效**(，每次生成后存储验证码到value时因为key相同所以会覆盖之前的value)
+> 用邮箱登录时，若验证成功后若发现邮箱没在MySQL数据库里，可以将跳转到注册页面，让用户注册一个新账号。
 
-#### MySQL的全文索引怎么用？建立联合全文索引后，查他的单独列时，不会使用全文索引，所以搜素就两个字段都查(或单独建立每列的索引了)
+1. 验证码输入错误**次数限制**，比如设置短信验证码输入错误3次后，这个短信验证码就不能使用了。防止猜测短信验证码恶意注册。若**没有保护**则可能：
+    - 用户在登录界面填写手机号，不获取短信验证码，直接通过爆破模块(burp suite)，生成一堆的验证码，直接脚本批量尝试登录。
+    - 重置密码的逻辑，同样也可以通过这种爆破验证码的逻辑，跳过短信验证码，直接修改密码。
+1. 为了防止资源浪费和安全，一旦用户通过验证码验证了邮箱，您应该**立即移除验证码**使其**失效**。
+1. [验证码防爆破链接](https://blog.csdn.net/lilei1138494584/article/details/126637447)
 
-> [MySQL全文索引介绍](https://zhuanlan.zhihu.com/p/589076491)
-> **创建(name, description)的联合全文索引,联合全文索引查单独列时不会使用索引,所以搜素就两个字段都查(或单独建立每列的索引了)**
+#### 邮件激活链接绑定邮箱或改密码 或 文件临时一次性分享下载链接 怎么使用 JWT 实现？
 
-用全文索引的格式：  MATCH (columnName) AGAINST ('string')
+> **适合使用jwt的场景**：有效期短 / 只希望被使用一次
+> 比如，用户注册后发一封邮件让其激活账户，通常邮件中需要有一个链接，这个链接需要具备以下的特性：能够标识用户，该链接具有时效性（通常只允许几小时之内激活），不能被篡改以激活其他可能的账户，一次性的，等待自然过期即可，无需服务端控制其提前终止。这种场景就适合使用jwt。或文件临时一次性分享下载链接
 
-```sql
-SELECT * FROM `student` WHERE MATCH(`name`) AGAINST('聪')
+1. [JWT介绍和基本信息](https://javaguide.cn/system-design/security/jwt-intro.html)
+1. 实现JWT的时候，SECRET_KEY 是用于对JWT签名的密钥，它必须保持私密性。选择将 SECRET_KEY 存储在哪里通常取决于你的应用程序的需求和安全的最佳实践。以下是几种常见的存储方式：
+    - **配置文件**：将 SECRET_KEY 存储在服务器的配置文件中是**比较常见**的做法。为了安全起见，配置文件不应该被包含在版本控制系统中，而是应该在部署的时候通过安全的方式（如使用配置管理工具）添加到应用程序环境中。这种方法对于不需要频繁更改密钥的应用程序来说，既安全又方便。
+    - 环境变量：另一种方式是将 SECRET_KEY 存储为环境变量。这意味着密钥直接存储在应用程序运行环境中，这使得更改和管理密钥更加方便。它不会直接暴露在代码或配置文件中，提高了安全性。
+    - 密钥管理服务：对于需要更高安全性的系统，可以使用密钥管理服务，如AWS KMS（Key Management Service）等。这些服务通常提供了密钥的存储、轮换和审计的能力。
+    - **数据库/缓存系统**：在某些情况下，你也可以将 SECRET_KEY 存储在数据库或缓存系统（如Redis）中，尤其是当你有**一组密钥需要管理**，或者**需要定期更换密钥时**。不过，这种方法可能需要更复杂的管理和额外的安全措施，以确保密钥存储的安全。
+    - 不管选择哪种存储方法，都需要确保对SECRET_KEY 的访问受到适当保护，以防止未经授权的访问。另外，密钥**不应该硬编码**在代码中，以**避免在代码库中无意中暴露**它。请根据应用程序的安全需求和可用的基础设施来选择最合适的密钥存储方案。
+1. 我将用于对JWT签名的密钥 SECRET_KEY 放在**配置文件**里以后分布式可能还可以放到**配置中心**去
+1. 要把 **user_id** 和 **过期时间** 置于 payload 中(用户名在JWT中可以放到 payload 中携带，但敏感的密码不可以放到 payload 中)
+1. 点击链接后如果是**绑定邮箱**，要让用户**输入密码**(**防止输入错误的邮箱发给别人，别人一点击就绑定上错误的邮箱了**)，点击链接**注册**或**改密码**时可以不怕发错邮箱(，因为绑定邮箱时已经验证过邮箱了)点进去输要改的密码就好
+1. **要实现邮箱激活链接跳转**
+    1. 用户注册时，服务器创建一个包含用户信息（通常是用户ID）的JWT，并设置过期时间。
+    1. 为了分辨链接是用来实现 激活邮箱/改密码/...... 不同功能的，在JWT中添加type字段实现了识别不同功能，可以让不同功能的链接重定向到不同功能所需使用的对应页面
+    1. 创建一个**包含JWT的激活链接**，并发送到用户提供的邮箱地址。
+    1. 用户点击邮件中的链接，请求发送到服务器的**特定端点**。
+    1. 服务器**端点解析JWT**，**验证其有效性**，如果有效，激活用户的邮箱，并可能**重定向**用户到登录页面或其他确认页面。
+
+```yml
+jwt:
+  secret: YourJWTSecretKey
+app:
+  url: http://yourapp.com
 ```
 
-当查询多列数据时：建议在此多列数据上创建一个联合的全文索引，否则使用不了索引的。(建立**联合索引**后，查他的单独列时，**不会使用**索引)
+用户注册和发送激活邮件的服务组件：
 
-```sql
-SELECT * FROM `student` WHERE MATCH(`name`,`address`) AGAINST('聪 广东')
+```java
+@Service
+public class UserService {
+
+    @Value("${jwt.secret}")
+    private String jwtSecret;
+
+    @Value("${app.url}")
+    private String appUrl;
+
+    // ... 其他服务方法 ...
+
+    public void registerUser(User user) {
+        // 保存用户信息到数据库，设置邮箱未激活
+        // userRepository.save(user);
+
+        // 生成JWT
+        String token = Jwts.builder()
+                .setSubject(String.valueOf(user.getId()))
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 设置24小时过期
+                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .compact();
+
+        // 创建激活链接
+        String activationLink = appUrl + "/activate?token=" + token;
+
+        // 发送激活邮件，您需要配置邮件服务
+        // emailService.sendActivationEmail(user.getEmail(), activationLink);
+    }
+}
 ```
 
-使用全文索引需要注意的是：(基本单位是词) 分词，全文索引以词为基础的，MySQL默认的分词是所有非字母和数字的特殊符号都是分词符(外国人嘛)，**有中文分词插件**
+控制器方法处理激活请求：(包含链接跳转，重定向)
 
-#### 怎么创建全文索引？创建全文索引时为什么用了 ```WITH PARSER ngram``` ？
+```java
+@RestController
+public class ActivationController {
 
-```sql
-FULLTEXT (name, description) WITH PARSER ngram
+    @Value("${jwt.secret}")
+    private String jwtSecret;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/activate")
+    public RedirectView activateAccount(@RequestParam String token) {
+        String result = "Activation link expired.";
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(jwtSecret)
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            Long userId = Long.parseLong(claims.getSubject());
+            User user = userRepository.findById(userId);
+            if (user != null) {
+                user.setActive(true);
+                userRepository.save(user);
+                result = "Account activated successfully.";
+            } else {
+                result = "Invalid activation link.";
+            }
+        } catch (ExpiredJwtException e) {
+            result = "Activation link expired.";
+        } catch (Exception e) {
+            result = "Invalid activation link.";
+        }
+        // 假设每种激活状态你都有一个对应的前端页面来表示不同的结果
+        String redirectUrl = "/activation-status"; // 根据实际情况修改
+        
+        // 链接跳转
+        RedirectView redirectView = new RedirectView();
+        redirectView.setUrl(redirectUrl); // 可以是相对路径或绝对路径
+        return redirectView;
+    }
+}
 ```
-
-> ```WITH PARSER ngram``` 是MySQL中的一个选项，它用于创建全文索引时指定使用ngram解析器。ngram解析器的主要功能是将文本序列标记为n个字符的连续序列。
-> 例如，你可以将“abcd”标记为不同值n的文本序列：
-> n=1: ‘a’, ‘b’, ‘c’, ‘d’
-> n=2: ‘ab’, ‘bc’, ‘cd’
-> n=3: ‘abc’, ‘bcd’
-> n=4: ‘abcd’
-> 这对于处理中文、日文、韩文等表意语言的全文搜索非常有用，因为这些语言不使用分词符。
-> MySQL的内置全文解析器使用空格确定单词的开始和结束，这对于处理这些语言是一个限制。为了解决这个问题，MySQL提供了ngram全文解析器
-
-### 引入Redis缓存接口状态，避免了前端轮询判断接口状态是否变化时到MySQL中查询全量数据
-
-> [如何保证缓存和数据库数据的一致性](https://javaguide.cn/database/redis/redis-questions-02.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7)
-> [短连接是啥](https://developer.aliyun.com/article/1159871)
-> [短连接是啥](https://blog.51cto.com/u_16213722/8893794)
-> MySQL单机支持并发一般300~500/s
-> 先用缓存优化，不行再做MySQL主从分离
-
-**新增**了一个**短连接接口**(只查接口状态)和查全量数据的接口分开(2个接口操作不同)，方便调用，不用判断执行哪个操作
-每十秒前端调用一次后端的短连接接口查询接口状态有没有更新，若接口状态有更新就调用全量查询接口查询接口全量数据~~(不一定要刷新，接口信息中**会变的只有热度和状态**，其中状态最重要，变状态就好)~~，然后重新传给前端并刷新页面数据，引入 Redis 减少全量接口查询的次数，短连接接口查的是Redis缓存，若发现接口状态有变化，则先存到MySQL里，Redis设置**失效时间为1分钟**(1分钟内必显示出接口状态变化)，注意[如何保证缓存和数据库数据的一致性](https://javaguide.cn/database/redis/redis-questions-02.html#%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BC%93%E5%AD%98%E5%92%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E8%87%B4%E6%80%A7)
-
-### 由于接口最新查看榜实时变动较大，可以采取时间戳+唯一ID的组合作为新的分页参数，确保翻页时数据不会重复(，或使用Redis Feed 流)
-
-> [滑动分页时列表数据重复或丢失问题解决方法介绍](https://baijiahao.baidu.com/s?id=1761347544743891908)
-> [滑动分页时列表数据重复或丢失问题解决方法介绍](https://www.cnblogs.com/mouseleo/p/17624516.html)
-
-#### 为什么用常规动态分页的方法会出现数据重复或丢失的问题？主要是在哪些场景中出现？
-
-#### Redis Feed流也可以实现？Redis Feed是啥？主要用在哪？怎么实现？
-
-#### MySQL深度分页怎么优化？
-
-1. [深度分页介绍及优化建议](https://javaguide.cn/high-performance/deep-pagination-optimization.html)
-
-### 怎么用Junit、Mockito写单元测试？怎么用JaCoCo生成单测报告？
-
-### 解决了部分网站使用字体加密反爬虫的问题
-
-#### 为啥要爬虫？
-
-以前用别人的免费爬 番茄免费小说/塔读文学 小说的接口挂了，作者GitHub上归档不维护了，我自己比较常用就只好自己实现喽。
-我用Kindle看小说较多，有的时候就下txt下来看，要解决编码冲突，Python 实现起来比较方便，就用了Python。
-
-#### 商业避免反爬虫怎么实现？
-
-1. 修改请求头：有些网站会识别爬虫程序的请求头，我们可以通过修改请求头来改变程序的请求方式，让其看起来像是普通用户在浏览网页。具体实现可通过 Python 的 requests 库中的 headers 参数来设置。
-1. 延时爬取：有些网站会限制短时间内的访问次数，所以我们可以通过设置延时，让爬虫程序在一定时间间隔后再访问页面，从而降低访问频率。具体实现可通过 Python 中的 time 模块来实现。
-1. 使用代理IP(IP池子)：有些网站为了防止爬虫程序的访问，会封禁爬虫程序所在的 IP 地址，我们可以通过使用代理 IP 来实现每次访问使用不同的 IP 地址，从而避免被封 IP。具体实现可通过 Python 中的 requests 库中的 proxies 参数来设置。
-1. 登录账号：有些网站会设置只有登录用户才能进行浏览访问，我们可以通过模拟用户登录行为，以登录状态进行爬取。具体实现可通过 Python 中的 requests 库中的 session 对象来完成。
-1. 绕过人机验证：有开源的绕过谷歌验证和亚马逊验证的模块，现在**用AI绕过验证**也行了
-
-> 我爬的少且频率低无需太多操作。
 
 ### 为避开邮箱提供者对免费邮箱发信次数的限制，在Spring中配置了多个邮箱并实现轮流发信
+
+#### 怎么实现在Spring Boot中配置多个邮箱(spring-boot-starter-mail默认只支持单个邮箱)？
+
+> - [x] 简历已经描述为配置了自己的私有邮箱服务器，以后流量大了就不用免费邮箱，用自己的域名和服务器搭建邮箱服务，到时候多邮箱功能就只用于让用户识别邮件是什么服务发来的。
+
+1. [见链接](https://blog.csdn.net/u012110298/article/details/106786456/)
+1. spring-boot-starter-mail会根据spring.mail.xxx相关配置对JavaMailSender进行自动配置。但是**只支持单个邮箱**。为了**实现多邮件源**，可以参照上述逻辑。在配置文件内配置好，多个邮件源。然后读取配置文件，手动对JavaMailSender进行配置，并将其初始化完毕的JavaMailSender存储容器内。然后发送时随机取出JavaMailSender进行发送。
+1. 定义配置属性：使用@ConfigurationProperties注解定义配置属性类，这样您可以在应用程序的配置文件（例如 ```application.yml``` 或 ```application.properties```）中保持多个邮箱配置。
+1. 创建配置类：创建一个配置类，通过在该类上使用@Configuration注解，并通过@Bean为每个邮箱创建一个邮件发送器（JavaMailSender）实例。
+1. 注入和使用：在您的服务或组件中，需要发送邮件时，注入对应的JavaMailSender实例，并使用它来发送邮件。
+1. 如果你想要在发送邮件时轮流使用多个邮箱账户，可以通过在JavaMailSender上封装一个服务来管理邮箱账户的选择。下面的示例会展示一个简单的轮流切换邮箱账户来发送邮件的服务。
+    - 所有的JavaMailSender实例都在构造函数中通过依赖注入注入到一个列表中。在sendEmail方法中，每次调用都会通过getNextMailSender方法来获取下一个JavaMailSender实例。
+    - **不一定要**用 ```AtomicInteger``` Spring Boot默认单线程，但Controller方法默认多线程并发，或者@Async注解标记异步实现的方法也是多线程并发
+    - **这里使用了 ```AtomicInteger``` 来保证索引的线程安全性**，```java.util.concurrent.atomic.AtomicInteger```。 AtomicInteger 是依靠 **[volatile](https://blog.csdn.net/u013967628/article/details/85291748)** 和 **CAS** 来保证原子性的
+
+```java
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+
+@Service
+public class RoundRobinEmailService {
+
+    private final List<JavaMailSender> mailSenders;
+    private final AtomicInteger index = new AtomicInteger(0);
+
+    // 通过构造器注入所有的 JavaMailSender 实例
+    public RoundRobinEmailService(List<JavaMailSender> mailSenders) {
+        this.mailSenders = mailSenders;
+    }
+
+    private JavaMailSender getNextMailSender() {
+        // 获取下一个 JavaMailSender 实例（在列表中轮流进行）
+        return mailSenders.get(index.getAndUpdate(i -> (i + 1) % mailSenders.size()));
+    }
+
+    public void sendEmail(String to, String subject, String text) {
+        JavaMailSender mailSender = getNextMailSender();
+        // 创建并发送邮件...
+        // MimeMessage message = mailSender.createMimeMessage();
+        // MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        // helper.setTo(to);
+        // helper.setSubject(subject);
+        // helper.setText(text, true);
+        // mailSender.send(message);
+
+        // 打印日志或执行其他需要的逻辑
+        System.out.println("邮件已通过邮箱 " + ((JavaMailSenderImpl)mailSender).getUsername() + " 发送");
+    }
+}
+```
 
 #### 为啥现在还没改发送的邮箱？
 
@@ -810,9 +1091,184 @@ FULLTEXT (name, description) WITH PARSER ngram
 
 ### 算法题参数一定要用校验，不然就挂
 
-### 默认先http访问，之后再转https
+### 默认先http访问，之后再转https？
+
+> Chorme内核最新版(2024.3.19)已经变成默认按https请求了
+
+### 数据库为什么存用户密码明文的签名而不是直接存明文？签名和加密有啥区别？MD5签名认证怎么实现的？怎么防止请求头被篡改？怎么防止重放攻击？
+
+1. 签名是不可逆的，不存储原数据，只能做签名验证 ; 加密是可逆的，能够解密
+1. 为防止重放攻击，加上了timestamp字段
+1. 在数据库里的 **登录密码** 不用 **明文** 保存，保存用**MD5**算法对 **明文密码+盐值** 数据生成的 **签名**，网页表单Post提交用户输入的密码，将 **提交的密码加上盐值** 后用MD5生成签名，把生成的签名与保存在数据库里的签名对比，相同则登录成功
+1. **登录密码** 通过网络传输了，而 **secret_key** 不通过网络传输，所以在数据库中是否保存明文、用于校验合法的方法...... 对于 **登录密码** 和 **secret_key** 使用的设计不一样
+1. MD5签名没有信息所以传输时参数要包含原数据(Base64编码包裹传输)，例如access_key(方便服务器通过access_key查到secret_key)、timestamp......(请求头字段，但密钥secret_key别放在请求头明文传输)，secret_key包含在生成并传递过来的MD5签名中了 ; 服务器通过access_key查到secret_key用secret_key再加上**请求头的JSON**作为参数进行MD5签名与传递来的MD5签名对比，相同则签名验证通过(secret_key正确)
+    - 为防止请求头被篡改：使用**请求头的JSON**加上**secret_key**一起签名，保证请求头没被篡改
+1. MD5秒传(提取文件签名，对比签名，相同 {认为文件一致} 则秒传)
+1. **RSA**也可用于签名，**MD5**不够安全
+
+### 登录时怎么保护通过POST在网络上传递的账号密码明文数据安全？其与使用access_key和secret_key签名验证的网关接口服务有啥区别？Spring Boot中怎样将HTTP请求自动重定向到HTTPS请求？
+
+1. Spring Boot使用HTTPS保证POST请求中传递的密码安全 ; 签名验证的网关接口有防重放保护，请求时secret_key不在网络上传递，无论使用的是 HTTP 还是 HTTPS 都能保证安全
+1. Spring Boot配置SSL证书开启HTTPS请求，并将HTTP请求转换成HTTPS请求。用acme.sh脚本自动申请泛域名SSL证书，并自动续期(见**科学上网收藏夹**中申请SSL证书的步骤)【生成证书前必须将认证服务设置为letsencrypt（Let's Encrypt）】
+    - [Spring Boot配置步骤见链接](https://blog.csdn.net/qq_42347616/article/details/120653643)
+    - 生成SSL证书 — 你需要为你的应用生成SSL证书。你可以使用Java的keytool或者Let's Encrypt等服务来生成一个自签名的SSL证书。
+    - 配置SpringBoot以使用SSL证书 — 一旦你拥有了SSL证书，需要将它配置到SpringBoot应用中。这通常需要在你的 ```application.properties``` 或 ```application.yml``` 文件中设置相关的SSL属性。
+    - 在Spring Boot应用中配置Connector进行HTTP到HTTPS的重定向，创建一个新的配置类来添加额外的Connector：(代码见下)
+
+```yml
+server:
+  port: 8080 ## 后台服务对外端口
+  ssl:
+    key-store: server.keystore ##秘钥库文件名称，即上面生成的自签名证书
+    key-store-password: 123456 ## 生成秘钥库文件的密码
+    key-store-type: JKS ## 秘钥库类型（JKS为jdk的keytool工具默认生成的秘钥库类型）
+    key-alias: tomcat ## 秘钥别名
+    enabled: true
+```
+
+```java
+    import org.apache.catalina.connector.Connector;
+    import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+    import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.Configuration;
+    
+    @Configuration
+    public class ServerConfig {
+    
+        @Bean
+        public ServletWebServerFactory servletContainer() {
+            TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
+                @Override
+                protected void postProcessContext(Context context) {
+                    SecurityConstraint securityConstraint = new SecurityConstraint();
+                    securityConstraint.setUserConstraint("CONFIDENTIAL");
+                    SecurityCollection collection = new SecurityCollection();
+                    collection.addPattern("/*");
+                    securityConstraint.addCollection(collection);
+                    context.addConstraint(securityConstraint);
+                }
+            };
+            tomcat.addAdditionalTomcatConnectors(redirectConnector());
+            return tomcat;
+        }
+        
+        private Connector redirectConnector() {
+            Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+            connector.setScheme("http");
+            connector.setPort(8080); // 这是HTTP端口
+            connector.setSecure(false);
+            connector.setRedirectPort(8443); // 这是在上面配置的HTTPS端口
+            return connector;
+        }
+    }
+```
+
+> 这段代码将会创建一个新的HTTP Connector，当它接收到HTTP请求时，它会将请求重定向到已配置的HTTPS端口。请确保redirectConnector方法中设置的端口与你的需求相符，setPort方法设置的是你希望HTTP请求监听的端口（默认是8080），而setRedirectPort是你的HTTPS端口（以上代码中为8443）。
+> 现在当你尝试通过HTTP访问你的应用时，例如访问 ```http://localhost:8080``` ，Tomcat应当会自动将请求重定向到 ```https://localhost:8443``` 。
+
+### 关掉浏览器重进，依然登录的原因？
+
+1. 前后端分不分离
+    - 不分离的话，可以通过cookie/session方案实现；分布式的话，需要解决session的共享
+    - 分离的话，一般需要通过前端请求的参数找到对应的Token值
+1. 集中式和分散式
+    - 集中式是把登录信息放到统一的登录后台系统，前端Token只做映射，不包含用户信息
+    - 分散式是Token里面记录用户信息(JWT)，后台只做校验。比较常见
+1. 登录Token保存的信息是什么？失效时间怎么处理？([具体看JWT的介绍](https://javaguide.cn/system-design/security/jwt-intro.html))
+    1. Token保存的信息
+        1. **核心就是userId**，最重要的就是标记一个用户；不可以存密码，JWT存放的信息可直接解析出来
+        1. **保证安全性加个签名**，Token在前端，如何保证安全性？
+            - 如果**只存放**userId，那别人改一下就可以登录别人的账号了，所以需要对数据进行安全处理：可以**加个签名**
+            - 签名**没有信息**，只能验证传递的参数**是否被修改**过，所以JWT传递的参数中需要包含原数据
+            - 现在用RSA代替MD5做签名了，MD5不安全
+        1. **加个过期时间防Token丢失**，Token如果丢了，是不是账号也丢了？
+            - 是的，**加个过期时间**
+1. 前后端分离后，有两种选项**离散式Token**和**集中式SSO**(登录一个模块，其他全登录；登出一个模块，其他全登出)？
+1. 为避免数据库被意外拖库后泄露用户密码的明文，在数据库中储存用户密码明文加盐值生成出的签名；
+    - 但是**可以暴力破解**签名，发现数据库中有许多相同的签名，拿常用密码去试看看有没有一样的，所以让用户设置密码要复杂
+    - 盐值(SALT)要经常更新，最好 三个月 ~ 半年 更新一次
+
+### Spring Session + Redis 怎么实现登录？ JWT 怎么实现登录？
+
+1. Spring Session 校验成功后就在 Session 中记录查询出来的登录用户的user信息(可放敏感信息)，下次通过cookie中的sessionid查找到session，并从session中得到登录用户的user信息(若无则没有登录)，用此来判断是否登录
+1. JWT 校验成功后返回一个 token 给用户，用户下次发请求时带上此token，服务端校验此token若成功就相当于登录，并可以从token中获取基本信息(不可放敏感信息)
+    - 用 JWT 实现登录，要把 user_id 和 user_role 和 过期时间 置于 payload 中
+
+### 为什么使用 JWT 登录 而不用 {Spring Session + Redis}(通过 Redis 实现了*分布式Session*，*避免了*使用*分布式架构*时*用 tomcat 保存 session 时*会出现的用户登录失效的问题) ？单点登录（SSO）？
+
+1. JWT 的有效性无法主动注销用户的已登录状态，只能等待 token 过期，更改密码或点击退出后之前的 token 依然有效 (设置黑名单/Redis 保存 JWT 的状态可以撤销但与 JWT 不在服务端存储状态的理论相违背，变成类似session的东西了)，而 Spring Session + Redis 可以通过修改 Redis 中的 session 数据来主动撤销用户的登录状态 (单点退出后其他服务也一并退出，SSO)方便后续做单点登录 **{自己业务少的时候或只有单一业务不用实现单点登录，没有实现的场景}**
+    - 单点登录（SSO）适合在多个应用系统中，只需登录一次就可以访问其他相互信任的应用系统时使用。这种方法提高了用户体验，减少了重复登录的繁琐，特别适用于企业内部网或外部网、学生门户网站、公有云服务等环境。通过单点登录，用户可以在一次登录后访问多个相关应用和服务，无需重复输入凭证，节省时间并提高便利性。然而，需要注意凭证泄露可能带来的安全风险，因此建议结合多因子身份验证（MFA）以增强安全性
+1. 适合使用jwt的场景：有效期短 / 只希望被使用一次
+    - **建议将 JWT 存放在 localStorage 中，放在 Cookie 中会有 CSRF 风险。**
+    - 比如，用户注册后发一封邮件让其激活账户，通常邮件中需要有一个链接，这个链接需要具备以下的特性：能够标识用户，该链接具有时效性（通常只允许几小时之内激活），不能被篡改以激活其他可能的账户，一次性的，等待自然过期即可，无需服务端控制其提前终止。这种场景就适合使用jwt。或文件临时一次性分享下载链接
+1. 而由于jwt具有一次性的特性。单点登录和会话管理非常不适合用jwt，如果在服务端部署额外的逻辑存储jwt的状态，那还不如使用session。基于session有很多成熟的框架可以开箱即用，但是用jwt还要自己实现逻辑。
+1. 使用session与redis结合，因为单纯的使用session缓存数据的话，当一次会话结束后，session就会消失，如果结合redis使用则不会出现数据失效的情况。
+1. JWT (类似身份证)无需在服务端存储 session 信息，不用数据库的查询(仅需存储解密密钥，使用密钥校验)，对跨域友好，可以在不同应用间共享用户信息
+1. 用 OAuth 2.0 集成第三方登录 QQ、支付宝、钉钉、GitHub......
+1. 使用 SpringSesion 的思路是：除了网关服务，每个服务都引入 SpringSession，使用 redis 实现 session 同步。获取信息时，根据 sessionId 从服务器 session 取，如果没有，连接 redis 服务器获取。
+1. 使用 jwt 的话，我们在卡号服务里生成一个 jwtToken，放在 cookie 里，由网关服务解密后放在请求头里，这样的话，所有服务都可以从请求头里获取卡号信息。
+1. JWT 只能传输非敏感的人员数据，base64解码后就可以得到json，每次请求都需要在header中携带token信息，增大了带宽的压力
+1. JWT (Json Web Token) 分为三部分，header、payload(载荷)、signature(签名)。前后端分离开发模式下，token加密后前端请求服务端获取授权，完成登陆校验，其中我们可以拿到payload中的内容，来回显到前端展示界面
+1. session是存在服务端的，他是后端的产物，在前后端不分离场景下，单体应用、分布式架构下都能很好的担任他的角色，特别是有SpringSession这一完美解决方案，将session的令牌存在浏览器cookie中，数据存储在redis；但是在前后端分离流行的当下，特别是微服务架构下，JWT以简洁、易用更能胜任校验状态的角色，JWT更是最流行的跨域认证解决方案，通过加密，载荷也相对安全的存储了用户的信息，前端也更容易拿到这一信息，并把信息存储在localStorge或cookie中
+
+### 前后端分离时使用 {Spring Session + Redis}(*实现分布式Session*)，如果客户端是 手机app/小程序 等非浏览器，没有cookie实现保存不了cookie怎么办？
+
+1. Spring Session **默认**使用 **cookie** 保存sessionid (对**浏览器**方便)，如果客户端是 **手机app/小程序** 等**非浏览器**，**没有**cookie实现**保存不了**cookie就不能通过cookie来访问session对象，需要在登录成功后，将sessionid添加到响应数据中，**保存在客户端**，下次用户访问，就在请求头当中带上sessionid ; 用 Spring Session 中的 ```HeaderHttpSessionIdResolver``` 实现
+1. 用 Spring Session 中的 ```HeaderHttpSessionIdResolver``` 实现时，当会话被创建时，HTTP响应会包含一个指定名称的响应头和会话ID的值。例如，响应头可能如下所示：```X-Auth-Token: f81d4fae-7dec-11d0-a765-00a0c91e6bf6``` 客户端在每个请求中应该通过指定相同的头来包含会话ID。当会话被下线无效时，服务器将发送一个带有相同头名称但值为空的HTTP响应
+1. 确保会话ID被改后用户不会登录成别人：
+    - 使用安全的会话管理机制：确保在用户登录认证成功后，将用户的登录凭证放入会话中进行管理
+        - 例如，会话代替方案：考虑采用会话代替方案，如使用单次令牌或其他安全机制来代替传统的会话ID
+    - 注意会话ID的安全性：尽量避免会话ID泄露给他人，以防止他人伪造请求。通过HTTPS协议传输会话ID可以加密通信内容
+    - 定期更新会话ID：定期更新会话ID可以增加安全性，减少被猜测或利用的可能性
+    - 限制会话ID的有效期：设置会话ID的有效期，当超过一定时间后自动失效，减少被滥用的风险
+    - 实施防护措施：考虑使用防护机制如防止会话固定攻击和跨站请求伪造等安全措施来保护会话安全
+
+### 一个用户有没有注册怎么判断？
+
+1. 数据量小的时候可以用MySQL的**唯一索引**代替**布隆过滤器**
+1. 量级极大时才考虑**布隆过滤器**，黑白名单......
 
 ## 项目追加问答
+
+### 什么是双属性枚举？为什么要用双属性枚举？
+
+1. [双属性枚举](https://www.jb51.net/article/152261.htm)是指只有两个属性的枚举类型，有一个为数字id，一个为说明字符串，数据库里只用存数字id(例如，分类，权限......等只有固定几类的东西)
+    - 类型安全：枚举提供一种类型安全的方式来定义一组固定的值。这可以防止使用无效的值，并在编译时就能发现错误。
+    - 代码可读性：枚举使得代码更易于阅读和理解。字符串描述提供了对数字代码的直观解释。
+    - 易于维护：将数据和状态的描述集中在枚举里，更改和维护变得容易。只需在一个地方更新即可。
+    - 内存高效：在数据库中存储一个整数比存储字符串占用的空间小，这对于提高性能和减少存储需求是有好处的。
+    - 代码和数据分离：业务逻辑代码中使用枚举，而数据库中存储枚举的数值，这有助于保持代码的整洁性和数据层的简洁性。
+    - 扩展性：如果以后需要添加更多的属性或者状态，枚举提供了一种简单的扩展方式。
+1. 对于像分类，用户性别，用户状态，用户权限这种有固定值的字段，使用双属性枚举可以在数据库中只存数字减少空间占用与网络流量消耗(做查询的参数)
+1. 枚举的说明字符串就直接在代码里，数据库只存数字
+1. 使用双属性枚举，并在代码中同时定义说明字符串和相应的数字，而在数据库中只存储枚举对应的数字，这是一个常见的编程模式。这样做的好处是在数据库里只存储数字可以节省空间，加快数据库操作速度。同时，在代码中保留了可读性很强的字符串，便于开发和维护。
+1. 使用**双属性枚举**的方法，枚举说明字符串就直接在代码里，数据库只存数字(能不存文本就不存，文本不好校验参数)，代码中也可以用枚举类**实现**的**getById()**方法**传入一个数字**来**获取**枚举值，**要判断返回值是否为空**
+1. 枚举有业务属性，双属性枚举有一个字符串属性(，用来描述具体业务)
+
+### 查标题用模糊查询，查描述用了全文索引，按标签查含单个标签的接口可以用MySQL的FIND_IN_SET函数(只能单个标签)
+
+要查找同时**包含多个特定标签**的数据行，可以用 LIKE 和 AND 操作符。以下是一些可能的方案：
+
+1. 全文搜索索引：某些数据库（如 PostgreSQL、MySQL）支持全文搜索功能。如果您经常需要进行此类查询，使用全文搜索可以提高效率。
+1. 正则表达式：使用正则表达式来匹配具有特定模式的行，部分数据库如 PostgreSQL 有这个功能，使用 REGEXP 或类似的函数。
+1. 分割成多个列：如果可能，将数据分割到不同的列或者表中，然后使用联接 (JOIN) 来查找同时含有这些标签的行。
+
+### 涉及浮点运算或钱时使用BigDecimal计算小数
+
+1. [具体注意事项见链接](https://javaguide.cn/java/basis/bigdecimal.html)
+
+### RPC与MQ的区别？以及MQ的使用场景？
+
+1. [RPC介绍链接](https://javaguide.cn/distributed-system/rpc/rpc-intro.html)
+1. [消息队列介绍链接](https://javaguide.cn/high-performance/message-queue/message-queue.html)
+1. [见链接](https://zhuanlan.zhihu.com/p/97841943)
+1. RPC是远程过程调用，MQ是消息队列，**RPC通常是同步**的 请求/响应 调用，**MQ是异步**的流处理
+1. N个不同系统相互之间都有RPC调用，依赖程度深，引入MQ降低耦合度
+1. MQ实现RPC会造成更大通讯开销，不要强行替代
+1. **MQ异步有自动重传**重试，与http同步调用相比能**提高系统的可靠性**(MQ大部分时候用于提高系统的可靠性，很少场景能用来提速)，http要自己实现重传重试的补偿定时任务
+1. **异步**只有在接口流程能同步进行时能提高速度，有的业务是链式的，比如下单，下一步操作依赖上一步操作，异步就**没啥用**
+1. MQ削峰/限流
 
 ### 为简化查询接口对应标签的常用操作，在“接口信息表”中增加了一个varchar类型的冗余字段来存放接口对应标签的id(标签id间用逗号分隔开)
 

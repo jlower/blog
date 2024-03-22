@@ -4,6 +4,19 @@ date: 2024-01-05 04:00:00
 categories: 笔记
 ---
 
+## Hexo跳转自己的文章
+
+```md
+{% post_link 文章文件名（不要后缀） 文章标题（可选） %}
+```
+
+假如同一目录下文章文件名为Hello-World.md：
+
+```md
+{% post_link Hello-World %}
+{% post_link Hello-World 你好世界 %}
+```
+
 ## Hexo中插入PDF
 
 ### 安装hexo-pdf
