@@ -106,6 +106,25 @@ data = dataframe_total['value'].values
 data = np.hstack([data, data])
 ```
 
+## 一维数据转换成二维数据，满足 ```scikit-learn``` 等库的输入要求
+
+### 若只有一个值、序号代表时间，你仍然可以使用 ```.reshape(-1, 1)``` 来转换数据
+
+在**时间序列**分析中，这种转换通常用于将时间序列数据重塑为适合机器学习模型的格式。例如，如果你有一个时间序列数据，其中每个时间点**只有一个观测值**，你可以将这个一维数组转换为二维数组，以便在模型中使用。
+以下是一个简单的Python代码示例，展示了如何对只有一个值的时间序列数据进行转换：
+
+```python
+import numpy as np
+
+# 假设有一个时间序列数据，其中序号代表时间
+time_series = np.array([100, 110, 105, 115, 120])
+
+# 使用.reshape(-1, 1)将其转换为二维数组
+time_series_reshaped = time_series.reshape(-1, 1)
+
+print(time_series_reshaped)
+```
+
 ## 确认GPU
 
 ```bash

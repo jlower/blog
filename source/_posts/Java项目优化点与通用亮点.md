@@ -374,7 +374,7 @@ String formattedString = String.format(formatExample, name, number, decimal, fla
 > 如果每个实例都应该拥有自己的变量副本，如对象的属性或者状态，那么它就不应该是static。
 > 滥用static会导致设计上的问题，比如对于那些应该是实例独有的属性，如果进行了static声明，就会引起不必要的数据共享，可能会引发安全问题或是逻辑上的错误。因此，不是所有变量都适合加上static。
 
-### MySQL怎么分页？
+### MySQL怎么分页？怎么查全部分类的条目？
 
 ```sql
 SELECT * FROM table_name LIMIT offset, count;
@@ -385,7 +385,22 @@ SELECT * FROM table_name LIMIT offset, count;
 可以用 ```WHERE type != 0``` 这种限制条件，查全部分类的条目。**动态多条件**查询，例如Mybatis的mapper的xml中写：
 
 ```sql
-WHERE
+  SELECT * FROM BLOG 
+  <where> 
+    <if test="state != null">
+         state = #{state}
+    </if> 
+    <if test="title != null">
+        AND title like #{title}
+    </if>
+    <if test="author != null and author.name != null">
+        AND author_name like #{author.name}
+    </if>
+  </where>
+```
+
+```sql
+SELECT * FROM BLOG WHERE
 Status !=0 
 <if test="sort == 1">
     ORDER BY AddTime desc
