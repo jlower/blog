@@ -259,10 +259,10 @@ colorjs.io@^0.4.2:
   resolved "https://registry.npmjs.org/colorjs.io/-/colorjs.io-0.4.5.tgz"
   integrity sha512-yCtUNCmge7llyfd/Wou19PMAcf5yC3XXhgFoAh6zsO2pGswhUPBaaUh8jzgHnXtXuZyFKzXZNAnyF5i+apICow==
 
-colorjs.io@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.npmjs.org/colorjs.io/-/colorjs.io-0.5.0.tgz"
-  integrity sha512-qekjTiBLM3F/sXKks/ih5aWaHIGu+Ftel0yKEvmpbKvmxpNOhojKgha5uiWEUOqEpRjC1Tq3nJRT7WgdBOxIGg==
+colorjs.io@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/colorjs.io/-/colorjs.io-0.5.1.tgz#22bbaee65204da0e2cde610085cd7f5306bb7e90"
+  integrity sha512-6EGsdo/R0IQ7u8eGJhvNwIMhbJvSKCZNWF0LW89INod0EhD7nNOnNZ1LF5v0gktF/99YJgiAGTLCBbXr8Ymg/g==
 
 combined-stream@^1.0.8:
   version "1.0.8"

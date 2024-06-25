@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   colorjs.io:
-    specifier: ^0.5.0
-    version: 0.5.0
+    specifier: ^0.5.1
+    version: 0.5.1
   hexo:
     specifier: ^7.2.0
     version: 7.2.0
@@ -312,8 +312,8 @@ packages:
     resolution: {integrity: sha512-yCtUNCmge7llyfd/Wou19PMAcf5yC3XXhgFoAh6zsO2pGswhUPBaaUh8jzgHnXtXuZyFKzXZNAnyF5i+apICow==}
     dev: false
 
-  /colorjs.io@0.5.0:
-    resolution: {integrity: sha512-qekjTiBLM3F/sXKks/ih5aWaHIGu+Ftel0yKEvmpbKvmxpNOhojKgha5uiWEUOqEpRjC1Tq3nJRT7WgdBOxIGg==}
+  /colorjs.io@0.5.1:
+    resolution: {integrity: sha512-6EGsdo/R0IQ7u8eGJhvNwIMhbJvSKCZNWF0LW89INod0EhD7nNOnNZ1LF5v0gktF/99YJgiAGTLCBbXr8Ymg/g==}
     dev: false
 
   /combined-stream@1.0.8:
