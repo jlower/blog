@@ -1,5 +1,5 @@
 ---
-title: 用GitHub API实现自动拉取自己 GitHub 上所有仓库的代码并打包成 zip 备份
+title: 用GitHub API实现自动拉取自己GitHub上所有仓库的代码并打包成zip备份
 date: 2024-02-05 03:00:00
 categories: 实用脚本与解决方案
 ---
