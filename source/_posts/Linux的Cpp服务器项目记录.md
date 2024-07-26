@@ -68,4 +68,4 @@ writev分散写，写入buffer内容或用mmap内存映射的用户请求文件�
 
 ## 实战笔记 PDF 浏览 (包含更多没写到的实战细节)
 
-{% pdf /pdf/Linux的Cpp服务器项目实战笔记.pdf %}
+{% pdf "/pdf/Linux的Cpp服务器项目实战笔记.pdf" %}
