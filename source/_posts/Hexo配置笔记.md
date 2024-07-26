@@ -36,6 +36,8 @@ pnpm install --save hexo-pdf
 {% pdf "/文件夹名称/引用文档名字.pdf" %}
 ```
 
+> **字段中间如果有空格要加上   " "   （默认都加上   " "   就行了）**
+
 > 在source文件夹下创建一个叫pdf的文件夹，把xxx.pdf文件放在这里，然后在_post文件夹中的xxx.md直接使用
 
 ```md
@@ -53,7 +55,6 @@ pnpm install --save hexo-pdf
 ```md
 {% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
 ```
-{% pdf https://bugs.python.org/file47781/Tutorial_EDIT.pdf %}
 
 ## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
