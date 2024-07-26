@@ -53,7 +53,7 @@ pnpm install --save hexo-pdf
 ```md
 {% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
 ```
-{% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
+{% pdf https://bugs.python.org/file47781/Tutorial_EDIT.pdf %}
 
 ## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
