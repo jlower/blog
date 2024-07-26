@@ -10,7 +10,7 @@ categories: 笔记
 {% post_link "文章文件名（不要后缀）" "文章标题（可选）" %}
 ```
 
-> **字段中间如果有空格要加上 " " （默认都加就行了）**
+> **字段中间如果有空格要加上   " "   （默认都加上   " "   就行了）**
 
 假如同一目录下文章文件名为Hello-World.md：
 
@@ -33,26 +33,27 @@ pnpm install --save hexo-pdf
 #### 引用本地文件夹中的pdf文件
 
 ```md
-{% pdf /文件夹名称/引用文档名字.pdf %}
+{% pdf "/文件夹名称/引用文档名字.pdf" %}
 ```
 
 > 在source文件夹下创建一个叫pdf的文件夹，把xxx.pdf文件放在这里，然后在_post文件夹中的xxx.md直接使用
 
 ```md
-{% pdf /pdf/xxx.pdf %}
+{% pdf "/pdf/xxx.pdf" %}
 ```
 
 #### 最简单的引用方法：把相应pdf文件存到source文件夹下，引用格式为
 
 ```md
-{% pdf /引用文档名字.pdf %}
+{% pdf "/引用文档名字.pdf" %}
 ```
 
 ### 引用网络上的PDF文件
 
 ```md
-{% pdf https://bugs.python.org/file47781/Tutorial_EDIT.pdf %}
+{% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
 ```
+{% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
 
 ## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 

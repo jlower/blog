@@ -25,6 +25,7 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-butterfly": "^4.13.0",
     "hexo-theme-landscape": "^1.0.0",
-    "hexo-theme-vivia": "^0.5.0"
+    "hexo-theme-vivia": "^0.5.0",
+    "install": "^0.13.0"
   }
 }
