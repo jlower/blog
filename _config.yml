@@ -19,7 +19,7 @@ url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 permalink: posts/:year:month:day-:abbrlink/ # 设置了 :year:month:day- 所以改文章的创建日期链接会变(文章 date: 后面的是创建日期， update: 后面的是更新日期，不填 update: 则更新时间默认为最新一次网站的部署时间)
 # abbrlink config
 # 会自动为每篇文章生成 abbrlink (根据文章的标题)，也可以自己手动输入abbrlink(如果文章已经有abbrlink的话就不会再自动生成了，所以第一次自动生成abbrlink后再改文章标题链接也不会变)
-# 但我用的是 GitHub Action 部署，自动生成的 abbrlink 不会传到 GitHub 上(每篇文章都没有abbrlink，所以每次上传部署都会重新生成abbrlink)，所以改文章标题会让重新生成 abbrlink 变掉，生成的链接也会变
+# 但我用的是 GitHub Action 部署，自动生成的 abbrlink 不会传到 GitHub 上(每篇文章都没有abbrlink，所以每次上传部署都会重新生成abbrlink)，所以改文章标题会让重新生成的 abbrlink 变掉，文章的链接也会变
 abbrlink:
   alg: crc32      #support crc16(default) and crc32
   rep: hex        #support dec(default) and hex
@@ -27,9 +27,9 @@ abbrlink:
   # Generate categories from directory-tree
   # depth: the max_depth of directory-tree you want to generate, should > 0
   auto_category:
-     enable: true  #true(default)
-     depth:        #3(default)
-     over_write: false 
+    enable: true  #true(default)
+    depth:        #3(default)
+    over_write: false 
   auto_title: false #enable auto title, it can auto fill the title by path
   auto_date: false #enable auto date, it can auto fill the date by time today
   force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink. This only updates abbrlink rather than other front variables.
