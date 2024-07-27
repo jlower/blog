@@ -28,12 +28,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Github Action 使用官方的 hexo-renderer-pandoc 渲染器要此步骤
-      - uses: docker://pandoc/core
-        with:
-          args: >-  # allows you to break string into multiple lines
-            --help
-
+      # # Github Action 使用官方的 pandoc 渲染器要此步骤
+      # - uses: docker://pandoc/core
+      #   with:
+      #     args: >-  # allows you to break string into multiple lines
+      #       --help
+      
+      # 下载 pandoc 渲染器到 /opt/hostedtoolcache
+      - name: Install Pandoc
+        run: |
+        # install pandoc
+        curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
+      
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -57,6 +63,8 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
         run: |
+          # add pandoc to PATH
+          export PATH="$PATH:/opt/hostedtoolcache/pandoc-3.2.1/bin"
           pnpm build # 或 npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
