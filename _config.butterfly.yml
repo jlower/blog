@@ -640,7 +640,7 @@ category_ui: # 留空或 index
 tag_ui: # 留空或 index
 
 # Stretches the lines so that each line has equal width（文字向兩側對齊，對最後一行無效）
-text_align_justify: false
+text_align_justify: true
 
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
@@ -648,7 +648,7 @@ text_align_justify: false
 background:
 
 # Footer Background
-footer_bg: true
+footer_bg: true # 渐变色 -> "linear-gradient(135deg, #E2B0FF 10%, #9F44D3 100%)"
 
 # Add mask to header or footer (为 header 或 footer 添加黑色半透遮罩)
 mask:
@@ -675,12 +675,12 @@ activate_power_mode:
 # canvas_ribbon (靜止彩帶背景)
 # See: https://github.com/hustcc/ribbon.js
 canvas_ribbon:
-  enable: false
+  enable: true
   size: 150
   alpha: 0.6
   zIndex: -1
-  click_to_change: false
-  mobile: false
+  click_to_change: true
+  mobile: true
 
 # Fluttering Ribbon (動態彩帶)
 canvas_fluttering_ribbon:
