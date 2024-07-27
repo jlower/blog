@@ -6,8 +6,8 @@ categories: 机器学习
 
 ## 集成学习 Ensemble Learning 介绍
 
-> [几何直观地 理解集成学习 Ensemble Learning 的四大类型](https://zhuanlan.zhihu.com/p/494333159)
-> [集成学习 Ensemble Learning 简析](https://zhuanlan.zhihu.com/p/682354878)
+> [几何直观地 理解集成学习 Ensemble Learning 的四大类型](https://zhuanlan.zhihu.com/p/494333159)  
+> [集成学习 Ensemble Learning 简析](https://zhuanlan.zhihu.com/p/682354878)  
 > [集成学习 Ensemble Learning 简析](https://www.zhihu.com/question/29036379/answers/updated)
 
 集成学习(Ensemble Learning)是指：在机器学习中，模型单独运行时可能表现不佳，但将多个模型组合起来时就会变得更强大，这种多个基础模型的组合称为集成模型或集成学习。
@@ -22,7 +22,7 @@ categories: 机器学习
 - Stacking：堆叠法
 - Cascading：级联法
 
-> 在Bagging中：基础模型为 低偏差，高方差；如深度特别深的 决策树
+> 在Bagging中：基础模型为 低偏差，高方差；如深度特别深的 决策树  
 > 在Boosting中：基础模型为 高偏差，低方差；如深度特别浅的 决策树(如：深度为2，3)
 
 ## 集成学习 Bagging 中的 随机森林(Random forest)算法
@@ -69,7 +69,6 @@ categories: 机器学习
 ### 在随机森林算法中，n_estimators 和 random_state 是两个重要的参数，可以通过调整它们来优化模型的性能
 
 - n_estimators：这个参数指定了随机森林中包含的决策树的数量。增加 n_estimators 可以增加模型的复杂度和稳定性，通常会提高模型的性能，但也会增加训练时间。可以通过交叉验证等方法来选择合适的 n_estimators 值。
-
 - random_state：这个参数用于控制随机性，可以指定一个整数值作为随机数生成器的种子，以确保结果的可重复性。在模型调优过程中，可以固定 random_state，这样每次运行时得到的结果都是相同的，有助于稳定模型性能的评估。
 
 例如，在使用 GridSearchCV 进行网格搜索调优时，可以指定不同的 n_estimators 和 random_state 值，然后通过交叉验证选择最佳的参数组合。示例代码如下：
@@ -97,7 +96,7 @@ print("Best parameters:", grid_search.best_params_)
 
 #### 绘制ROC曲线并计算AUC值(ROC曲线下面积)来选择最优的threshold
 
-要绘制ROC曲线，可以使用scikit-learn中的roc_curve函数计算ROC曲线的真正例率（true positive rate，又称为召回率）和假正例率（false positive rate），然后使用matplotlib库绘制曲线。
+要绘制ROC曲线，可以使用scikit-learn中的roc_curve函数计算ROC曲线的真正例率（true positive rate，又称为召回率）和假正例率（false positive rate），然后使用matplotlib库绘制曲线。  
 在这个示例中，y_true是真实标签，y_score是模型预测的概率。roc_curve函数会返回三个数组：假正例率（fpr）、真正例率（tpr）和阈值（thresholds）。auc函数用于计算曲线下的面积，即AUC值。最后，使用matplotlib库绘制ROC曲线图，并标出AUC值。
 
 ```python
@@ -125,7 +124,7 @@ plt.legend(loc="lower right")
 plt.show()
 ```
 
-计算AUC（Area Under the Curve）值可以使用scikit-learn中的roc_auc_score函数。这个函数接受真实标签和预测概率作为输入，并返回AUC值。
+计算AUC（Area Under the Curve）值可以使用scikit-learn中的roc_auc_score函数。这个函数接受真实标签和预测概率作为输入，并返回AUC值。  
 这段代码会计算真实标签y_true和模型预测的概率y_score之间的ROC曲线下面积（AUC值）。
 
 ```python

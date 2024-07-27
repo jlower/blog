@@ -6,14 +6,14 @@ categories: 实用脚本与解决方案
 
 ## 小心滥用GitHub被封,尽量使用GitLab
 
-> 使用 ```git config --global credential.helper store``` 只用第一次验证后便永久记住GitHub账号, 适合Linux上使用HTTPS链接GitHub库, Windows有自己的密码管理器不用他
+> 使用 ```git config --global credential.helper store``` 只用第一次验证后便永久记住GitHub账号, 适合Linux上使用HTTPS链接GitHub库, Windows有自己的密码管理器不用他  
 > 使用 ```git config --global --unset credential.helper``` 移除设置, 删除持久化密码
 
 ## 脚本与 AList 联合使用
 
-> *subprocess* 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理
-> *subprocess* 默认将输出打印到控制台 ; 可以更改方法中 ```stdout=``` 参数控制输出
-> *subprocess.run* 是阻塞的，会一直卡着等待程序运行
+> *subprocess* 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理  
+> *subprocess* 默认将输出打印到控制台 ; 可以更改方法中 ```stdout=``` 参数控制输出  
+> *subprocess.run* 是阻塞的，会一直卡着等待程序运行  
 > *subprocess.Popen* 后台执行，不阻塞
 
 ```python

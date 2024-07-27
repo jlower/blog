@@ -32,12 +32,12 @@ rclone sync /etc/alist/storage/test 迅雷云盘:/test --create-empty-src-dirs -
 
 ### Python执行脚本
 
-> 要下载 rclone 详见 https://rclone.org/install/
-> 先执行 ```rclone config``` 交互式配置好远端 再运行此脚本
-> **改变** 了网盘内文件(添加/删除/修改路径) **一定** 要先上web端 **刷新** 网盘路径再执行脚本, 否则可能还是老的, 脚本同步不了卡住
-> *subprocess* 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理
-> *subprocess* 默认将输出打印到控制台 ; 可以更改方法中 ```stdout=``` 参数控制输出
-> *subprocess.run* 是阻塞的，会一直卡着等待程序运行
+> 要下载 rclone 详见 https://rclone.org/install/  
+> 先执行 ```rclone config``` 交互式配置好远端 再运行此脚本  
+> **改变** 了网盘内文件(添加/删除/修改路径) **一定** 要先上web端 **刷新** 网盘路径再执行脚本, 否则可能还是老的, 脚本同步不了卡住  
+> *subprocess* 会把列表里的每个部分用 ""/'' 引号 包起来, 所以路径有空格时用 ```subprocess``` 无需特殊处理  
+> *subprocess* 默认将输出打印到控制台 ; 可以更改方法中 ```stdout=``` 参数控制输出  
+> *subprocess.run* 是阻塞的，会一直卡着等待程序运行  
 > *subprocess.Popen* 后台执行，不阻塞
 
 ```python
@@ -109,7 +109,7 @@ print("ALL SYNC DONE!")
 
 ### cadaver【WebDAV轻量级客户端，Kali自带】
 
-> 连接方法 ```cadaver http://localhost:5244/dav``` 链接AList的dav服务
-> cadaver里面的大部分操作和ftp命令行客户端很像
-> 输入help可以查看有什么命令, 输入 help [命令] 可以查看具体说明
+> 连接方法 ```cadaver http://localhost:5244/dav``` 链接AList的dav服务  
+> cadaver里面的大部分操作和ftp命令行客户端很像  
+> 输入help可以查看有什么命令, 输入 help [命令] 可以查看具体说明  
 > 输入bye可以退出
