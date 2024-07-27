@@ -15,6 +15,7 @@ timezone: 'Asia/Hong_Kong'
 url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 
 permalink: ':year/:month/:day/:title/'
+# permalink: posts/:abbrlink/
 permalink_defaults: null
 pretty_urls:
   trailing_index: true
