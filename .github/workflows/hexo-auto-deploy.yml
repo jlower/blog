@@ -37,8 +37,8 @@ jobs:
       # 下载 pandoc 渲染器到 /opt/hostedtoolcache
       - name: Install Pandoc
         run: |
-        # install pandoc
-        curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
+          # install pandoc
+          curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
       
       - name: Checkout
         uses: actions/checkout@v4
