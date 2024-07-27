@@ -562,11 +562,11 @@ messenger:
 
 # Baidu Analytics
 # https://tongji.baidu.com/web/welcome/login
-baidu_analytics:
+baidu_analytics: 04237471fca8b7a8fcbceed20bf7bc8e
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/
-google_analytics:
+google_analytics: G-5XJVQ5BR03
 
 # Cloudflare Analytics
 # https://www.cloudflare.com/zh-tw/web-analytics/
@@ -574,7 +574,7 @@ cloudflare_analytics:
 
 # Microsoft Clarity
 # https://clarity.microsoft.com/
-microsoft_clarity:
+microsoft_clarity: ndvuu2c5gr
 
 # Advertisement
 # --------------------------------------
