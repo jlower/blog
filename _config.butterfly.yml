@@ -349,7 +349,7 @@ rightside_item_order:
 # MathJax
 mathjax:
   enable: true
-  per_page: false
+  per_page: true
 
 # KaTeX
 katex:
@@ -686,7 +686,7 @@ canvas_ribbon:
   alpha: 0.6
   zIndex: -1
   click_to_change: true
-  mobile: true
+  mobile: false
 
 # Fluttering Ribbon (動態彩帶)
 canvas_fluttering_ribbon:
