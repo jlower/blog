@@ -28,6 +28,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Github Action 使用官方的 hexo-renderer-pandoc 渲染器要此步骤
+      - uses: docker://pandoc/core
+        with:
+          args: >-  # allows you to break string into multiple lines
+            --help
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
