@@ -14,8 +14,9 @@ timezone: 'Asia/Hong_Kong'
 # 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
 url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 
+# 现在我的设置是要求在同一天内不能有同样标题的文章，否则生成的链接会重复，和默认设置 permalink: ':year/:month/:day/:title/' 一样 (这样要求每篇文章必须要填 date: 创建日期)
 # permalink: ':year/:month/:day/:title/'
-permalink: posts/:year:month:day-:abbrlink/ # 设置了 :year:month:day- 所以改文章的日期链接会变
+permalink: posts/:year:month:day-:abbrlink/ # 设置了 :year:month:day- 所以改文章的创建日期链接会变(文章 date: 后面的是创建日期， update: 后面的是更新日期，不填 update: 则更新时间默认为最新一次网站的部署时间)
 # abbrlink config
 # 会自动为每篇文章生成 abbrlink (根据文章的标题)，也可以自己手动输入abbrlink(如果文章已经有abbrlink的话就不会再自动生成了，所以第一次自动生成abbrlink后再改文章标题链接也不会变)
 # 但我用的是 GitHub Action 部署，自动生成的 abbrlink 不会传到 GitHub 上(每篇文章都没有abbrlink，所以每次上传部署都会重新生成abbrlink)，所以改文章标题会让重新生成 abbrlink 变掉，生成的链接也会变

@@ -88,6 +88,18 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # # Github Action 使用官方的 pandoc 渲染器要此步骤
+      # - uses: docker://pandoc/core
+      #   with:
+      #     args: >-  # allows you to break string into multiple lines
+      #       --help
+      
+      # 下载 pandoc 渲染器到 /opt/hostedtoolcache
+      - name: Install Pandoc
+        run: |
+          # install pandoc
+          curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
+      
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -95,7 +107,7 @@ jobs:
       
       # 如果使用 pnpm，请取消注释
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           version: latest
 
@@ -103,7 +115,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm # 或 pnpm / yarn / npm
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -111,6 +123,8 @@ jobs:
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
         run: |
+          # add pandoc to PATH
+          export PATH="$PATH:/opt/hostedtoolcache/pandoc-3.2.1/bin"
           pnpm build # 或 npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -226,6 +240,19 @@ updates:
 
 ## Hexo 的 _config.yml 配置注意事项
 
+> 配置GitHub
+
+```yaml
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+    display: inline
+    vertical-align: middle # Freemind适用
+  customEmojis:
+```
+
 ```yaml
 # 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
 # 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
@@ -233,15 +260,17 @@ updates:
 # 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
 # Commit 并 push 到默认分支上。
 # 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
-url: http://jlower.github.io/blog
+url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 ```
+
+> **注意** 目前主题主要使用 butterfly 了，不用 vivia
 
 ```yaml
 # 会优先查找 ./themes 中有没有xxx同名文件夹(若有里面得放GitHub下载的源码，否则生成页面为空)
 # 若无则查找 ./node_moudules 中有没有 hexo-theme-xxx 
 # (推荐全用 npm/pnpm 下载，省的GitHub Action每次 都要改，因为有些主题作者自己的.gitignore设置了不上传GitHub)
-theme: vivia # butterfly vivia
+theme: butterfly # butterfly vivia
 # 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
-archive_generator:
-  per_page: 0
+# archive_generator:
+#   per_page: 0
 ```
