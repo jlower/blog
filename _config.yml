@@ -79,3 +79,10 @@ theme: butterfly # butterfly vivia
 deploy:
   type: ''
 
+# hexo-generator-searchdb 本地搜索设置
+search:
+  path: search.xml
+  field: all
+  content: true
+  format: html
+
