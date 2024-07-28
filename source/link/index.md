@@ -92,12 +92,16 @@ type: "link"
       link: https://discord.com/channels/@me
       avatar:
       descr:
-    - name: Twitch
-      link: https://www.twitch.tv
+    - name: Telegram Web
+      link: https://web.telegram.org/a/
       avatar:
       descr:
     - name: GitHub
       link: https://github.com/jlower
+      avatar:
+      descr:
+    - name: Twitch
+      link: https://www.twitch.tv
       avatar:
       descr:
 {% endflink %}
