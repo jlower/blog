@@ -392,13 +392,13 @@ docsearch:
 # Share.js
 # https://github.com/overtrue/share.js
 sharejs:
-  enable: false
+  enable: true
   sites: wechat,qq,weibo,twitter,facebook
 
 # AddToAny
 # https://www.addtoany.com/
 addtoany:
-  enable: true
+  enable: false
   item: facebook,twitter,wechat,sina_weibo,facebook_messenger,email,copy_link
 
 # Comments System
