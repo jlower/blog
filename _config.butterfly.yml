@@ -1,11 +1,21 @@
-# Navigation bar settings (導航欄設置)
+# --------------------------------------
+# Hexo Butterfly Theme Configuration
+# If you have any questions, please refer to the documentation
+# Chinese: https://butterfly.js.org/
+# English: https://butterfly.js.org/en/
+# --------------------------------------
+
+# --------------------------------------
+# Navigation Settings (導航欄設置)
 # see https://butterfly.js.org/posts/4aa8abbe/##導航欄設置-Navigation-bar-settings
 # --------------------------------------
 
 nav:
-  logo: /imgs/favicon-dark-128.png # image
+  # Navigation bar logo image
+  logo: /imgs/favicon-dark-128.png
   display_title: true
-  fixed: false # fixed navigation bar
+  # Whether to fix navigation bar
+  fixed: false
 
 # Menu 目錄
 menu:
@@ -20,24 +30,32 @@ menu:
   友链: /link/ || fas fa-link
   关于: /about/ || fas fa-heart
 
-# Code Blocks (代碼相關)
+# --------------------------------------
+# Code Blocks Settings (代碼相關)
 # --------------------------------------
 
-highlight_theme: darker #  darker / pale night / light / ocean / mac / mac light / false
-highlight_copy: true # copy button
-highlight_lang: true # show the code language
-highlight_shrink: false # true: shrink the code blocks / false: expand the code blocks | none: expand code blocks and hide the button
-highlight_height_limit: 200 # unit: px / false
-code_word_wrap: false
-
-# Social Settings (社交圖標設置)
-# formal:
+code_blocks:
+  # Code block theme: darker / pale night / light / ocean / false
+  theme: darker
+  macStyle: true
+  # Code block height limit (unit: px / false)
+  height_limit: 200
+  word_wrap: false
+  # Toolbar
+  copy: true
+  language: true
+  # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
+  shrink: false
+  fullpage: true
+# Social media links
+# Formal:
 #   icon: link || the description || color
 social:
   fab fa-github: https://github.com/jlower || Github || '#24292e'
   fas fa-envelope: mailto:870050851@qq.com || Email || '#4a7dbe'
 
-# Image (圖片設置)
+# --------------------------------------
+# Image Settings (圖片設置)
 # --------------------------------------
 
 # Favicon（網站圖標）
@@ -48,40 +66,41 @@ avatar:
   img: /imgs/avatar1.jpg
   effect: false
 
-# Disable all banner image
+# Disable all banner images
 disable_top_img: false
 
-# The banner image of home page
-index_img: 
-
-# If the banner of page not setting, it will show the top_img
+# If the banner of page not setting, it will show the default_top_img
 
 # 可配置渐变色'linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)'
 default_top_img: /imgs/banner1.png
 
+# The banner image of index page
+index_img:
+
 # The banner image of archive page
 archive_img:
 
-# If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
 tag_img:
 
-# The banner image of tag page
-# format:
+# The banner image of tag page, you can set the banner image for each tag
+# Format:
 #  - tag name: xxxxx
 tag_per_img:
 
-# If the banner of category page not setting, it will show the top_img
 # note: category page, not categories page (子分類頁面的 top_img)
 category_img:
 
-# The banner image of category page
-# format:
+# The banner image of category page, you can set the banner image for each category
+# Format:
 #  - category name: xxxxx
 category_per_img:
 
+# The background image of footer
+footer_img: false
+
 cover:
-  # display the cover or not (是否顯示文章封面)
+  # Disable the cover or not (是否顯示文章封面)
   index_enable: true
   aside_enable: true
   archives_enable: true
@@ -111,11 +130,16 @@ post_meta:
     tags: true # true or false 主頁是否顯示標籤
     label: true # true or false 顯示描述性文字
   post:
+    position: left # left or center 文章頁標題位置
     date_type: both # created or updated or both 文章頁日期是創建日或者更新日或都顯示
     date_format: date # date/relative 顯示日期還是相對日期
     categories: true # true or false 文章頁是否顯示分類
     tags: true # true or false 文章頁是否顯示標籤
     label: true # true or false 顯示描述性文字
+
+# --------------------------------------
+# Index page settings
+# --------------------------------------
 
 # Display the article introduction on homepage
 # 1: description
@@ -200,7 +224,7 @@ post_pagination: 2
 noticeOutdate:
   enable: false
   style: flat # style: simple/flat
-  limit_day: 500 # When will it be shown
+  limit_day: 365 # When will it be shown
   position: top # position: top/bottom
   message_prev: It has been
   message_next: days since the last update, the content of the article may be outdated.
@@ -594,10 +618,14 @@ google_adsense:
   enable_page_level_ads: true
 
 # Insert ads manually (手動插入廣告)
-# ad:
-#   index:
-#   aside:
-#   post:
+# Leave it empty if you don't need ads
+ad:
+  # Insert ads in the index (every three posts)
+  index:
+  # Insert ads in aside
+  aside:
+  # Insert ads in the post (before pagination)
+  post:
 
 # Verification (站長驗證)
 # --------------------------------------
@@ -780,6 +808,17 @@ subtitle:
   sub:
     - 今日事&#44;今日毕
     - Never put off till tomorrow what you can do today
+
+# Article layout on the homepage
+# 1: Cover on the left, info on the right
+# 2: Cover on the right, info on the left
+# 3: Cover and info alternate between left and right
+# 4: Cover on top, info on the bottom
+# 5: Info displayed on the cover
+# 6: Masonry layout - Cover on top, info on the bottom
+# 7: Masonry layout - Info displayed on the cover
+index_layout: 3
+
 # Loading Animation (加載動畫)
 preloader:
   enable: true
@@ -826,11 +865,13 @@ abcjs:
   enable: true
   per_page: true
 
-# mermaid
-# see https://github.com/mermaid-js/mermaid
+# Mermaid
+# See https://github.com/mermaid-js/mermaid
 mermaid:
   enable: true
-  # built-in themes: default/forest/dark/neutral
+  # Write Mermaid diagrams using code blocks （以代碼塊形式書寫 Mermaid）
+  code_write: false
+  # Built-in themes: default/forest/dark/neutral
   theme:
     light: default
     dark: dark
