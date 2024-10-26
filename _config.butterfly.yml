@@ -36,7 +36,7 @@ menu:
 
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
-  theme: darker
+  theme: false
   macStyle: true
   # Code block height limit (unit: px / false)
   height_limit: 200
@@ -46,7 +46,7 @@ code_blocks:
   language: true
   # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
   shrink: false
-  fullpage: true
+  fullpage: false
 # Social media links
 # Formal:
 #   icon: link || the description || color
