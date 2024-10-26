@@ -46,7 +46,7 @@ code_blocks:
   language: true
   # true: shrink the code blocks | false: expand the code blocks | none: expand code blocks and hide the button
   shrink: false
-  fullpage: true
+  fullpage: false
 # Social media links
 # Formal:
 #   icon: link || the description || color
