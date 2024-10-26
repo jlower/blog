@@ -36,8 +36,8 @@ menu:
 
 code_blocks:
   # Code block theme: darker / pale night / light / ocean / false
-  theme: false
-  macStyle: true
+  theme: true
+  macStyle: false
   # Code block height limit (unit: px / false)
   height_limit: 200
   word_wrap: false
