@@ -67,9 +67,9 @@ d->func();
 
 ## tcp粘包加什么分隔符解决
 
-### Netty解决TCP粘包/拆包相关类以及功能
+> Netty解决TCP粘包/拆包相关类以及功能
 
-1. LineBasedFrameDecoder：以\r或\r\n为分隔符
+1. LineBasedFrameDecoder：以```\r```或```\r\n```为分隔符
 1. StringDecoder：将接收到的消息转换成字符串
 1. DelimiterBasedFrameDecoder：自定义分隔符
 1. FixedLengthFrameDecoder：定长解析
