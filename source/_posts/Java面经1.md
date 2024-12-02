@@ -37,5 +37,6 @@ categories: 面经
 
 ## Linux中查看日志的常用命令
 
+1. [Linux查看log日志的命令与各自适合的场景](https://blog.csdn.net/qq_36245532/article/details/102835184)
 1. [Linux查看日志的6种方式](https://blog.csdn.net/qq_41248260/article/details/143240234)
 1. [Linux查看日志的常用命令](https://blog.csdn.net/qq_37924396/article/details/124878564)
