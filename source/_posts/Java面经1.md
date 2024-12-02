@@ -34,3 +34,8 @@ categories: 面经
 1. [Java集合遍历的方法有哪些](https://xiaolincoding.com/interview/collections.html#%E9%9B%86%E5%90%88%E9%81%8D%E5%8E%86%E7%9A%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B)
 
 ## 线程池的作用？阻塞队列有啥？最大线程数量和核心线程数量的区别？什么时候创建新的线程？什么时候回收线程？拒绝策略有哪些？线程池有几种状态？线程池异常怎么处理？
+
+## Linux中查看日志的常用命令
+
+1. [Linux查看日志的6种方式](https://blog.csdn.net/qq_41248260/article/details/143240234)
+1. [Linux查看日志的常用命令](https://blog.csdn.net/qq_37924396/article/details/124878564)
