@@ -13,6 +13,11 @@ timezone: 'Asia/Hong_Kong'
 # Commit 并 push 到默认分支上。
 # 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
 url: https://blog.lowoneko.eu.org # https://jlower.github.io/blog
+# 站点地图
+sitemap:
+  path: sitemap.xml  #站点地图文件名称
+baidusitemap:
+  path: baidusitemap.xml #站点地图文件名称
 
 # 现在我的设置是要求在同一天内不能有同样标题的文章，否则生成的链接会重复，和默认设置 permalink: ':year/:month/:day/:title/' 一样 (这样要求每篇文章必须要填 date: 创建日期)
 # permalink: ':year/:month/:day/:title/'
