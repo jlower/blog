@@ -384,6 +384,12 @@ katex:
 # search (搜索)
 # see https://butterfly.js.org/posts/ceeb73f/#搜索系統
 # --------------------------------------
+# 通用配置
+search:
+  # Choose: algolia_search / local_search / docsearch
+  # leave it empty if you don't need search
+  use: local_search
+  placeholder: Search...
 
 # Algolia search
 algolia_search:
