@@ -1,12 +1,14 @@
 ---
 title: 用pandas包处理csv、txt数据
 date: 2024-01-31 03:00:00
-categories: 机器学习
+categories: [机器学习]
+keywords: [机器学习,pandas,处理数据,数据]
+tag: []
+description:
 ---
-
 ## 用 pandas 包导入 csv、txt 数据集
 
-### 读入单个 csv、txt 文件为 ```DataFrame``` 对象
+### 读入单个 csv、txt 文件为 ``DataFrame`` 对象
 
 ```python
 # 导入单个文件
@@ -19,7 +21,7 @@ dataframe_total = pd.read_csv("/path/to/target/file")
 print(dataframe_total)
 ```
 
-### 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
+### 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ``DataFrame`` 对象
 
 ```python
 # 递归读入所定目录下(包括他的子目录)中的所有 csv、txt 文件并合并为一个 ```DataFrame``` 对象
@@ -80,19 +82,19 @@ dataframe_total = merge_files_to_dataframe(file_paths)
 print(dataframe_total)
 ```
 
-### 将 ```DataFrame``` 对象转换为其他易于处理的对象
+### 将 ``DataFrame`` 对象转换为其他易于处理的对象
 
-#### 将 ```DataFrame``` 对象转换为 ```numpy.ndarray``` 对象
+#### 将 ``DataFrame`` 对象转换为 ``numpy.ndarray`` 对象
 
 ```python
 # 用 .values 转换成 numpy.ndarray 列表
 data = dataframe_total.iloc[:, :].values
 ```
 
-> ```.reshape()``` 是一个用于调整数组形状的NumPy方法。在这里，它被用于将一维数组转换为二维列向量。  
-> ```.reshape(-1, 1)``` 将⼀维数据变成只有1列，⾏数不知道多少[ -1 代表根据剩下的维度计算出数组的另外⼀个shape属性值]。  
-> 具体而言，如果有一个形状为 (n,) 的一维数组，使用 ```.reshape(-1, 1)``` 将会将其转换为形状为 (n, 1) 的二维数组，其中每个元素都是一个单独的行向量。这在某些机器学习算法中是必要的，因为它们通常期望输入数据是一个二维数组。  
-> 在下面示例中，```data = dataframe_total['value'].values.reshape(-1, 1)``` 就是将 'value' 列的一维数据转换为一个列向量。这样，data 变量将成为一个二维数组，每个行代表一个数据点，每个列代表一个特征。在 K-medoids 聚类算法中，这种形式的输入通常是必需的。
+> ``.reshape()`` 是一个用于调整数组形状的NumPy方法。在这里，它被用于将一维数组转换为二维列向量。
+> ``.reshape(-1, 1)`` 将⼀维数据变成只有1列，⾏数不知道多少[ -1 代表根据剩下的维度计算出数组的另外⼀个shape属性值]。
+> 具体而言，如果有一个形状为 (n,) 的一维数组，使用 ``.reshape(-1, 1)`` 将会将其转换为形状为 (n, 1) 的二维数组，其中每个元素都是一个单独的行向量。这在某些机器学习算法中是必要的，因为它们通常期望输入数据是一个二维数组。
+> 在下面示例中，``data = dataframe_total['value'].values.reshape(-1, 1)`` 就是将 'value' 列的一维数据转换为一个列向量。这样，data 变量将成为一个二维数组，每个行代表一个数据点，每个列代表一个特征。在 K-medoids 聚类算法中，这种形式的输入通常是必需的。
 
 ```python
 # 提取'value'列作为特征 并重新组成二维 numpy.ndarray 列表
@@ -106,11 +108,11 @@ data = dataframe_total['value'].values
 data = np.hstack([data, data])
 ```
 
-## 一维数据转换成二维数据，满足 ```scikit-learn``` 等库的输入要求
+## 一维数据转换成二维数据，满足 ``scikit-learn`` 等库的输入要求
 
-### 若只有一个值、序号代表时间，你仍然可以使用 ```.reshape(-1, 1)``` 来转换数据
+### 若只有一个值、序号代表时间，你仍然可以使用 ``.reshape(-1, 1)`` 来转换数据
 
-在**时间序列**分析中，这种转换通常用于将时间序列数据重塑为适合机器学习模型的格式。例如，如果你有一个时间序列数据，其中每个时间点**只有一个观测值**，你可以将这个一维数组转换为二维数组，以便在模型中使用。  
+在**时间序列**分析中，这种转换通常用于将时间序列数据重塑为适合机器学习模型的格式。例如，如果你有一个时间序列数据，其中每个时间点**只有一个观测值**，你可以将这个一维数组转换为二维数组，以便在模型中使用。
 以下是一个简单的Python代码示例，展示了如何对只有一个值的时间序列数据进行转换：
 
 ```python

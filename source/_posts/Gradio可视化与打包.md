@@ -1,9 +1,11 @@
 ---
 title: Gradio可视化与打包
 date: 2025-01-01 03:00:00
-categories: 可视化
+categories: [可视化]
+keywords: [Gradio,可视化]
+tag: []
+description:
 ---
-
 ## Gradio使用记录
 
 ### 启动 Gradio 时自动打开本地浏览器网页
@@ -16,8 +18,8 @@ iface.launch(inbrowser=True) # inbrowser=True 则会自动打开本地浏览器�
 
 ### Gradio 默认上传文件的文件夹
 
-- Gradio 默认上传文件的文件夹 ``` C:\Users\lovo\AppData\Local\Temp\gradio ```
-- PyInstaller 打包后exe程序文件临时释放的文件夹(需要ctrl+c结束程序才能自动删除文件夹, 直接关闭cmd窗口的话文件夹可能不会自动删除) ``` C:\Users\lovo\AppData\Local\Temp\_MEIxxxxxx ```
+- Gradio 默认上传文件的文件夹 ``C:\Users\lovo\AppData\Local\Temp\gradio``
+- PyInstaller 打包后exe程序文件临时释放的文件夹(需要ctrl+c结束程序才能自动删除文件夹, 直接关闭cmd窗口的话文件夹可能不会自动删除) ``C:\Users\lovo\AppData\Local\Temp\_MEIxxxxxx``
 
 ## Gradio打包
 

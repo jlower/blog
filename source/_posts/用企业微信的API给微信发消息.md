@@ -1,9 +1,11 @@
 ---
 title: 用企业微信的API给微信发消息
 date: 2024-02-05 03:00:00
-categories: 实用脚本与解决方案
+categories: [实用脚本与解决方案]
+keywords: [脚本,实用脚本,企业微信,API,微信API]
+tag: []
+description:
 ---
-
 ## 用企业微信的API
 
 ```python

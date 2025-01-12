@@ -1,9 +1,11 @@
 ---
 title: Cpp面经1
 date: 2024-11-26 03:00:00
-categories: 面经
+categories: [面经]
+keywords: [Cpp,面经,c++,cpp,C++]
+tag: []
+description:
 ---
-
 ## C++ lambda怎么实现
 
 ## C++ shared_ptr 实现
@@ -69,10 +71,10 @@ d->func();
 
 > Netty解决TCP粘包/拆包相关类以及功能
 
-1. LineBasedFrameDecoder：以```\r```或```\r\n```为分隔符
-1. StringDecoder：将接收到的消息转换成字符串
-1. DelimiterBasedFrameDecoder：自定义分隔符
-1. FixedLengthFrameDecoder：定长解析
+1. LineBasedFrameDecoder：以 ``\r``或 ``\r\n``为分隔符
+2. StringDecoder：将接收到的消息转换成字符串
+3. DelimiterBasedFrameDecoder：自定义分隔符
+4. FixedLengthFrameDecoder：定长解析
 
 ## c++栈空间多少，爆栈后编译器会有什么操作
 
@@ -94,5 +96,5 @@ limit 10
 
 ## 数学：社会上1%的概率得病，事实上ill检测为ill的概率95%检测为healthy的概率5%；事实上healthy检测为ill的概率5%检测为healthy的概率95%
 
-1. 一个人检测一次结果是ill并且此人事实上为ill的概率```(1%*95%)/(1%*95%+99%*5%)=16.1%```
-1. 一个人检测两次结果都是ill并且此人事实上为ill的概率```(1%*95%*95%）/(1%*95%*95%+99%*5%*5%)=78.478%```
+1. 一个人检测一次结果是ill并且此人事实上为ill的概率 ``(1%*95%)/(1%*95%+99%*5%)=16.1%``
+2. 一个人检测两次结果都是ill并且此人事实上为ill的概率 ``(1%*95%*95%）/(1%*95%*95%+99%*5%*5%)=78.478%``

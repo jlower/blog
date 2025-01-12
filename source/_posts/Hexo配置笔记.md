@@ -1,9 +1,11 @@
 ---
 title: Hexo配置笔记
 date: 2024-01-05 04:00:00
-categories: 笔记
+categories: [笔记]
+keywords: [Hexo配置,Hexo,配置]
+tag: []
+description:
 ---
-
 ## Hexo跳转自己的文章
 
 ```md
@@ -36,7 +38,7 @@ pnpm install --save hexo-pdf
 {% pdf "/文件夹名称/引用文档名字.pdf" %}
 ```
 
-> **字段中间如果有空格要加上   " "   （默认都加上   " "   就行了）**  
+> **字段中间如果有空格要加上   " "   （默认都加上   " "   就行了）**
 > 在source文件夹下创建一个叫pdf的文件夹，把xxx.pdf文件放在这里，然后在_post文件夹中的xxx.md直接使用
 
 ```md
@@ -93,18 +95,18 @@ jobs:
       #   with:
       #     args: >-  # allows you to break string into multiple lines
       #       --help
-      
+    
       # 下载 pandoc 渲染器到 /opt/hostedtoolcache
       - name: Install Pandoc
         run: |
           # install pandoc
           curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
-      
+    
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      
+    
       # 如果使用 pnpm，请取消注释
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -158,7 +160,7 @@ jobs:
 #         uses: actions/checkout@v3
 #         with:
 #           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      
+    
 #       # 如果使用 pnpm，请取消注释
 #       - name: Install pnpm
 #         uses: pnpm/action-setup@v2
@@ -250,14 +252,14 @@ updates:
 url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 ```
 
-> Hexo框架默认会使用 ```hexo-renderer-marked``` 来作为markdown的渲染器，但此渲染器不支持markdown的标准数学公式书写形式，即用 ```$$ $$``` 来包裹LaTeX公式，但此渲染器不支持。此渲染器用 ```hexo-math``` 插件来渲染数学公式，但此插件需要用hexo自定义的麻烦标签。  
-> 解决方法：使用官方维护的 ```hexo-filter-mathjax``` 公式插件和其推荐的 ```hexo-renderer-pandoc``` 渲染引擎。  
+> Hexo框架默认会使用 ``hexo-renderer-marked`` 来作为markdown的渲染器，但此渲染器不支持markdown的标准数学公式书写形式，即用 ``$$ $$`` 来包裹LaTeX公式，但此渲染器不支持。此渲染器用 ``hexo-math`` 插件来渲染数学公式，但此插件需要用hexo自定义的麻烦标签。
+> 解决方法：使用官方维护的 ``hexo-filter-mathjax`` 公式插件和其推荐的 ``hexo-renderer-pandoc`` 渲染引擎。
 
-1. 先移除原先的默认渲染器 ```pnpm uninstall hexo-renderer-marked``` 再移除之前下载的数学公式插件，例如 ```pnpm uninstall hexo-math```
-1. 在你的blog根目录下，安装新的渲染器Pandoc依赖 ```pnpm install hexo-renderer-pandoc --save```
-1. 安装Pandoc环境，[Pandoc官网安装页面](https://github.com/jgm/pandoc)。如果是使用 GitHub Actions 部署，可以参考上边写的 GitHub Actions 部署配置(要在 GitHub Actions 的环境中下载安装Pandoc并配置全局环境变量)。
+1. 先移除原先的默认渲染器 ``pnpm uninstall hexo-renderer-marked`` 再移除之前下载的数学公式插件，例如 ``pnpm uninstall hexo-math``
+2. 在你的blog根目录下，安装新的渲染器Pandoc依赖 ``pnpm install hexo-renderer-pandoc --save``
+3. 安装Pandoc环境，[Pandoc官网安装页面](https://github.com/jgm/pandoc)。如果是使用 GitHub Actions 部署，可以参考上边写的 GitHub Actions 部署配置(要在 GitHub Actions 的环境中下载安装Pandoc并配置全局环境变量)。
 
-> blog根目录下打开 ```_config.yml``` 文件，在文件中加入```hexo-filter-mathjax``` 公式插件的配置
+> blog根目录下打开 ``_config.yml`` 文件，在文件中加入 ``hexo-filter-mathjax`` 公式插件的配置
 
 ```yml
 mathjax:
@@ -273,10 +275,10 @@ mathjax:
     # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
 ```
 
-> 插件 ```markdown-it-emoji``` 支持 hexo-renderer-markdown-it 渲染器解析表情  
-> 我要安装插件 ```hexo-filter-github-emojis``` 支持 Pandoc 渲染器解析表情  
-> 先 ```pnpm install hexo-filter-github-emojis --save```  
-> 然后在 ```_config.yml``` 文件中加入 ```hexo-filter-github-emojis``` 插件的配置
+> 插件 ``markdown-it-emoji`` 支持 hexo-renderer-markdown-it 渲染器解析表情
+> 我要安装插件 ``hexo-filter-github-emojis`` 支持 Pandoc 渲染器解析表情
+> 先 ``pnpm install hexo-filter-github-emojis --save``
+> 然后在 ``_config.yml`` 文件中加入 ``hexo-filter-github-emojis`` 插件的配置
 
 ```yaml
 githubEmojis:
@@ -289,9 +291,9 @@ githubEmojis:
   customEmojis:
 ```
 
-> 将文章链接从中文优化为短数字字母编码  
-> 使用 ```hexo-abbrlink``` 插件实现，先 ```pnpm install hexo-abbrlink --save```  
-> 然后在 ```_config.yml``` 文件中加入 ```hexo-abbrlink``` 插件的配置  
+> 将文章链接从中文优化为短数字字母编码
+> 使用 ``hexo-abbrlink`` 插件实现，先 ``pnpm install hexo-abbrlink --save``
+> 然后在 ``_config.yml`` 文件中加入 ``hexo-abbrlink`` 插件的配置
 > 会自动为每个文章加上abbrlink，但我用GitHub Action部署，自动加的abbrlink不会上传到GitHub上，所以每次部署都会跟据当前的文章标题重新生成abbrlink，改了文章标题的话链接也会变，除非手动在文章上输入abbrlink
 
 ```yml

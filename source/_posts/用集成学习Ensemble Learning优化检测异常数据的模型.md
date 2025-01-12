@@ -1,13 +1,15 @@
 ---
 title: 用集成学习Ensemble Learning优化检测异常数据的模型
 date: 2024-03-20 03:00:00
-categories: 机器学习
+categories: [机器学习]
+keywords: [机器学习,集成学习,Ensemble Learning,算法,评价]
+tag: []
+description:
 ---
-
 ## 集成学习 Ensemble Learning 介绍
 
-> [几何直观地 理解集成学习 Ensemble Learning 的四大类型](https://zhuanlan.zhihu.com/p/494333159)  
-> [集成学习 Ensemble Learning 简析](https://zhuanlan.zhihu.com/p/682354878)  
+> [几何直观地 理解集成学习 Ensemble Learning 的四大类型](https://zhuanlan.zhihu.com/p/494333159)
+> [集成学习 Ensemble Learning 简析](https://zhuanlan.zhihu.com/p/682354878)
 > [集成学习 Ensemble Learning 简析](https://www.zhihu.com/question/29036379/answers/updated)
 
 集成学习(Ensemble Learning)是指：在机器学习中，模型单独运行时可能表现不佳，但将多个模型组合起来时就会变得更强大，这种多个基础模型的组合称为集成模型或集成学习。
@@ -22,7 +24,7 @@ categories: 机器学习
 - Stacking：堆叠法
 - Cascading：级联法
 
-> 在Bagging中：基础模型为 低偏差，高方差；如深度特别深的 决策树  
+> 在Bagging中：基础模型为 低偏差，高方差；如深度特别深的 决策树
 > 在Boosting中：基础模型为 高偏差，低方差；如深度特别浅的 决策树(如：深度为2，3)
 
 ## 集成学习 Bagging 中的 随机森林(Random forest)算法
@@ -38,26 +40,26 @@ categories: 机器学习
 随机森林的关键要点:
 
 1. 构造决策树的随机性：
-    - 在构建每棵树时，使用随机抽样的方式从原始数据集中抽取训练数据（bootstrap样本）。
-    - 在选择分裂特征时，不再考虑所有特征，而是随机选择一部分特征进行最佳拆分点的计算。
-1. 决策树的多样性：
-    - 每棵树在不同的样本集上训练，保证了森林中的树具有多样性。
-    - 特征的随机选择也增加了决策树之间的差异性，从而提高整个模型的泛化能力。
-1. 减少过拟合：
-    - 个体树的随机性和多样性帮助减少模型的过拟合问题。
-    - 即使单棵树对某些样本过度拟合，整体随机森林模型仍然能够保持较高的预测准确性。
-1. 适用性广泛:
-    - 随机森林算法适用于分类和回归任务。
-    - 模型对数据集中的异常值和噪声具有很高的容忍度。
-1. 特征重要性评估：
-    - 随机森林能够评估不同特征在决策过程中的重要性，这是通过观察特征在树中的分裂能力得出的。
+   - 在构建每棵树时，使用随机抽样的方式从原始数据集中抽取训练数据（bootstrap样本）。
+   - 在选择分裂特征时，不再考虑所有特征，而是随机选择一部分特征进行最佳拆分点的计算。
+2. 决策树的多样性：
+   - 每棵树在不同的样本集上训练，保证了森林中的树具有多样性。
+   - 特征的随机选择也增加了决策树之间的差异性，从而提高整个模型的泛化能力。
+3. 减少过拟合：
+   - 个体树的随机性和多样性帮助减少模型的过拟合问题。
+   - 即使单棵树对某些样本过度拟合，整体随机森林模型仍然能够保持较高的预测准确性。
+4. 适用性广泛:
+   - 随机森林算法适用于分类和回归任务。
+   - 模型对数据集中的异常值和噪声具有很高的容忍度。
+5. 特征重要性评估：
+   - 随机森林能够评估不同特征在决策过程中的重要性，这是通过观察特征在树中的分裂能力得出的。
 
 算法过程：
 
 1. 随机选择N个样本（选择的样本数量通常与原始数据集大小相同）来构建一个bootstrap样本集。
-1. 如果特征总数为M，则在构建树的每个节点时随机选择m个特征（其中m << M），通常m的值为sqrt(M)，对于回归问题可能会选择M/3。
-1. 在这些特征中找到最佳分裂点来分裂节点，直到每个叶节点的样本数量小于设定的阈值，或者每个叶节点的样本都属于同一类别。
-1. 重复以上步骤来构建足够数量的决策树。
+2. 如果特征总数为M，则在构建树的每个节点时随机选择m个特征（其中m << M），通常m的值为sqrt(M)，对于回归问题可能会选择M/3。
+3. 在这些特征中找到最佳分裂点来分裂节点，直到每个叶节点的样本数量小于设定的阈值，或者每个叶节点的样本都属于同一类别。
+4. 重复以上步骤来构建足够数量的决策树。
 
 最后的预测过程：
 
@@ -96,7 +98,7 @@ print("Best parameters:", grid_search.best_params_)
 
 #### 绘制ROC曲线并计算AUC值(ROC曲线下面积)来选择最优的threshold
 
-要绘制ROC曲线，可以使用scikit-learn中的roc_curve函数计算ROC曲线的真正例率（true positive rate，又称为召回率）和假正例率（false positive rate），然后使用matplotlib库绘制曲线。  
+要绘制ROC曲线，可以使用scikit-learn中的roc_curve函数计算ROC曲线的真正例率（true positive rate，又称为召回率）和假正例率（false positive rate），然后使用matplotlib库绘制曲线。
 在这个示例中，y_true是真实标签，y_score是模型预测的概率。roc_curve函数会返回三个数组：假正例率（fpr）、真正例率（tpr）和阈值（thresholds）。auc函数用于计算曲线下的面积，即AUC值。最后，使用matplotlib库绘制ROC曲线图，并标出AUC值。
 
 ```python
@@ -124,7 +126,7 @@ plt.legend(loc="lower right")
 plt.show()
 ```
 
-计算AUC（Area Under the Curve）值可以使用scikit-learn中的roc_auc_score函数。这个函数接受真实标签和预测概率作为输入，并返回AUC值。  
+计算AUC（Area Under the Curve）值可以使用scikit-learn中的roc_auc_score函数。这个函数接受真实标签和预测概率作为输入，并返回AUC值。
 这段代码会计算真实标签y_true和模型预测的概率y_score之间的ROC曲线下面积（AUC值）。
 
 ```python
@@ -154,14 +156,14 @@ def process_file(file_path):
     # 读取数据
     data = pd.read_csv(file_path)
     total_samples = len(data)
-    
+  
     # 随机森林算法识别异常值
     clf = RandomForestClassifier(n_estimators=100, random_state=0)
     clf.fit(data['value'].values.reshape(-1, 1), data['anomaly'])
     probs = clf.predict_proba(data['value'].values.reshape(-1, 1))[:, 1]
     threshold = 0.5
     outliers = np.where(probs > threshold, 1, 0)
-    
+  
     # 评估模型
     conf_matrix = confusion_matrix(data['anomaly'], outliers)
     accuracy = accuracy_score(data['anomaly'], outliers)
@@ -169,7 +171,7 @@ def process_file(file_path):
     recall = recall_score(data['anomaly'], outliers)
     f1 = f1_score(data['anomaly'], outliers)
     tp, fp, tn, fn = conf_matrix.ravel()
-    
+  
     # 记录汇总信息
     summary_results.append({
         'File': os.path.basename(file_path),
@@ -183,7 +185,7 @@ def process_file(file_path):
         'FN': fn,
         'Total Samples': total_samples
     })
-    
+  
     # 可视化数据
     plt.figure(figsize=(10, 6))
     plt.scatter(data.index, data['value'], c=outliers, cmap='coolwarm')

@@ -1,9 +1,11 @@
 ---
 title: GitHub Actions的使用
 date: 2024-02-05 03:00:00
-categories: 实用脚本与解决方案
+categories: [实用脚本与解决方案]
+keywords: [脚本,实用脚本,GitHub Actions,自动部署,依赖拉取]
+tag: []
+description:
 ---
-
 ## dependabot.yml 依赖拉取机器人
 
 ```yml
@@ -93,7 +95,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      
+    
       # 如果使用 pnpm，请取消注释
       - name: Install pnpm
         uses: pnpm/action-setup@v2
@@ -145,7 +147,7 @@ jobs:
 #         uses: actions/checkout@v3
 #         with:
 #           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
-      
+    
 #       # 如果使用 pnpm，请取消注释
 #       - name: Install pnpm
 #         uses: pnpm/action-setup@v2
