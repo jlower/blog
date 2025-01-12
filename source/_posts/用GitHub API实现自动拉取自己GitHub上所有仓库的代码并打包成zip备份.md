@@ -19,6 +19,13 @@ description:
 > *subprocess.Popen* 后台执行，不阻塞
 
 ```python
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+# @Time         :   2024/2/4  15:59
+# @Author       :   lowo
+# @File         :   用GitHub API实现备份自己GitHub上所有仓库的代码.py
+# @Description  :
+
 from github import Github
 # Authentication is defined via github.Auth
 from github import Auth
@@ -38,9 +45,9 @@ import subprocess
 # 若开启双重验证 则密码填写 个人访问令牌
 
 # 替换为你的 GitHub 个人访问令牌
-access_token = "YOUR_ACCESS_TOKEN"
+access_token = "your_github_access_token"
 # 替换为你的 GitHub 用户名
-user_name = "YOUR_USERNAME"
+user_name = "jlower"
 
 # using an access token
 auth = Auth.Token(access_token)
@@ -61,7 +68,10 @@ zip_output_folder = "/etc/alist/storage/_Git Repository backup"
 os.makedirs(backup_folder, exist_ok=True)
 
 repo_list = []  # 储存 存在哪些 远程git仓库
+repo_skip_list = ["JavaStart-save"] # 要跳过不备份的远程git仓库
 for repo in repos:
+    if repo.name in repo_skip_list:
+        continue
     repo_path = os.path.join(backup_folder, repo.name)
     repo_list.append(repo.name)
     print("正在处理: ", repo.name)
@@ -81,6 +91,11 @@ for dir_name in os.listdir(backup_folder):
         if os.path.isdir(dir_path):  # 如果是文件夹
             shutil.rmtree(dir_path)
 
+# 删除 zip_output_folder文件夹 中的文件
+for filename in os.listdir(zip_output_folder):
+    file_path = os.path.join(zip_output_folder, filename)
+    os.remove(file_path)
+
 # 将每个文件夹分别压缩并输出到 zip_output_folder 文件夹 (AList挂载的本地网盘文件夹)
 files = os.listdir(backup_folder)  # 获取路径下的子文件 (夹) 列表
 zip_list = []  # 储存生成了哪些 zip 压缩包
@@ -90,14 +105,14 @@ for file in files:
         zip_output_path = os.path.join(zip_output_folder, file)
         zip_output_path = zip_output_path + ".zip"
         zip_list.append(file + ".zip")
-        # zip "-o" 选项为覆盖同名文件
-        subprocess.run(["zip", "-r", "-o", zip_output_path, file_path])
+        # zip 中 "-o" 是将压缩文件内的所有文件的最新变动时间设为压缩的时间(输出位置有同名压缩包时会追加变化而不会冲突, 体积将越来越大)
+        subprocess.run(["zip", "-r", "-q", zip_output_path, file_path])
 
-# 删除 zip_output_folder文件夹 中不在 zip_list列表 中的 过时文件(可能是由于远程仓库改名字导致的)
-for filename in os.listdir(zip_output_folder):
-    file_path = os.path.join(zip_output_folder, filename)
-    if filename not in zip_list:
-        os.remove(file_path)
+# # 删除 zip_output_folder文件夹 中不在 zip_list列表 中的 过时文件(可能是由于远程仓库改名字导致的)
+# for filename in os.listdir(zip_output_folder):
+#     file_path = os.path.join(zip_output_folder, filename)
+#     if filename not in zip_list:
+#         os.remove(file_path)
 
 print("所有仓库已备份或更新到本地文件夹！")
 
