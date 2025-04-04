@@ -48,8 +48,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       hexo-renderer-pandoc:
-        specifier: ^0.4.0
-        version: 0.4.0
+        specifier: ^0.5.0
+        version: 0.5.0
       hexo-renderer-pug:
         specifier: ^3.0.0
         version: 3.0.0
@@ -895,8 +895,8 @@ packages:
     resolution: {integrity: sha512-qCjE1IdwgDgv65qyb0KMVCwCdSVAkH0vwAe9XihjvaKWkmb9dtt8DgErOdqCXn0HReSyWiEVP2BrLRj3gyHwOQ==}
     engines: {node: '>=12'}
 
-  hexo-renderer-pandoc@0.4.0:
-    resolution: {integrity: sha512-e913A2EZbhwbIfg+QvYUalEPHtK5qs9Rqj3ZrsQ3cYTbbiETMWhUQ7bzSlgUeh639eL0UDuBmv2vrEqj5RBchg==}
+  hexo-renderer-pandoc@0.5.0:
+    resolution: {integrity: sha512-DpofabKugXwbGZdYYoVTXq8QDUd2ZSWwcqJKp4OZfLtu8sflETEb8R+Yyx1dT7S3SXlz++GV4/kwCnAhAvNVrg==}
 
   hexo-renderer-pug@3.0.0:
     resolution: {integrity: sha512-PmbLx6VkNv+mPLOe97OC4F8iTzTuj665dSYN7bZKArd4M/q7gb2tNs29VGuAOC50i9tvWY2f+tPQimf0GZ9Hyw==}
@@ -2908,7 +2908,7 @@ snapshots:
     dependencies:
       ejs: 3.1.10
 
-  hexo-renderer-pandoc@0.4.0: {}
+  hexo-renderer-pandoc@0.5.0: {}
 
   hexo-renderer-pug@3.0.0:
     dependencies:
