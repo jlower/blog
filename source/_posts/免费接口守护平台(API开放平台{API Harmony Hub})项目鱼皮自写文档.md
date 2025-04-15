@@ -12,12 +12,10 @@ description:
 
 ---
 
-
-
 **背景**
 
 1．前端开发需要用到后台接口
-2．使用现成的系统的功能(http://api.btstu.cn/)
+2．使用现成的系统的功能(<http://api.btstu.cn/>)
 
 **做一个API接口开放平台:**
 
@@ -81,10 +79,10 @@ description:
 
 **选择umi版本**
 
->   ```shell
->   ? 🐂 使用 umi@4 还是 umi@3 ? (Use arrow keys)
->   ❯ umi@4
->     umi@3
+> ```shell
+> ? 🐂 使用 umi@4 还是 umi@3 ? (Use arrow keys)
+> ❯ umi@4
+>   umi@3
 >   ```
 
 选择4版的
@@ -101,7 +99,7 @@ yarn 或者  npm install
 
 这里我遇到了一个坑，登录页面无法登录 状态码404
 
-在GitHub issue里找到了解决方案：https://github.com/ant-design/ant-design-pro/issues/10446
+在GitHub issue里找到了解决方案：<https://github.com/ant-design/ant-design-pro/issues/10446>
 
 ![image-20230112105451611](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230112105451611.png)
 
@@ -115,13 +113,13 @@ yarn 或者  npm install
 
    > 解决方法：执行
    >
-   >   yarn add eslint-config-prettier
+   > yarn add eslint-config-prettier
    >
-   >   yarn add eslint-plugin-unicorn
+   > yarn add eslint-plugin-unicorn
    >
-   >   然后修改node_modules/@umijs/lint/dist/config/eslint/index.js
+   > 然后修改node_modules/@umijs/lint/dist/config/eslint/index.js
    >
-   >   // es2022: true把这个注释掉就可以解决问题
+   > // es2022: true把这个注释掉就可以解决问题
 
    ![image-20230112110408577](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230112110408577.png)
 
@@ -291,16 +289,16 @@ import java.io.Serializable;
 @Data
 public class InterfaceInfoAddRequest implements Serializable {
 
-	/**
-	 * 名称
-	 */
-	private String name;
+ /**
+  * 名称
+  */
+ private String name;
 
-	/**
-	 * 描述
-	 */
-	private String description;
-	
+ /**
+  * 描述
+  */
+ private String description;
+ 
   // ...
   // ...
   // ...
@@ -320,36 +318,36 @@ public class InterfaceInfoAddRequest implements Serializable {
  */
 @Service
 public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, InterfaceInfo>
-		implements InterfaceInfoService {
+  implements InterfaceInfoService {
 
-	@Override
-	public void validInterfaceInfo(InterfaceInfo interfaceInfo, boolean add) {
-		if (interfaceInfo == null) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
+ @Override
+ public void validInterfaceInfo(InterfaceInfo interfaceInfo, boolean add) {
+  if (interfaceInfo == null) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
 
-		String name = interfaceInfo.getName();
-		String description = interfaceInfo.getDescription();
-		String url = interfaceInfo.getUrl();
-		String requestHeader = interfaceInfo.getRequestHeader();
-		String responseHeader = interfaceInfo.getResponseHeader();
-		Integer status = interfaceInfo.getStatus();
-		String method = interfaceInfo.getMethod();
-		Long userId = interfaceInfo.getUserId();
+  String name = interfaceInfo.getName();
+  String description = interfaceInfo.getDescription();
+  String url = interfaceInfo.getUrl();
+  String requestHeader = interfaceInfo.getRequestHeader();
+  String responseHeader = interfaceInfo.getResponseHeader();
+  Integer status = interfaceInfo.getStatus();
+  String method = interfaceInfo.getMethod();
+  Long userId = interfaceInfo.getUserId();
 
-		// 创建时，所有参数必须非空
-		if (add) {
-			if (StringUtils.isAnyBlank(name, description, url, requestHeader, responseHeader, method) || ObjectUtils.anyNull(userId, status)) {
-				throw new BusinessException(ErrorCode.PARAMS_ERROR);
-			}
-		}
-		if (StringUtils.isNotBlank(name) && name.length() > 256) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR, "名字过长");
-		}
-		if (StringUtils.isNotBlank(description) && description.length() > 512) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR, "描述过长");
-		}
-	}
+  // 创建时，所有参数必须非空
+  if (add) {
+   if (StringUtils.isAnyBlank(name, description, url, requestHeader, responseHeader, method) || ObjectUtils.anyNull(userId, status)) {
+    throw new BusinessException(ErrorCode.PARAMS_ERROR);
+   }
+  }
+  if (StringUtils.isNotBlank(name) && name.length() > 256) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR, "名字过长");
+  }
+  if (StringUtils.isNotBlank(description) && description.length() > 512) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR, "描述过长");
+  }
+ }
 
 }
 
@@ -369,8 +367,6 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
 
 ![image-20230112193957977](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230112193957977.png)
 
-
-
 > 搜索**prettier** 打√ 美化代码
 
 ![image-20230112194107217](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230112194107217.png)
@@ -387,7 +383,7 @@ public class InterfaceInfoServiceImpl extends ServiceImpl<InterfaceInfoMapper, I
 
 ![image-20230112195321863](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230112195321863.png)
 
-在地址栏输入http://localhost:7529/api/v3/api-docs
+在地址栏输入<http://localhost:7529/api/v3/api-docs>
 
 发现如下所示
 
@@ -810,7 +806,7 @@ export type RequestData<T> = {
 所以刚刚简单替换请求方法的代码我们重新写
 
 ```ts
-			request={async (
+   request={async (
          params: {
          pageSize?: number;
          current?: number;
@@ -972,8 +968,8 @@ export default CreateModal;
    * @zh-CN 新建窗口的弹窗
    *  */
   const [createModalOpen, handleModalOpen] = useState<boolean>(false);
-	
- 	const columns: ProColumns<API.InterfaceInfo>[] = [
+ 
+  const columns: ProColumns<API.InterfaceInfo>[] = [
     {
       title: 'id',
       dataIndex: 'id',
@@ -982,8 +978,8 @@ export default CreateModal;
    // ...
   ]
 
-	// ...
-	<CreateModal
+ // ...
+ <CreateModal
     columns={columns}
     onCancel={() => handleModalOpen(false)}
     onSubmit={() => {}}
@@ -1107,7 +1103,7 @@ const CreateModal: React.FC<Props> = (props) => {
 
 ```ts
 <Modal title={'更新接口'} footer={null} open={open} onCancel={() => onCancel?.()}>
-		  // ...
+    // ...
   );
 ```
 
@@ -1264,7 +1260,7 @@ export default UpdateModal;
 **删除按钮**
 
 ```tsx
-// 在columns中添加删除按钮	
+// 在columns中添加删除按钮 
 {
       title: '操作',
       dataIndex: 'option',
@@ -1326,8 +1322,6 @@ export default UpdateModal;
 
 ---
 
-
-
 **创建项目**
 
 快速创建一个spring Boot项目 勾选SpringWeb、Lombok、Spring Boot DevTools
@@ -1362,20 +1356,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/name")
 public class NameController {
 
-	@GetMapping("/{name}")
-	public String getNameByGet(@PathVariable(value = "name") String name) {
-		return "发送GET请求 你的名字是：" + name;
-	}
+ @GetMapping("/{name}")
+ public String getNameByGet(@PathVariable(value = "name") String name) {
+  return "发送GET请求 你的名字是：" + name;
+ }
 
-	@PostMapping()
-	public String getNameByPost(@RequestParam(value = "name") String name) {
-		return "发送POST请求 你的名字是：" + name;
-	}
+ @PostMapping()
+ public String getNameByPost(@RequestParam(value = "name") String name) {
+  return "发送POST请求 你的名字是：" + name;
+ }
 
-	@PostMapping("/user")
-	public String getNameByPostWithJson(@RequestBody User user) {
-		return "发送POST请求 JSON中你的名字是：" + user.getName();
-	}
+ @PostMapping("/user")
+ public String getNameByPostWithJson(@RequestBody User user) {
+  return "发送POST请求 JSON中你的名字是：" + user.getName();
+ }
 
 }
 
@@ -1393,8 +1387,6 @@ server:
 ## 2、调用接口
 
 ---
-
-
 
 **几种HTTP的调用方式：**
 
@@ -1435,29 +1427,29 @@ import java.util.HashMap;
  * @date: 2023/1/15
  */
 public class XuanApiClient {
-	public String getNameByGet(String name) {
-		return HttpUtil.get("http://localhost:8123/api/name/" + name);
-	}
+ public String getNameByGet(String name) {
+  return HttpUtil.get("http://localhost:8123/api/name/" + name);
+ }
 
-	public String getNameByPost(String name) {
-		// 可以单独传入http参数，这样参数会自动做URL编码，拼接在URL中
-		HashMap<String, Object> paramMap = new HashMap<>();
-		paramMap.put("name", name);
-		return HttpUtil.post("http://localhost:8123/api/name", paramMap);
-	}
+ public String getNameByPost(String name) {
+  // 可以单独传入http参数，这样参数会自动做URL编码，拼接在URL中
+  HashMap<String, Object> paramMap = new HashMap<>();
+  paramMap.put("name", name);
+  return HttpUtil.post("http://localhost:8123/api/name", paramMap);
+ }
 
-	public String getNameByPostWithJson(User user) {
-		String json = JSONUtil.toJsonStr(user);
-		HttpResponse response = HttpRequest.post("http://localhost:8123/api/name/user")
-				.body(json)
-				.execute();
-		System.out.println("response = " + response);
-		System.out.println("status = " + response.getStatus());
-		if (response.isOk()) {
-			return response.body();
-		}
-		return "fail";
-	}
+ public String getNameByPostWithJson(User user) {
+  String json = JSONUtil.toJsonStr(user);
+  HttpResponse response = HttpRequest.post("http://localhost:8123/api/name/user")
+    .body(json)
+    .execute();
+  System.out.println("response = " + response);
+  System.out.println("status = " + response.getStatus());
+  if (response.isOk()) {
+   return response.body();
+  }
+  return "fail";
+ }
 
 }
 ```
@@ -1469,8 +1461,6 @@ public class XuanApiClient {
 # 四、API签名认证
 
 ---
-
-
 
 **本质：**
 
@@ -1593,10 +1583,10 @@ import cn.hutool.crypto.digest.DigestUtil;
  * @date: 2023/1/15
  */
 public class SignUtil {
-	public static String getSign(String body, String secretKey) {
-		String content = body + "." + secretKey;
-		return DigestUtil.md5Hex(content);
-	}
+ public static String getSign(String body, String secretKey) {
+  String content = body + "." + secretKey;
+  return DigestUtil.md5Hex(content);
+ }
 }
 
 ```
@@ -1606,41 +1596,41 @@ public class SignUtil {
 ```java
 public class XuanApiClient {
 
-	private final String accessKey;
-	private final String secretKey;
+ private final String accessKey;
+ private final String secretKey;
 
-	public XuanApiClient(String accessKey, String secretKey) {
-		this.accessKey = accessKey;
-		this.secretKey = secretKey;
-	}
+ public XuanApiClient(String accessKey, String secretKey) {
+  this.accessKey = accessKey;
+  this.secretKey = secretKey;
+ }
   
-	// ...
+ // ...
 
-	public String getNameByPostWithJson(User user) {
-		String json = JSONUtil.toJsonStr(user);
-		HttpResponse response = HttpRequest.post("http://localhost:8123/api/name/user")
-				.addHeaders(getHeaders(json))
-				.body(json)
-				.execute();
-		System.out.println("response = " + response);
-		System.out.println("status = " + response.getStatus());
-		if (response.isOk()) {
-			return response.body();
-		}
-		return "fail";
-	}
+ public String getNameByPostWithJson(User user) {
+  String json = JSONUtil.toJsonStr(user);
+  HttpResponse response = HttpRequest.post("http://localhost:8123/api/name/user")
+    .addHeaders(getHeaders(json))
+    .body(json)
+    .execute();
+  System.out.println("response = " + response);
+  System.out.println("status = " + response.getStatus());
+  if (response.isOk()) {
+   return response.body();
+  }
+  return "fail";
+ }
 
-	private Map<String, String> getHeaders(String body) throws UnsupportedEncodingException {
-		Map<String, String> header = new HashMap<>();
-		header.put("accessKey", accessKey);
-		header.put("sign", SignUtil.getSign(body, secretKey));
-		// 防止中文乱码
-		header.put("body", URLEncoder.encode(body, StandardCharsets.UTF_8.name()));
-		header.put("nonce", RandomUtil.randomNumbers(5));
-		header.put("timestamp", String.valueOf(System.currentTimeMillis()));
-		return header;
-	}
-	
+ private Map<String, String> getHeaders(String body) throws UnsupportedEncodingException {
+  Map<String, String> header = new HashMap<>();
+  header.put("accessKey", accessKey);
+  header.put("sign", SignUtil.getSign(body, secretKey));
+  // 防止中文乱码
+  header.put("body", URLEncoder.encode(body, StandardCharsets.UTF_8.name()));
+  header.put("nonce", RandomUtil.randomNumbers(5));
+  header.put("timestamp", String.valueOf(System.currentTimeMillis()));
+  return header;
+ }
+ 
 }
 ```
 
@@ -1669,37 +1659,37 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/name")
 public class NameController {
 
-	@PostMapping("/user")
-	public String getNameByPostWithJson(@RequestBody User user, HttpServletRequest request) throws UnsupportedEncodingException {
-		String accessKey = request.getHeader("accessKey");
-		// 防止中文乱码
-		String body = URLDecoder.decode(request.getHeader("body"), StandardCharsets.UTF_8.name());
-		String sign = request.getHeader("sign");
-		String nonce = request.getHeader("nonce");
-		String timestamp = request.getHeader("timestamp");
-		boolean hasBlank = StrUtil.hasBlank(accessKey, body, sign, nonce, timestamp);
-		// 判断是否有空
-		if (hasBlank) {
-			return "无权限";
-		}
-		// TODO 使用accessKey去数据库查询secretKey
-		// 假设查到的secret是abc 进行签名得到sign
-		String secretKey = "abc";
-		String sign1 = SignUtil.getSign(body, secretKey);
-		if (!StrUtil.equals(sign, sign1)) {
-			return "无权限";
-		}
-		// TODO 判断随机数nonce
-		// 时间戳是否为数字
-		if (!NumberUtil.isNumber(timestamp)) {
-			return "无权限";
-		}
-		// 五分钟内的请求有效
-		if (System.currentTimeMillis() - Long.parseLong(timestamp) > 5 * 60 * 1000) {
-			return "无权限";
-		}
-		return "发送POST请求 JSON中你的名字是：" + user.getName();
-	}
+ @PostMapping("/user")
+ public String getNameByPostWithJson(@RequestBody User user, HttpServletRequest request) throws UnsupportedEncodingException {
+  String accessKey = request.getHeader("accessKey");
+  // 防止中文乱码
+  String body = URLDecoder.decode(request.getHeader("body"), StandardCharsets.UTF_8.name());
+  String sign = request.getHeader("sign");
+  String nonce = request.getHeader("nonce");
+  String timestamp = request.getHeader("timestamp");
+  boolean hasBlank = StrUtil.hasBlank(accessKey, body, sign, nonce, timestamp);
+  // 判断是否有空
+  if (hasBlank) {
+   return "无权限";
+  }
+  // TODO 使用accessKey去数据库查询secretKey
+  // 假设查到的secret是abc 进行签名得到sign
+  String secretKey = "abc";
+  String sign1 = SignUtil.getSign(body, secretKey);
+  if (!StrUtil.equals(sign, sign1)) {
+   return "无权限";
+  }
+  // TODO 判断随机数nonce
+  // 时间戳是否为数字
+  if (!NumberUtil.isNumber(timestamp)) {
+   return "无权限";
+  }
+  // 五分钟内的请求有效
+  if (System.currentTimeMillis() - Long.parseLong(timestamp) > 5 * 60 * 1000) {
+   return "无权限";
+  }
+  return "发送POST请求 JSON中你的名字是：" + user.getName();
+ }
 
 }
 
@@ -1741,13 +1731,13 @@ public class NameController {
 @Configuration
 @ConfigurationProperties(prefix = "xuan.api.client")
 public class XuanApiClientConfig {
-	private String accessKey;
-	private String secretKey;
+ private String accessKey;
+ private String secretKey;
 
-	@Bean
-	public XuanApiClient xuanApiClient() {
-		return new XuanApiClient(accessKey, secretKey);
-	}
+ @Bean
+ public XuanApiClient xuanApiClient() {
+  return new XuanApiClient(accessKey, secretKey);
+ }
 
 }
 
@@ -1896,7 +1886,6 @@ yml中secret不正确也会返回 "无权限"
    }
    
    ```
-
 
 3. **在controller里编写上下线代码**
 
@@ -2199,7 +2188,7 @@ yml中secret不正确也会返回 "无权限"
 
 <font color='red'>因为后端新增了代码，所以还是使用openapi自动生成前端方法</font>
 
-跟之前操作一样，去http://localhost:7529/api/v3/api-docs复制json到config/oneapi.json 然后运行openapi
+跟之前操作一样，去<http://localhost:7529/api/v3/api-docs复制json到config/oneapi.json> 然后运行openapi
 
 ![image-20230117121821846](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230117121821846.png)
 
@@ -2261,8 +2250,6 @@ yml中secret不正确也会返回 "无权限"
 
 ---
 
-
-
 前端浏览接口，查看接口文档，申请签名（注册）
 
 ### 1、浏览接口
@@ -2307,7 +2294,7 @@ const Index: React.FC = () => {
       message.error('请求失败,' + error.message);
     }
   };
-	
+ 
   useEffect(() => {
     loadData();
   }, []);
@@ -2519,50 +2506,50 @@ export default Index;
 
 ```java
 @Override
-	public long userRegister(String userAccount, String userPassword, String checkPassword) {
-		// 1. 校验
-		if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
-		}
-		if (userAccount.length() < 4) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户账号过短");
-		}
-		if (userPassword.length() < 8 || checkPassword.length() < 8) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户密码过短");
-		}
-		// 密码和校验密码相同
-		if (!userPassword.equals(checkPassword)) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR, "两次输入的密码不一致");
-		}
-		synchronized (userAccount.intern()) {
-			// 账户不能重复
-			LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-			lambdaQueryWrapper.eq(User::getUserAccount, userAccount);
-			long count = userMapper.selectCount(lambdaQueryWrapper);
-			if (count > 0) {
-				throw new BusinessException(ErrorCode.PARAMS_ERROR, "账号重复");
-			}
-			// 2. 签名
-			String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
-			// 3. 分配accessKey、secretKey
-			String accessKey = "cli_" + DigestUtil.md5Hex(SALT + userAccount + RandomUtil.randomNumbers(4));
-			String secretKey = DigestUtil.md5Hex(SALT + userAccount + RandomUtil.randomNumbers(8));
-			// 4. 插入数据
-			User user = new User();
-			user.setUserAccount(userAccount);
-			user.setUserPassword(encryptPassword);
-			user.setAccessKey(accessKey);
-			user.setSecretKey(secretKey);
-			boolean saveResult = this.save(user);
-			if (!saveResult) {
-				throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");
-			}
-			return user.getId();
-		}
-	}
+ public long userRegister(String userAccount, String userPassword, String checkPassword) {
+  // 1. 校验
+  if (StringUtils.isAnyBlank(userAccount, userPassword, checkPassword)) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR, "参数为空");
+  }
+  if (userAccount.length() < 4) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户账号过短");
+  }
+  if (userPassword.length() < 8 || checkPassword.length() < 8) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户密码过短");
+  }
+  // 密码和校验密码相同
+  if (!userPassword.equals(checkPassword)) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR, "两次输入的密码不一致");
+  }
+  synchronized (userAccount.intern()) {
+   // 账户不能重复
+   LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+   lambdaQueryWrapper.eq(User::getUserAccount, userAccount);
+   long count = userMapper.selectCount(lambdaQueryWrapper);
+   if (count > 0) {
+    throw new BusinessException(ErrorCode.PARAMS_ERROR, "账号重复");
+   }
+   // 2. 签名
+   String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
+   // 3. 分配accessKey、secretKey
+   String accessKey = "cli_" + DigestUtil.md5Hex(SALT + userAccount + RandomUtil.randomNumbers(4));
+   String secretKey = DigestUtil.md5Hex(SALT + userAccount + RandomUtil.randomNumbers(8));
+   // 4. 插入数据
+   User user = new User();
+   user.setUserAccount(userAccount);
+   user.setUserPassword(encryptPassword);
+   user.setAccessKey(accessKey);
+   user.setSecretKey(secretKey);
+   boolean saveResult = this.save(user);
+   if (!saveResult) {
+    throw new BusinessException(ErrorCode.SYSTEM_ERROR, "注册失败，数据库错误");
+   }
+   return user.getId();
+  }
+ }
 ```
 
-前往http://localhost:7529/api/doc.html注册。 分配成功~
+前往<http://localhost:7529/api/doc.html注册。> 分配成功~
 
 ![image-20230118174821662](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230118174821662.png)
 
@@ -2649,15 +2636,15 @@ import java.io.Serializable;
 @Data
 public class InvokeInterfaceRequest implements Serializable {
 
-	/**
-	 * 主键
-	 */
-	private Long id;
+ /**
+  * 主键
+  */
+ private Long id;
 
-	/**
-	 * 请求参数
-	 */
-	private String requestParams;
+ /**
+  * 请求参数
+  */
+ private String requestParams;
 
 }
 ```
@@ -2666,43 +2653,41 @@ controller类新增方法
 
 ```java
 /**
-	 * 在线调用接口
-	 *
-	 * @param invokeInterfaceRequest 携带id、请求参数
-	 * @return data
-	 */
-	@PostMapping("/invoke")
-	public BaseResponse<Object> invokeInterface(@RequestBody InvokeInterfaceRequest invokeInterfaceRequest, HttpServletRequest request) throws UnsupportedEncodingException {
-		if (invokeInterfaceRequest == null || invokeInterfaceRequest.getId() < 0) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		// 判断接口是否存在
-		long id = invokeInterfaceRequest.getId();
-		InterfaceInfo interfaceInfo = interfaceInfoService.getById(id);
-		if (interfaceInfo == null) {
-			throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
-		}
-		if (interfaceInfo.getStatus() != InterfaceInfoStatusEnum.ONLINE.getValue()) {
-			throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口未上线");
-		}
-		// 得到当前用户
-		User loginUser = userService.getLoginUser(request);
-		String accessKey = loginUser.getAccessKey();
-		String secretKey = loginUser.getSecretKey();
-		XuanApiClient client = new XuanApiClient(accessKey, secretKey);
-		// 先写死请求
-		String userRequestParams = invokeInterfaceRequest.getRequestParams();
-		com.xuan.model.User user = JSONUtil.toBean(userRequestParams, com.xuan.model.User.class);
-		String result = client.getNameByPostWithJson(user);
-		return ResultUtils.success(result);
-	}
+  * 在线调用接口
+  *
+  * @param invokeInterfaceRequest 携带id、请求参数
+  * @return data
+  */
+ @PostMapping("/invoke")
+ public BaseResponse<Object> invokeInterface(@RequestBody InvokeInterfaceRequest invokeInterfaceRequest, HttpServletRequest request) throws UnsupportedEncodingException {
+  if (invokeInterfaceRequest == null || invokeInterfaceRequest.getId() < 0) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  // 判断接口是否存在
+  long id = invokeInterfaceRequest.getId();
+  InterfaceInfo interfaceInfo = interfaceInfoService.getById(id);
+  if (interfaceInfo == null) {
+   throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+  }
+  if (interfaceInfo.getStatus() != InterfaceInfoStatusEnum.ONLINE.getValue()) {
+   throw new BusinessException(ErrorCode.SYSTEM_ERROR, "接口未上线");
+  }
+  // 得到当前用户
+  User loginUser = userService.getLoginUser(request);
+  String accessKey = loginUser.getAccessKey();
+  String secretKey = loginUser.getSecretKey();
+  XuanApiClient client = new XuanApiClient(accessKey, secretKey);
+  // 先写死请求
+  String userRequestParams = invokeInterfaceRequest.getRequestParams();
+  com.xuan.model.User user = JSONUtil.toBean(userRequestParams, com.xuan.model.User.class);
+  String result = client.getNameByPostWithJson(user);
+  return ResultUtils.success(result);
+ }
 ```
 
 ## 3、修改前端
 
 ---
-
-
 
 Ant Design中 Form组件 onFinish： 提交表单且数据验证成功后回调事件
 
@@ -2876,7 +2861,7 @@ create table if not exists api_platform.`user_interface_info`
     `user_id` bigint not null comment '调用用户Id',
     `interface_info_id` bigint not null comment '接口Id',
     `total_num` int default 0 not null comment '总调用次数',
-	  `left_num` int default 0 not null comment '剩余调用次数',
+   `left_num` int default 0 not null comment '剩余调用次数',
     `status` int default 0 not null comment '0-正常 ，1-禁用',
     `create_time` datetime default CURRENT_TIMESTAMP not null comment '创建时间',
     `update_time` datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
@@ -2906,7 +2891,7 @@ public class UserInterfaceInfo implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-		...
+  ...
 
     /**
      * 是否删除(0-未删, 1-已删)
@@ -2940,164 +2925,164 @@ package com.xuan.project.controller;
 @Slf4j
 public class UserInterfaceInfoController {
 
-	@Resource
-	private UserInterfaceInfoService userInterfaceInfoService;
+ @Resource
+ private UserInterfaceInfoService userInterfaceInfoService;
 
-	@Resource
-	private UserService userService;
+ @Resource
+ private UserService userService;
 
-	// region 增删改查
+ // region 增删改查
 
-	/**
-	 * 创建
-	 *
-	 * @param userInterfaceInfoAddRequest
-	 * @param request
-	 * @return
-	 */
-	@PostMapping("/add")
-	@AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
-	public BaseResponse<Long> addUserInterfaceInfo(@RequestBody UserInterfaceInfoAddRequest userInterfaceInfoAddRequest, HttpServletRequest request) {
-		if (userInterfaceInfoAddRequest == null) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		UserInterfaceInfo userInterfaceInfo = new UserInterfaceInfo();
-		BeanUtils.copyProperties(userInterfaceInfoAddRequest, userInterfaceInfo);
-		// 校验
-		userInterfaceInfoService.validUserInterfaceInfo(userInterfaceInfo, true);
-		// 设置当前用户id
-		User loginUser = userService.getLoginUser(request);
-		userInterfaceInfo.setUserId(loginUser.getId());
-		boolean result = userInterfaceInfoService.save(userInterfaceInfo);
-		if (!result) {
-			throw new BusinessException(ErrorCode.OPERATION_ERROR);
-		}
-		long newUserInterfaceInfoId = userInterfaceInfo.getId();
-		return ResultUtils.success(newUserInterfaceInfoId);
-	}
+ /**
+  * 创建
+  *
+  * @param userInterfaceInfoAddRequest
+  * @param request
+  * @return
+  */
+ @PostMapping("/add")
+ @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+ public BaseResponse<Long> addUserInterfaceInfo(@RequestBody UserInterfaceInfoAddRequest userInterfaceInfoAddRequest, HttpServletRequest request) {
+  if (userInterfaceInfoAddRequest == null) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  UserInterfaceInfo userInterfaceInfo = new UserInterfaceInfo();
+  BeanUtils.copyProperties(userInterfaceInfoAddRequest, userInterfaceInfo);
+  // 校验
+  userInterfaceInfoService.validUserInterfaceInfo(userInterfaceInfo, true);
+  // 设置当前用户id
+  User loginUser = userService.getLoginUser(request);
+  userInterfaceInfo.setUserId(loginUser.getId());
+  boolean result = userInterfaceInfoService.save(userInterfaceInfo);
+  if (!result) {
+   throw new BusinessException(ErrorCode.OPERATION_ERROR);
+  }
+  long newUserInterfaceInfoId = userInterfaceInfo.getId();
+  return ResultUtils.success(newUserInterfaceInfoId);
+ }
 
-	/**
-	 * 删除
-	 *
-	 * @param deleteRequest
-	 * @param request
-	 * @return
-	 */
-	@PostMapping("/delete")
-	public BaseResponse<Boolean> deleteUserInterfaceInfo(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
-		if (deleteRequest == null || deleteRequest.getId() <= 0) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		User user = userService.getLoginUser(request);
-		long id = deleteRequest.getId();
-		// 判断是否存在
-		UserInterfaceInfo oldUserInterfaceInfo = userInterfaceInfoService.getById(id);
-		if (oldUserInterfaceInfo == null) {
-			throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
-		}
-		// 仅本人或管理员可删除
-		if (!oldUserInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
-			throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
-		}
-		boolean b = userInterfaceInfoService.removeById(id);
-		return ResultUtils.success(b);
-	}
+ /**
+  * 删除
+  *
+  * @param deleteRequest
+  * @param request
+  * @return
+  */
+ @PostMapping("/delete")
+ public BaseResponse<Boolean> deleteUserInterfaceInfo(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
+  if (deleteRequest == null || deleteRequest.getId() <= 0) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  User user = userService.getLoginUser(request);
+  long id = deleteRequest.getId();
+  // 判断是否存在
+  UserInterfaceInfo oldUserInterfaceInfo = userInterfaceInfoService.getById(id);
+  if (oldUserInterfaceInfo == null) {
+   throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+  }
+  // 仅本人或管理员可删除
+  if (!oldUserInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
+   throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
+  }
+  boolean b = userInterfaceInfoService.removeById(id);
+  return ResultUtils.success(b);
+ }
 
-	/**
-	 * 更新
-	 *
-	 * @param userInterfaceInfoUpdateRequest
-	 * @param request
-	 * @return
-	 */
-	@PostMapping("/update")
-	public BaseResponse<Boolean> updateUserInterfaceInfo(@RequestBody UserInterfaceInfoUpdateRequest userInterfaceInfoUpdateRequest,
-	                                                     HttpServletRequest request) {
-		if (userInterfaceInfoUpdateRequest == null || userInterfaceInfoUpdateRequest.getId() <= 0) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		UserInterfaceInfo userInterfaceInfo = new UserInterfaceInfo();
-		BeanUtils.copyProperties(userInterfaceInfoUpdateRequest, userInterfaceInfo);
-		// 参数校验
-		userInterfaceInfoService.validUserInterfaceInfo(userInterfaceInfo, false);
-		User user = userService.getLoginUser(request);
-		System.out.println(user);
-		long id = userInterfaceInfoUpdateRequest.getId();
-		// 判断是否存在
-		UserInterfaceInfo oldUserInterfaceInfo = userInterfaceInfoService.getById(id);
-		if (oldUserInterfaceInfo == null) {
-			throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
-		}
-		// 仅本人或管理员可修改
-		userService.isAdmin(request);
-		if (!oldUserInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
-			throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
-		}
-		boolean result = userInterfaceInfoService.updateById(userInterfaceInfo);
-		return ResultUtils.success(result);
-	}
+ /**
+  * 更新
+  *
+  * @param userInterfaceInfoUpdateRequest
+  * @param request
+  * @return
+  */
+ @PostMapping("/update")
+ public BaseResponse<Boolean> updateUserInterfaceInfo(@RequestBody UserInterfaceInfoUpdateRequest userInterfaceInfoUpdateRequest,
+                                                      HttpServletRequest request) {
+  if (userInterfaceInfoUpdateRequest == null || userInterfaceInfoUpdateRequest.getId() <= 0) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  UserInterfaceInfo userInterfaceInfo = new UserInterfaceInfo();
+  BeanUtils.copyProperties(userInterfaceInfoUpdateRequest, userInterfaceInfo);
+  // 参数校验
+  userInterfaceInfoService.validUserInterfaceInfo(userInterfaceInfo, false);
+  User user = userService.getLoginUser(request);
+  System.out.println(user);
+  long id = userInterfaceInfoUpdateRequest.getId();
+  // 判断是否存在
+  UserInterfaceInfo oldUserInterfaceInfo = userInterfaceInfoService.getById(id);
+  if (oldUserInterfaceInfo == null) {
+   throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+  }
+  // 仅本人或管理员可修改
+  userService.isAdmin(request);
+  if (!oldUserInterfaceInfo.getUserId().equals(user.getId()) && !userService.isAdmin(request)) {
+   throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
+  }
+  boolean result = userInterfaceInfoService.updateById(userInterfaceInfo);
+  return ResultUtils.success(result);
+ }
 
-	/**
-	 * 根据 id 获取
-	 *
-	 * @param id
-	 * @return
-	 */
-	@GetMapping("/get")
-	public BaseResponse<UserInterfaceInfo> getUserInterfaceInfoById(long id) {
-		if (id <= 0) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		UserInterfaceInfo userInterfaceInfo = userInterfaceInfoService.getById(id);
-		return ResultUtils.success(userInterfaceInfo);
-	}
+ /**
+  * 根据 id 获取
+  *
+  * @param id
+  * @return
+  */
+ @GetMapping("/get")
+ public BaseResponse<UserInterfaceInfo> getUserInterfaceInfoById(long id) {
+  if (id <= 0) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  UserInterfaceInfo userInterfaceInfo = userInterfaceInfoService.getById(id);
+  return ResultUtils.success(userInterfaceInfo);
+ }
 
-	/**
-	 * 获取列表（仅管理员可使用）
-	 *
-	 * @param userInterfaceInfoQueryRequest
-	 * @return
-	 */
-	@AuthCheck(mustRole = "admin")
-	@GetMapping("/list")
-	public BaseResponse<List<UserInterfaceInfo>> listUserInterfaceInfo(UserInterfaceInfoQueryRequest userInterfaceInfoQueryRequest) {
-		UserInterfaceInfo userInterfaceInfoQuery = new UserInterfaceInfo();
-		if (userInterfaceInfoQueryRequest != null) {
-			BeanUtils.copyProperties(userInterfaceInfoQueryRequest, userInterfaceInfoQuery);
-		}
-		QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>(userInterfaceInfoQuery);
-		List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoService.list(queryWrapper);
-		return ResultUtils.success(userInterfaceInfoList);
-	}
+ /**
+  * 获取列表（仅管理员可使用）
+  *
+  * @param userInterfaceInfoQueryRequest
+  * @return
+  */
+ @AuthCheck(mustRole = "admin")
+ @GetMapping("/list")
+ public BaseResponse<List<UserInterfaceInfo>> listUserInterfaceInfo(UserInterfaceInfoQueryRequest userInterfaceInfoQueryRequest) {
+  UserInterfaceInfo userInterfaceInfoQuery = new UserInterfaceInfo();
+  if (userInterfaceInfoQueryRequest != null) {
+   BeanUtils.copyProperties(userInterfaceInfoQueryRequest, userInterfaceInfoQuery);
+  }
+  QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>(userInterfaceInfoQuery);
+  List<UserInterfaceInfo> userInterfaceInfoList = userInterfaceInfoService.list(queryWrapper);
+  return ResultUtils.success(userInterfaceInfoList);
+ }
 
-	/**
-	 * 分页获取列表
-	 *
-	 * @param userInterfaceInfoQueryRequest
-	 * @param request
-	 * @return
-	 */
-	@GetMapping("/list/page")
-	public BaseResponse<Page<UserInterfaceInfo>> listUserInterfaceInfoByPage(UserInterfaceInfoQueryRequest userInterfaceInfoQueryRequest, HttpServletRequest request) {
-		if (userInterfaceInfoQueryRequest == null) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		UserInterfaceInfo userInterfaceInfoQuery = new UserInterfaceInfo();
-		BeanUtils.copyProperties(userInterfaceInfoQueryRequest, userInterfaceInfoQuery);
-		long current = userInterfaceInfoQueryRequest.getCurrent();
-		long size = userInterfaceInfoQueryRequest.getPageSize();
-		String sortField = userInterfaceInfoQueryRequest.getSortField();
-		String sortOrder = userInterfaceInfoQueryRequest.getSortOrder();
-		// 限制爬虫
-		if (size > 50) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>(userInterfaceInfoQuery);
-		queryWrapper.orderBy(StringUtils.isNotBlank(sortField),
-				sortOrder.equals(CommonConstant.SORT_ORDER_ASC), sortField);
-		Page<UserInterfaceInfo> userInterfaceInfoPage = userInterfaceInfoService.page(new Page<>(current, size), queryWrapper);
-		return ResultUtils.success(userInterfaceInfoPage);
-	}
+ /**
+  * 分页获取列表
+  *
+  * @param userInterfaceInfoQueryRequest
+  * @param request
+  * @return
+  */
+ @GetMapping("/list/page")
+ public BaseResponse<Page<UserInterfaceInfo>> listUserInterfaceInfoByPage(UserInterfaceInfoQueryRequest userInterfaceInfoQueryRequest, HttpServletRequest request) {
+  if (userInterfaceInfoQueryRequest == null) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  UserInterfaceInfo userInterfaceInfoQuery = new UserInterfaceInfo();
+  BeanUtils.copyProperties(userInterfaceInfoQueryRequest, userInterfaceInfoQuery);
+  long current = userInterfaceInfoQueryRequest.getCurrent();
+  long size = userInterfaceInfoQueryRequest.getPageSize();
+  String sortField = userInterfaceInfoQueryRequest.getSortField();
+  String sortOrder = userInterfaceInfoQueryRequest.getSortOrder();
+  // 限制爬虫
+  if (size > 50) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  QueryWrapper<UserInterfaceInfo> queryWrapper = new QueryWrapper<>(userInterfaceInfoQuery);
+  queryWrapper.orderBy(StringUtils.isNotBlank(sortField),
+    sortOrder.equals(CommonConstant.SORT_ORDER_ASC), sortField);
+  Page<UserInterfaceInfo> userInterfaceInfoPage = userInterfaceInfoService.page(new Page<>(current, size), queryWrapper);
+  return ResultUtils.success(userInterfaceInfoPage);
+ }
 
 }
 
@@ -3114,20 +3099,20 @@ public class UserInterfaceInfoController {
 这里只是过流程，实际应该多校验
 
 ```java
-	@Override
-	public boolean invokeInterfaceCount(long userId, long interfaceInfoId) {
-		if (userId <= 0 || interfaceInfoId <= 0) {
-			throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
-		}
+ @Override
+ public boolean invokeInterfaceCount(long userId, long interfaceInfoId) {
+  if (userId <= 0 || interfaceInfoId <= 0) {
+   throw new BusinessException(ErrorCode.NOT_FOUND_ERROR);
+  }
 
-		LambdaUpdateWrapper<UserInterfaceInfo> updateWrapper = new LambdaUpdateWrapper<>();
-		updateWrapper.eq(UserInterfaceInfo::getUserId, userId)
-				.eq(UserInterfaceInfo::getInterfaceInfoId, interfaceInfoId)
-				.gt(UserInterfaceInfo::getLeftNum, 0)
-				.setSql("left_num = left_num -1, total_num = total_num + 1");
+  LambdaUpdateWrapper<UserInterfaceInfo> updateWrapper = new LambdaUpdateWrapper<>();
+  updateWrapper.eq(UserInterfaceInfo::getUserId, userId)
+    .eq(UserInterfaceInfo::getInterfaceInfoId, interfaceInfoId)
+    .gt(UserInterfaceInfo::getLeftNum, 0)
+    .setSql("left_num = left_num -1, total_num = total_num + 1");
 
-		return update(updateWrapper);
-	}
+  return update(updateWrapper);
+ }
 ```
 
 <font color='red' >注意：其实这里应该添加事务，添加锁</font>
@@ -3185,8 +3170,6 @@ public class UserInterfaceInfoController {
 
 ---
 
-
-
 **路由**
 
 起到转发的作用，比如有接口A和接口B,网关会记录这些信息，根据用户访问的地址和参数，转发请求到对应的接口（服务器/集群）
@@ -3196,7 +3179,7 @@ public class UserInterfaceInfoController {
 /a => 接口A
 /b => 接口B
 
-https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories>
 
 **负载均衡**
 
@@ -3214,7 +3197,7 @@ uri从固定地址改成b:xx
 
 网关统一处理跨域，不用在每个项目单独处理
 
-https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#cors-configuration
+<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#cors-configuration>
 
 **统一业务处理**
 
@@ -3228,42 +3211,42 @@ https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#cors-co
 
 灰度发布，比如上线新接口，先给新接口分配 20%流量，老接口80% ,再慢慢调整比例
 
-https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-weight-route-predicate-factory
+<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-weight-route-predicate-factory>
 
 **流量染色**
 
 区分用户来源
 
 给请求（流量）添加一些标识，一般是设置请求头中，添加新的请求头
-https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-addrequestheader-gatewayfilter-factory
+<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-addrequestheader-gatewayfilter-factory>
 
-**全局染色**：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#default-filters
+**全局染色**：<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#default-filters>
 
 **接口保护**
 
 1. 限制请求
 
-   https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#requestheadersiz-gatewayfilter-factory
+   <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#requestheadersiz-gatewayfilter-factory>
 
 2. 信息脱敏
 
-   https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-removerequestheader-gatewayfilter-factory
+   <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-removerequestheader-gatewayfilter-factory>
 
 3. 降级（熔断） 进行兜底
 
-   https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#fallback-headers
+   <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#fallback-headers>
 
 4. 限流
 
-   https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-requestratelimiter-gatewayfilter-factory
+   <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-requestratelimiter-gatewayfilter-factory>
 
 5. 超时时间 超时就中断
 
-   https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#http-timeouts-configuration
+   <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#http-timeouts-configuration>
 
 6. 重试（业务保护）：
 
-   https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-retry-gatewayfilter-factory
+   <https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-retry-gatewayfilter-factory>
 
 **统一日志**
 
@@ -3273,21 +3256,21 @@ https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-add
 
 将下游项目的文档进行聚合，在一个页面统一查看
 
-建议用：https://doc.xiaominfo.com/docs/middleware-sources/aggregation-introduction
+建议用：<https://doc.xiaominfo.com/docs/middleware-sources/aggregation-introduction>
 
 **网关的分类**
 
 - **全局网关（接入层网关）**作用是负载均衡、请求日志等，不和业务逻辑绑定
 - **业务网关（微服务网关）**会有一些业务逻辑，作用是将请求转发到不同的业务/项目/接口/服务
 
-参考文章：https://blog.csdn.net/qq_21040559/article/details/122961395
+参考文章：<https://blog.csdn.net/qq_21040559/article/details/122961395>
 
 **实现**
 
 1. **Nginx** （全局网关），**Kong网关**（API网关），  **编程成本相对较高**
 2. **Spring Cloud Gateway**（取代了Zuul）性能高 可以用java代码来写逻辑 适于学习
 
-网关技术选型：https://zhuanlan.zhihu.com/p/500587132
+网关技术选型：<https://zhuanlan.zhihu.com/p/500587132>
 
 # 十一、Spring Cloud Gateway
 
@@ -3295,9 +3278,9 @@ https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-add
 
 全部内容基本来自官网
 
-官网：https://spring.io/projects/spring-cloud-gateway
+官网：<https://spring.io/projects/spring-cloud-gateway>
 
-官方文档：https://docs.spring.io/spring-cloud-gateway/docs/current/reference//html/
+官方文档：<https://docs.spring.io/spring-cloud-gateway/docs/current/reference//html/>
 
 **新建项目**
 
@@ -3308,28 +3291,28 @@ https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-add
 ```java
 @SpringBootApplication
 public class DemogatewayApplication {
-	@Bean
-	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes()
-			.route("path_route", r -> r.path("/get")
-				.uri("http://httpbin.org"))
-			.route("host_route", r -> r.host("*.myhost.org")
-				.uri("http://httpbin.org"))
-			.route("rewrite_route", r -> r.host("*.rewrite.org")
-				.filters(f -> f.rewritePath("/foo/(?<segment>.*)", "/${segment}"))
-				.uri("http://httpbin.org"))
-			.route("hystrix_route", r -> r.host("*.hystrix.org")
-				.filters(f -> f.hystrix(c -> c.setName("slowcmd")))
-				.uri("http://httpbin.org"))
-			.route("hystrix_fallback_route", r -> r.host("*.hystrixfallback.org")
-				.filters(f -> f.hystrix(c -> c.setName("slowcmd").setFallbackUri("forward:/hystrixfallback")))
-				.uri("http://httpbin.org"))
-			.route("limit_route", r -> r
-				.host("*.limited.org").and().path("/anything/**")
-				.filters(f -> f.requestRateLimiter(c -> c.setRateLimiter(redisRateLimiter())))
-				.uri("http://httpbin.org"))
-			.build();
-	}
+ @Bean
+ public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+  return builder.routes()
+   .route("path_route", r -> r.path("/get")
+    .uri("http://httpbin.org"))
+   .route("host_route", r -> r.host("*.myhost.org")
+    .uri("http://httpbin.org"))
+   .route("rewrite_route", r -> r.host("*.rewrite.org")
+    .filters(f -> f.rewritePath("/foo/(?<segment>.*)", "/${segment}"))
+    .uri("http://httpbin.org"))
+   .route("hystrix_route", r -> r.host("*.hystrix.org")
+    .filters(f -> f.hystrix(c -> c.setName("slowcmd")))
+    .uri("http://httpbin.org"))
+   .route("hystrix_fallback_route", r -> r.host("*.hystrixfallback.org")
+    .filters(f -> f.hystrix(c -> c.setName("slowcmd").setFallbackUri("forward:/hystrixfallback")))
+    .uri("http://httpbin.org"))
+   .route("limit_route", r -> r
+    .host("*.limited.org").and().path("/anything/**")
+    .filters(f -> f.requestRateLimiter(c -> c.setRateLimiter(redisRateLimiter())))
+    .uri("http://httpbin.org"))
+   .build();
+ }
 }
 ```
 
@@ -3347,17 +3330,17 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class XuanapiGatewayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(XuanapiGatewayApplication.class, args);
-	}
+ public static void main(String[] args) {
+  SpringApplication.run(XuanapiGatewayApplication.class, args);
+ }
 
-	@Bean
-	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes()
-				.route("to_baidu", r -> r.path("/baidu")
-						.uri("http://www.baidu.com/"))
-				.build();
-	}
+ @Bean
+ public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
+  return builder.routes()
+    .route("to_baidu", r -> r.path("/baidu")
+      .uri("http://www.baidu.com/"))
+    .build();
+ }
 }
 
 ```
@@ -3383,7 +3366,6 @@ public class XuanapiGatewayApplication {
   of [`GatewayFilter`](https://github.com/spring-cloud/spring-cloud-gateway/tree/main/spring-cloud-gateway-server/src/main/java/org/springframework/cloud/gateway/filter/GatewayFilter.java)
   that have been constructed with a specific factory. Here, you can modify requests and responses before or after
   sending the downstream request.
-
 
 1. 路由（根据什么条件，转发到哪里）
 
@@ -3441,7 +3423,7 @@ public class XuanapiGatewayApplication {
 
 ---
 
-官网地址:https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories
+官网地址:<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gateway-request-predicates-factories>
 
 **目录**
 
@@ -3643,7 +3625,7 @@ spring:
 
 ---
 
-**官网文档**：https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories
+**官网文档**：<https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#gatewayfilter-factories>
 
 **基本功能**：对请求头、请求参数、响应头的增删改查
 1.添加清求头
@@ -3687,7 +3669,7 @@ spring:
             - AddRequestParameter=name, mars
 ```
 
-在地址栏访问：http://localhost:8090/api/name/xuan
+在地址栏访问：<http://localhost:8090/api/name/xuan>
 
 得到结果如下
 
@@ -4026,7 +4008,7 @@ spring:
 
 **小作业：**
 
-通过阅读源码：https://spring.io/projects/spring-cloud-gateway/#samples 来了解gateway编程式开发
+通过阅读源码：<https://spring.io/projects/spring-cloud-gateway/#samples> 来了解gateway编程式开发
 
 # 十二、项目整合网关
 
@@ -4073,13 +4055,11 @@ spring:
 
 ---
 
-
-
 使用Path匹配断言
 
-所有前缀为：/api/ 的请求进行转发，转发到http://localhost:8123/api
+所有前缀为：/api/ 的请求进行转发，转发到<http://localhost:8123/api>
 
-比如请求网关：http://localhost:8090/api/name/?name=archer转发到 http://localhost:8123/api/name/?name=archer
+比如请求网关：<http://localhost:8090/api/name/?name=archer转发到> <http://localhost:8123/api/name/?name=archer>
 
 ```yaml
 server:  
@@ -4118,16 +4098,16 @@ package com.xuan.filter;
 @Component
 public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
-	@Override
-	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		log.info("custom global filter");
-		return chain.filter(exchange);
-	}
+ @Override
+ public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+  log.info("custom global filter");
+  return chain.filter(exchange);
+ }
 
-	@Override
-	public int getOrder() {
-		return -1;
-	}
+ @Override
+ public int getOrder() {
+  return -1;
+ }
 
 }
 
@@ -4139,17 +4119,17 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
 ```java
 @Override
-	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		// 1. 请求日志
-		ServerHttpRequest request = exchange.getRequest();
-		log.info("请求id: {}", request.getId());
-		log.info("请求路径: {}", request.getPath());
-		log.info("请求方法: {}", request.getMethod());
-		log.info("请求参数: {}", request.getQueryParams());
-		log.info("请求头: {}", request.getHeaders());
-		log.info("请求地址: {}", request.getRemoteAddress());
-		return chain.filter(exchange);
-	}
+ public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+  // 1. 请求日志
+  ServerHttpRequest request = exchange.getRequest();
+  log.info("请求id: {}", request.getId());
+  log.info("请求路径: {}", request.getPath());
+  log.info("请求方法: {}", request.getMethod());
+  log.info("请求参数: {}", request.getQueryParams());
+  log.info("请求头: {}", request.getHeaders());
+  log.info("请求地址: {}", request.getRemoteAddress());
+  return chain.filter(exchange);
+ }
 ```
 
 ![image-20230201204627949](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230201204627949.png)
@@ -4161,22 +4141,22 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 如果这个来源地址不是白名单里面的，我们就直接设个状态码（这里设置403），然后拦截掉**response.setComplete()** 可以理解为设置响应完成
 
 ```java
-private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "127.0.0.2");	
+private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "127.0.0.2"); 
 
 @Override
-	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		// 1. 请求日志
-		ServerHttpRequest request = exchange.getRequest();
-		String remoteAddress = request.getRemoteAddress().getHostString();
-		log.info("请求地址: {}", remoteAddress);
-		// 2. 访问控制 - 黑白名单
-		if (!IP_WHITE_LIST.contains(remoteAddress)){
-			ServerHttpResponse response = exchange.getResponse();
-			response.setStatusCode(HttpStatus.FORBIDDEN);
-			return response.setComplete();
-		}
-		return chain.filter(exchange);
-	}
+ public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+  // 1. 请求日志
+  ServerHttpRequest request = exchange.getRequest();
+  String remoteAddress = request.getRemoteAddress().getHostString();
+  log.info("请求地址: {}", remoteAddress);
+  // 2. 访问控制 - 黑白名单
+  if (!IP_WHITE_LIST.contains(remoteAddress)){
+   ServerHttpResponse response = exchange.getResponse();
+   response.setStatusCode(HttpStatus.FORBIDDEN);
+   return response.setComplete();
+  }
+  return chain.filter(exchange);
+ }
 ```
 
 将IP_WHITE_LIST设置为黑名单 测试被拒
@@ -4196,74 +4176,74 @@ private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "12
 ```
 
 ```java
-	@Override
-	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		// 1. 请求日志
-		ServerHttpRequest request = exchange.getRequest();
-		log.info("请求id: {}", request.getId());
-		log.info("请求路径: {}", request.getPath());
-		log.info("请求方法: {}", request.getMethod());
-		log.info("请求参数: {}", request.getQueryParams());
-		log.info("请求头: {}", request.getHeaders());
-		String remoteAddress = request.getRemoteAddress().getHostString();
-		log.info("请求地址: {}", remoteAddress);
+ @Override
+ public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+  // 1. 请求日志
+  ServerHttpRequest request = exchange.getRequest();
+  log.info("请求id: {}", request.getId());
+  log.info("请求路径: {}", request.getPath());
+  log.info("请求方法: {}", request.getMethod());
+  log.info("请求参数: {}", request.getQueryParams());
+  log.info("请求头: {}", request.getHeaders());
+  String remoteAddress = request.getRemoteAddress().getHostString();
+  log.info("请求地址: {}", remoteAddress);
 
-		// 2. 访问控制 - 黑白名单
-		if (!IP_WHITE_LIST.contains(remoteAddress)) {
-			return handleNoAuth(exchange.getResponse());
-		}
+  // 2. 访问控制 - 黑白名单
+  if (!IP_WHITE_LIST.contains(remoteAddress)) {
+   return handleNoAuth(exchange.getResponse());
+  }
 
-		// 3. 用户鉴权
-		HttpHeaders headers = request.getHeaders();
-		String accessKey = headers.getFirst("accessKey");
-		// 防止中文乱码
-		String body = null;
-		try {
-			body = URLDecoder.decode(headers.getFirst("body"), StandardCharsets.UTF_8.name());
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(e);
-		}
-		String sign = headers.getFirst("sign");
-		String nonce = headers.getFirst("nonce");
-		String timestamp = headers.getFirst("timestamp");
-		boolean hasBlank = StrUtil.hasBlank(accessKey, body, sign, nonce, timestamp);
-		// 判断是否有空
-		if (hasBlank) {
-			return handleInvokeError(exchange.getResponse());
-		}
-		// TODO 使用accessKey去数据库查询secretKey
-		// 假设查到的secret是abc 进行签名得到sign
-		String secretKey = "abc";
-		String sign1 = SignUtil.getSign(body, secretKey);
-		if (!StrUtil.equals(sign, sign1)) {
-			return handleInvokeError(exchange.getResponse());
-		}
-		// TODO 判断随机数nonce
-		// 时间戳是否为数字
-		if (!NumberUtil.isNumber(timestamp)) {
-			return handleInvokeError(exchange.getResponse());
-		}
-		// 五分钟内的请求有效
-		if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
-			return handleInvokeError(exchange.getResponse());
-		}
-		// 4. 请求的模拟接口是否存在？
-		// 5. 请求转发，调用模拟接口
-		// 6. 响应日志
-		// 7. 调用成功，接口调用次数+1
-		// 8. 调用失败，返回规范错误码
-		return chain.filter(exchange);
-	}
+  // 3. 用户鉴权
+  HttpHeaders headers = request.getHeaders();
+  String accessKey = headers.getFirst("accessKey");
+  // 防止中文乱码
+  String body = null;
+  try {
+   body = URLDecoder.decode(headers.getFirst("body"), StandardCharsets.UTF_8.name());
+  } catch (UnsupportedEncodingException e) {
+   throw new RuntimeException(e);
+  }
+  String sign = headers.getFirst("sign");
+  String nonce = headers.getFirst("nonce");
+  String timestamp = headers.getFirst("timestamp");
+  boolean hasBlank = StrUtil.hasBlank(accessKey, body, sign, nonce, timestamp);
+  // 判断是否有空
+  if (hasBlank) {
+   return handleInvokeError(exchange.getResponse());
+  }
+  // TODO 使用accessKey去数据库查询secretKey
+  // 假设查到的secret是abc 进行签名得到sign
+  String secretKey = "abc";
+  String sign1 = SignUtil.getSign(body, secretKey);
+  if (!StrUtil.equals(sign, sign1)) {
+   return handleInvokeError(exchange.getResponse());
+  }
+  // TODO 判断随机数nonce
+  // 时间戳是否为数字
+  if (!NumberUtil.isNumber(timestamp)) {
+   return handleInvokeError(exchange.getResponse());
+  }
+  // 五分钟内的请求有效
+  if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
+   return handleInvokeError(exchange.getResponse());
+  }
+  // 4. 请求的模拟接口是否存在？
+  // 5. 请求转发，调用模拟接口
+  // 6. 响应日志
+  // 7. 调用成功，接口调用次数+1
+  // 8. 调用失败，返回规范错误码
+  return chain.filter(exchange);
+ }
 
-	private Mono<Void> handleNoAuth(ServerHttpResponse response) {
-		response.setStatusCode(HttpStatus.FORBIDDEN);
-		return response.setComplete();
-	}
+ private Mono<Void> handleNoAuth(ServerHttpResponse response) {
+  response.setStatusCode(HttpStatus.FORBIDDEN);
+  return response.setComplete();
+ }
 
-	private Mono<Void> handleInvokeError(ServerHttpResponse response) {
-		response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
-		return response.setComplete();
-	}
+ private Mono<Void> handleInvokeError(ServerHttpResponse response) {
+  response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+  return response.setComplete();
+ }
 ```
 
 ### 4、判读请求的接口是否存在
@@ -4277,17 +4257,17 @@ private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "12
 ### 5、请求转发 调用模拟接口
 
 ```java
-		// 5. 请求转发，调用模拟接口
-		Mono<Void> filter = chain.filter(exchange);
-		// 6. 响应日志
-		log.info("响应状态码：{}", response.getStatusCode());
-		if (response.getStatusCode() == HttpStatus.OK) {
-			// 7. 调用成功，接口调用次数+1
-		} else {
-			// 8. 调用失败，返回规范错误码
-			return handleInvokeError(response);
-		}
-		return filter;
+  // 5. 请求转发，调用模拟接口
+  Mono<Void> filter = chain.filter(exchange);
+  // 6. 响应日志
+  log.info("响应状态码：{}", response.getStatusCode());
+  if (response.getStatusCode() == HttpStatus.OK) {
+   // 7. 调用成功，接口调用次数+1
+  } else {
+   // 8. 调用失败，返回规范错误码
+   return handleInvokeError(response);
+  }
+  return filter;
 ```
 
 接下来需要修改客户端的地址，让它经过网关
@@ -4307,79 +4287,79 @@ private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "12
 原因是：chain.filter 是个异步操作，理解为前端的 promise
 
 解決方案：利用response 装饰者，增强原有 response 的处理能力
-参考博客：https://blog.csdn.net/qq_19636353/article/details/126759522（以这个为主）
+参考博客：<https://blog.csdn.net/qq_19636353/article/details/126759522（以这个为主）>
 其他参考：
-• https://blog.csdn.net/mo_67595943/article/details/124667975
-• https://blog.csdn.net/weixin_43933728/article/details/121359727
-• https://blog.csdn.net/zx156955/article/details/121670681
-• https://blog.csdn.net/qq_39529562/article/details/108911983
+• <https://blog.csdn.net/mo_67595943/article/details/124667975>
+• <https://blog.csdn.net/weixin_43933728/article/details/121359727>
+• <https://blog.csdn.net/zx156955/article/details/121670681>
+• <https://blog.csdn.net/qq_39529562/article/details/108911983>
 
 这些代码不用记忆 搜「Spring Cloud Gateway 响应日志」就有了
 
-复制https://blog.csdn.net/qq_19636353/article/details/126759522 中的Response log代码。并改写
+复制<https://blog.csdn.net/qq_19636353/article/details/126759522> 中的Response log代码。并改写
 
 ```java
 /**
-	 * 处理响应
-	 *
-	 * @param exchange
-	 * @param chain
-	 * @return
-	 */
-	private Mono<Void> handleResponse(ServerWebExchange exchange, GatewayFilterChain chain) {
-		try {
-			// 从交换机拿到原始response
-			ServerHttpResponse originalResponse = exchange.getResponse();
-			// 缓冲区工厂 拿到缓存数据
-			DataBufferFactory bufferFactory = originalResponse.bufferFactory();
-			// 拿到状态码
-			HttpStatus statusCode = originalResponse.getStatusCode();
+  * 处理响应
+  *
+  * @param exchange
+  * @param chain
+  * @return
+  */
+ private Mono<Void> handleResponse(ServerWebExchange exchange, GatewayFilterChain chain) {
+  try {
+   // 从交换机拿到原始response
+   ServerHttpResponse originalResponse = exchange.getResponse();
+   // 缓冲区工厂 拿到缓存数据
+   DataBufferFactory bufferFactory = originalResponse.bufferFactory();
+   // 拿到状态码
+   HttpStatus statusCode = originalResponse.getStatusCode();
 
-			if (statusCode == HttpStatus.OK) {
-				// 装饰，增强能力
-				ServerHttpResponseDecorator decoratedResponse = new ServerHttpResponseDecorator(originalResponse) {
-					// 等调用完转发的接口后才会执行
-					@Override
-					public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
-						log.info("body instanceof Flux: {}", (body instanceof Flux));
-						// 对象是响应式的
-						if (body instanceof Flux) {
-							// 我们拿到真正的body
-							Flux<? extends DataBuffer> fluxBody = Flux.from(body);
-							// 往返回值里面写数据
-							// 拼接字符串
-							return super.writeWith(fluxBody.map(dataBuffer -> {
-								// TODO 7. 调用成功，接口调用次数+1
-								// data从这个content中读取
-								byte[] content = new byte[dataBuffer.readableByteCount()];
-								dataBuffer.read(content);
-								DataBufferUtils.release(dataBuffer);// 释放掉内存
-								// 6.构建日志
-								List<Object> rspArgs = new ArrayList<>();
-								rspArgs.add(originalResponse.getStatusCode());
-								String data = new String(content, StandardCharsets.UTF_8);// data
-								rspArgs.add(data);
-								log.info("<--- status:{} data:{}"// data
-										, rspArgs.toArray());// log.info("<-- {} {}", originalResponse.getStatusCode(), data);
-								return bufferFactory.wrap(content);
-							}));
-						} else {
-							// 8.调用失败返回错误状态码
-							log.error("<--- {} 响应code异常", getStatusCode());
-						}
-						return super.writeWith(body);
-					}
-				};
-				// 设置 response 对象为装饰过的
-				return chain.filter(exchange.mutate().response(decoratedResponse).build());
-			}
-			return chain.filter(exchange);// 降级处理返回数据
-		} catch (Exception e) {
-			log.error("gateway log exception.\n" + e);
-			return chain.filter(exchange);
-		}
+   if (statusCode == HttpStatus.OK) {
+    // 装饰，增强能力
+    ServerHttpResponseDecorator decoratedResponse = new ServerHttpResponseDecorator(originalResponse) {
+     // 等调用完转发的接口后才会执行
+     @Override
+     public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
+      log.info("body instanceof Flux: {}", (body instanceof Flux));
+      // 对象是响应式的
+      if (body instanceof Flux) {
+       // 我们拿到真正的body
+       Flux<? extends DataBuffer> fluxBody = Flux.from(body);
+       // 往返回值里面写数据
+       // 拼接字符串
+       return super.writeWith(fluxBody.map(dataBuffer -> {
+        // TODO 7. 调用成功，接口调用次数+1
+        // data从这个content中读取
+        byte[] content = new byte[dataBuffer.readableByteCount()];
+        dataBuffer.read(content);
+        DataBufferUtils.release(dataBuffer);// 释放掉内存
+        // 6.构建日志
+        List<Object> rspArgs = new ArrayList<>();
+        rspArgs.add(originalResponse.getStatusCode());
+        String data = new String(content, StandardCharsets.UTF_8);// data
+        rspArgs.add(data);
+        log.info("<--- status:{} data:{}"// data
+          , rspArgs.toArray());// log.info("<-- {} {}", originalResponse.getStatusCode(), data);
+        return bufferFactory.wrap(content);
+       }));
+      } else {
+       // 8.调用失败返回错误状态码
+       log.error("<--- {} 响应code异常", getStatusCode());
+      }
+      return super.writeWith(body);
+     }
+    };
+    // 设置 response 对象为装饰过的
+    return chain.filter(exchange.mutate().response(decoratedResponse).build());
+   }
+   return chain.filter(exchange);// 降级处理返回数据
+  } catch (Exception e) {
+   log.error("gateway log exception.\n" + e);
+   return chain.filter(exchange);
+  }
 
-	}
+ }
 ```
 
 # 十二、RPC
@@ -4422,7 +4402,7 @@ RPC（Remote Procedure Call）远程过程调用
 
 ---
 
-官网：https://cn.dubbo.apache.org/zh/
+官网：<https://cn.dubbo.apache.org/zh/>
 
 常见框架还有GRPC、TRPC
 
@@ -4435,7 +4415,7 @@ RPC（Remote Procedure Call）远程过程调用
 2. DL(接口调用语言)：创建一个公共的接口定义文件，服务提供者和消费者读取这个文件。优点是跨语言，所有的框架都认识
 
 底层是Triple协议：
-https://dubbo.incubator.apache.org/zh/docs3-v2/java-sdk/concepts-and-architecture/triple/
+<https://dubbo.incubator.apache.org/zh/docs3-v2/java-sdk/concepts-and-architecture/triple/>
 
 ### 2、快速使用 （Spring Boot）
 
@@ -4511,8 +4491,6 @@ sh startup.sh -m standalone
 
 ---
 
-
-
 **添加依赖**
 
 在api-platform-backend、api-platform-gateway中添加如下依赖
@@ -4567,7 +4545,7 @@ RpcDemoServer.java
 
 ```java
 public interface RpcDemoService {
-	String sayHello(String name);
+ String sayHello(String name);
 }
 ```
 
@@ -4576,11 +4554,11 @@ RpcDemoServerImpl.java
 ```java
 @DubboService
 public class RpcDemoServiceImpl implements RpcDemoService {
-	@Override
-	public String sayHello(String name) {
-		System.out.println("Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
-		return "Hello " + name;
-	}
+ @Override
+ public String sayHello(String name) {
+  System.out.println("Hello " + name + ", request from consumer: " + RpcContext.getContext().getRemoteAddress());
+  return "Hello " + name;
+ }
 }
 ```
 
@@ -4593,7 +4571,7 @@ Application主类新增@EnableDubbo注解
 public class MyApplication {
 
     public static void main(String[] args) {
-       	SpringApplication.run(MyApplication.class, args);
+        SpringApplication.run(MyApplication.class, args);
     }
 
 }
@@ -4616,13 +4594,13 @@ public class MyApplication {
 @SpringBootTest
 class ApiPlatformGatewayApplicationTests {
 
-	@DubboReference
-	private RpcDemoService rpcDemoService;
+ @DubboReference
+ private RpcDemoService rpcDemoService;
 
-	@Test
-	void testRpc() {
-		System.out.println(rpcDemoService.sayHello("world"));
-	}
+ @Test
+ void testRpc() {
+  System.out.println(rpcDemoService.sayHello("world"));
+ }
 
 }
 
@@ -4635,8 +4613,6 @@ class ApiPlatformGatewayApplicationTests {
 ## 3、抽象公共服务
 
 ---
-
-
 
 项目名：api-platform-common
 目的是让方法、实体类在多个项目间复用，减少重复编写
@@ -4790,7 +4766,6 @@ class ApiPlatformGatewayApplicationTests {
    }
    ```
 
-
 4. 打包
 
    使用maven install打包
@@ -4804,7 +4779,6 @@ class ApiPlatformGatewayApplicationTests {
            <version>0.0.1</version>
        </dependency>
    ```
-
 
 5. 编写impl进行测试
 
@@ -4923,18 +4897,18 @@ class ApiPlatformGatewayApplicationTests {
 @DubboService
 public class InnerInterfaceInfoServiceImpl implements InnerInterfaceInfoService {
 
-	@Resource
-	private InterfaceInfoMapper interfaceInfoMapper;
+ @Resource
+ private InterfaceInfoMapper interfaceInfoMapper;
 
-	@Override
-	public InterfaceInfo getInvokeInterfaceInfo(String url, String method) {
-		if (StrUtil.hasBlank(url, method)) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		LambdaQueryWrapper<InterfaceInfo> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-		lambdaQueryWrapper.eq(InterfaceInfo::getUrl, url).eq(InterfaceInfo::getMethod, method);
-		return interfaceInfoMapper.selectOne(lambdaQueryWrapper);
-	}
+ @Override
+ public InterfaceInfo getInvokeInterfaceInfo(String url, String method) {
+  if (StrUtil.hasBlank(url, method)) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  LambdaQueryWrapper<InterfaceInfo> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+  lambdaQueryWrapper.eq(InterfaceInfo::getUrl, url).eq(InterfaceInfo::getMethod, method);
+  return interfaceInfoMapper.selectOne(lambdaQueryWrapper);
+ }
 
 }
 
@@ -4950,18 +4924,18 @@ public class InnerInterfaceInfoServiceImpl implements InnerInterfaceInfoService 
 @DubboService
 public class InnerUserServiceImpl implements InnerUserService {
 
-	@Resource
-	private UserMapper userMapper;
+ @Resource
+ private UserMapper userMapper;
 
-	@Override
-	public User getInvokeUser(String accessKey) {
-		if (StrUtil.isBlank(accessKey)) {
-			throw new BusinessException(ErrorCode.PARAMS_ERROR);
-		}
-		LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-		lambdaQueryWrapper.eq(User::getAccessKey, accessKey);
-		return userMapper.selectOne(lambdaQueryWrapper);
-	}
+ @Override
+ public User getInvokeUser(String accessKey) {
+  if (StrUtil.isBlank(accessKey)) {
+   throw new BusinessException(ErrorCode.PARAMS_ERROR);
+  }
+  LambdaQueryWrapper<User> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+  lambdaQueryWrapper.eq(User::getAccessKey, accessKey);
+  return userMapper.selectOne(lambdaQueryWrapper);
+ }
 }
 
 ```
@@ -4982,183 +4956,183 @@ public class InnerUserServiceImpl implements InnerUserService {
 @Component
 public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
-	@DubboReference
-	private InnerUserService innerUserService;
+ @DubboReference
+ private InnerUserService innerUserService;
 
-	@DubboReference
-	private InnerInterfaceInfoService innerInterfaceInfoService;
+ @DubboReference
+ private InnerInterfaceInfoService innerInterfaceInfoService;
 
-	@DubboReference
-	private InnerUserInterfaceInfoService innerUserInterfaceInfoService;
+ @DubboReference
+ private InnerUserInterfaceInfoService innerUserInterfaceInfoService;
 
-	private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "127.0.0.2");
+ private static final List<String> IP_WHITE_LIST = Arrays.asList("127.0.0.1", "127.0.0.2");
 
-	private static final long FIVE_MINUTES = 5 * 60 * 1000L;
+ private static final long FIVE_MINUTES = 5 * 60 * 1000L;
 
-	private static final String INTERFACE_HOST = "http://localhost:8090";
+ private static final String INTERFACE_HOST = "http://localhost:8090";
 
-	@Override
-	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		// 1. 请求日志
-		ServerHttpRequest request = exchange.getRequest();
-		String path = INTERFACE_HOST + request.getPath().value();
-		String method = Objects.requireNonNull(request.getMethod()).toString();
-		log.info("请求id: {}", request.getId());
-		log.info("请求路径: {}", path);
-		log.info("请求方法: {}", method);
-		log.info("请求参数: {}", request.getQueryParams());
-		log.info("请求头: {}", request.getHeaders());
-		String remoteAddress = Objects.requireNonNull(request.getRemoteAddress()).getHostString();
-		log.info("请求地址: {}", remoteAddress);
+ @Override
+ public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+  // 1. 请求日志
+  ServerHttpRequest request = exchange.getRequest();
+  String path = INTERFACE_HOST + request.getPath().value();
+  String method = Objects.requireNonNull(request.getMethod()).toString();
+  log.info("请求id: {}", request.getId());
+  log.info("请求路径: {}", path);
+  log.info("请求方法: {}", method);
+  log.info("请求参数: {}", request.getQueryParams());
+  log.info("请求头: {}", request.getHeaders());
+  String remoteAddress = Objects.requireNonNull(request.getRemoteAddress()).getHostString();
+  log.info("请求地址: {}", remoteAddress);
 
-		// 2. 访问控制 - 黑白名单
-		ServerHttpResponse response = exchange.getResponse();
-		if (!IP_WHITE_LIST.contains(remoteAddress)) {
-			return handleNoAuth(response);
-		}
+  // 2. 访问控制 - 黑白名单
+  ServerHttpResponse response = exchange.getResponse();
+  if (!IP_WHITE_LIST.contains(remoteAddress)) {
+   return handleNoAuth(response);
+  }
 
-		// 3. 用户鉴权
-		HttpHeaders headers = request.getHeaders();
-		String accessKey = headers.getFirst("accessKey");
-		// 防止中文乱码
-		String body = null;
-		try {
-			body = URLDecoder.decode(headers.getFirst("body"), StandardCharsets.UTF_8.name());
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException(e);
-		}
-		String sign = headers.getFirst("sign");
-		String nonce = headers.getFirst("nonce");
-		String timestamp = headers.getFirst("timestamp");
-		boolean hasBlank = StrUtil.hasBlank(accessKey, body, sign, nonce, timestamp);
-		// 判断是否有空
-		if (hasBlank) {
-			return handleInvokeError(response);
-		}
-		// 使用accessKey去数据库查询secretKey
-		User invokeUser = null;
-		try {
-			invokeUser = innerUserService.getInvokeUser(accessKey);
-		} catch (Exception e) {
-			log.error("getInvokeUser error", e);
-		}
-		if (invokeUser == null) {
-			return handleInvokeError(response);
-		}
-		String secretKey = invokeUser.getSecretKey();
-		String sign1 = SignUtil.getSign(body, secretKey);
-		if (!StrUtil.equals(sign, sign1)) {
-			return handleInvokeError(response);
-		}
-		// TODO 判断随机数nonce
-		// 时间戳是否为数字
-		if (!NumberUtil.isNumber(timestamp)) {
-			return handleInvokeError(response);
-		}
-		// 五分钟内的请求有效
-		if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
-			return handleInvokeError(response);
-		}
-		// 4. 请求的模拟接口是否存在
-		InterfaceInfo invokeInterfaceInfo = null;
-		try {
-			invokeInterfaceInfo = innerInterfaceInfoService.getInvokeInterfaceInfo(path, method);
-		} catch (Exception e) {
-			log.error("getInvokeInterfaceInfo error", e);
-		}
-		if (invokeInterfaceInfo == null) {
-			return handleInvokeError(response);
-		}
-		//  是否有调用次数
-		if (!innerUserInterfaceInfoService.hasInvokeNum(invokeUser.getId(), invokeInterfaceInfo.getId())) {
-			return handleInvokeError(response);
-		}
-		// 5. 请求转发，调用模拟接口
-		return handleResponse(exchange, chain, invokeUser.getId(), invokeInterfaceInfo.getId());
+  // 3. 用户鉴权
+  HttpHeaders headers = request.getHeaders();
+  String accessKey = headers.getFirst("accessKey");
+  // 防止中文乱码
+  String body = null;
+  try {
+   body = URLDecoder.decode(headers.getFirst("body"), StandardCharsets.UTF_8.name());
+  } catch (UnsupportedEncodingException e) {
+   throw new RuntimeException(e);
+  }
+  String sign = headers.getFirst("sign");
+  String nonce = headers.getFirst("nonce");
+  String timestamp = headers.getFirst("timestamp");
+  boolean hasBlank = StrUtil.hasBlank(accessKey, body, sign, nonce, timestamp);
+  // 判断是否有空
+  if (hasBlank) {
+   return handleInvokeError(response);
+  }
+  // 使用accessKey去数据库查询secretKey
+  User invokeUser = null;
+  try {
+   invokeUser = innerUserService.getInvokeUser(accessKey);
+  } catch (Exception e) {
+   log.error("getInvokeUser error", e);
+  }
+  if (invokeUser == null) {
+   return handleInvokeError(response);
+  }
+  String secretKey = invokeUser.getSecretKey();
+  String sign1 = SignUtil.getSign(body, secretKey);
+  if (!StrUtil.equals(sign, sign1)) {
+   return handleInvokeError(response);
+  }
+  // TODO 判断随机数nonce
+  // 时间戳是否为数字
+  if (!NumberUtil.isNumber(timestamp)) {
+   return handleInvokeError(response);
+  }
+  // 五分钟内的请求有效
+  if (System.currentTimeMillis() - Long.parseLong(timestamp) > FIVE_MINUTES) {
+   return handleInvokeError(response);
+  }
+  // 4. 请求的模拟接口是否存在
+  InterfaceInfo invokeInterfaceInfo = null;
+  try {
+   invokeInterfaceInfo = innerInterfaceInfoService.getInvokeInterfaceInfo(path, method);
+  } catch (Exception e) {
+   log.error("getInvokeInterfaceInfo error", e);
+  }
+  if (invokeInterfaceInfo == null) {
+   return handleInvokeError(response);
+  }
+  //  是否有调用次数
+  if (!innerUserInterfaceInfoService.hasInvokeNum(invokeUser.getId(), invokeInterfaceInfo.getId())) {
+   return handleInvokeError(response);
+  }
+  // 5. 请求转发，调用模拟接口
+  return handleResponse(exchange, chain, invokeUser.getId(), invokeInterfaceInfo.getId());
 
-	}
+ }
 
-	@Override
-	public int getOrder() {
-		return -1;
-	}
+ @Override
+ public int getOrder() {
+  return -1;
+ }
 
-	/**
-	 * 处理响应
-	 *
-	 * @param exchange
-	 * @param chain
-	 * @return
-	 */
-	private Mono<Void> handleResponse(ServerWebExchange exchange, GatewayFilterChain chain, long userId, long interfaceInfoId) {
-		try {
-			// 从交换机拿到原始response
-			ServerHttpResponse originalResponse = exchange.getResponse();
-			// 缓冲区工厂 拿到缓存数据
-			DataBufferFactory bufferFactory = originalResponse.bufferFactory();
-			// 拿到状态码
-			HttpStatus statusCode = originalResponse.getStatusCode();
+ /**
+  * 处理响应
+  *
+  * @param exchange
+  * @param chain
+  * @return
+  */
+ private Mono<Void> handleResponse(ServerWebExchange exchange, GatewayFilterChain chain, long userId, long interfaceInfoId) {
+  try {
+   // 从交换机拿到原始response
+   ServerHttpResponse originalResponse = exchange.getResponse();
+   // 缓冲区工厂 拿到缓存数据
+   DataBufferFactory bufferFactory = originalResponse.bufferFactory();
+   // 拿到状态码
+   HttpStatus statusCode = originalResponse.getStatusCode();
 
-			if (statusCode == HttpStatus.OK) {
-				// 装饰，增强能力
-				ServerHttpResponseDecorator decoratedResponse = new ServerHttpResponseDecorator(originalResponse) {
-					// 等调用完转发的接口后才会执行
-					@Override
-					public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
-						log.info("body instanceof Flux: {}", (body instanceof Flux));
-						// 对象是响应式的
-						if (body instanceof Flux) {
-							// 我们拿到真正的body
-							Flux<? extends DataBuffer> fluxBody = Flux.from(body);
-							// 往返回值里面写数据
-							// 拼接字符串
-							return super.writeWith(fluxBody.map(dataBuffer -> {
-								// 7. 调用成功，接口调用次数+1
-								try {
-									innerUserInterfaceInfoService.invokeInterfaceCount(userId, interfaceInfoId);
-								} catch (Exception e) {
-									log.error("invokeInterfaceCount error", e);
-								}
-								// data从这个content中读取
-								byte[] content = new byte[dataBuffer.readableByteCount()];
-								dataBuffer.read(content);
-								DataBufferUtils.release(dataBuffer);// 释放掉内存
-								// 6.构建日志
-								List<Object> rspArgs = new ArrayList<>();
-								rspArgs.add(originalResponse.getStatusCode());
-								String data = new String(content, StandardCharsets.UTF_8);// data
-								rspArgs.add(data);
-								log.info("<--- status:{} data:{}"// data
-										, rspArgs.toArray());// log.info("<-- {} {}", originalResponse.getStatusCode(), data);
-								return bufferFactory.wrap(content);
-							}));
-						} else {
-							// 8.调用失败返回错误状态码
-							log.error("<--- {} 响应code异常", getStatusCode());
-						}
-						return super.writeWith(body);
-					}
-				};
-				// 设置 response 对象为装饰过的
-				return chain.filter(exchange.mutate().response(decoratedResponse).build());
-			}
-			return chain.filter(exchange);// 降级处理返回数据
-		} catch (Exception e) {
-			log.error("gateway log exception.\n" + e);
-			return chain.filter(exchange);
-		}
+   if (statusCode == HttpStatus.OK) {
+    // 装饰，增强能力
+    ServerHttpResponseDecorator decoratedResponse = new ServerHttpResponseDecorator(originalResponse) {
+     // 等调用完转发的接口后才会执行
+     @Override
+     public Mono<Void> writeWith(Publisher<? extends DataBuffer> body) {
+      log.info("body instanceof Flux: {}", (body instanceof Flux));
+      // 对象是响应式的
+      if (body instanceof Flux) {
+       // 我们拿到真正的body
+       Flux<? extends DataBuffer> fluxBody = Flux.from(body);
+       // 往返回值里面写数据
+       // 拼接字符串
+       return super.writeWith(fluxBody.map(dataBuffer -> {
+        // 7. 调用成功，接口调用次数+1
+        try {
+         innerUserInterfaceInfoService.invokeInterfaceCount(userId, interfaceInfoId);
+        } catch (Exception e) {
+         log.error("invokeInterfaceCount error", e);
+        }
+        // data从这个content中读取
+        byte[] content = new byte[dataBuffer.readableByteCount()];
+        dataBuffer.read(content);
+        DataBufferUtils.release(dataBuffer);// 释放掉内存
+        // 6.构建日志
+        List<Object> rspArgs = new ArrayList<>();
+        rspArgs.add(originalResponse.getStatusCode());
+        String data = new String(content, StandardCharsets.UTF_8);// data
+        rspArgs.add(data);
+        log.info("<--- status:{} data:{}"// data
+          , rspArgs.toArray());// log.info("<-- {} {}", originalResponse.getStatusCode(), data);
+        return bufferFactory.wrap(content);
+       }));
+      } else {
+       // 8.调用失败返回错误状态码
+       log.error("<--- {} 响应code异常", getStatusCode());
+      }
+      return super.writeWith(body);
+     }
+    };
+    // 设置 response 对象为装饰过的
+    return chain.filter(exchange.mutate().response(decoratedResponse).build());
+   }
+   return chain.filter(exchange);// 降级处理返回数据
+  } catch (Exception e) {
+   log.error("gateway log exception.\n" + e);
+   return chain.filter(exchange);
+  }
 
-	}
+ }
 
-	private Mono<Void> handleNoAuth(ServerHttpResponse response) {
-		response.setStatusCode(HttpStatus.FORBIDDEN);
-		return response.setComplete();
-	}
+ private Mono<Void> handleNoAuth(ServerHttpResponse response) {
+  response.setStatusCode(HttpStatus.FORBIDDEN);
+  return response.setComplete();
+ }
 
-	private Mono<Void> handleInvokeError(ServerHttpResponse response) {
-		response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
-		return response.setComplete();
-	}
+ private Mono<Void> handleInvokeError(ServerHttpResponse response) {
+  response.setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
+  return response.setComplete();
+ }
 
 }
 
@@ -5167,8 +5141,6 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 # 十四、统计分析
 
 ---
-
-
 
 **需求**
 
@@ -5182,15 +5154,15 @@ public class CustomGlobalFilter implements GlobalFilter, Ordered {
 
 ```sql
 SELECT
-	interface_info_id,
-	SUM( total_num ) AS invoke_num 
+ interface_info_id,
+ SUM( total_num ) AS invoke_num 
 FROM
-	user_interface_info 
+ user_interface_info 
 GROUP BY
-	interface_info_id 
+ interface_info_id 
 ORDER BY
-	invoke_num DESC 
-	LIMIT 3
+ invoke_num DESC 
+ LIMIT 3
 ```
 
 ![image-20230207154946647](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230207154946647.png)
@@ -5223,7 +5195,7 @@ public class InvokeInterfaceInfoVO extends InterfaceInfo {
 ```java
 public interface UserInterfaceInfoMapper extends BaseMapper<UserInterfaceInfo> {
     
-	List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo(int limit);
+ List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo(int limit);
 
 }
 ```
@@ -5261,34 +5233,34 @@ public interface UserInterfaceInfoMapper extends BaseMapper<UserInterfaceInfo> {
 @Service
 public class ChartServiceImpl implements ChartService {
 
-	@Resource
-	private UserInterfaceInfoMapper userInterfaceInfoMapper;
+ @Resource
+ private UserInterfaceInfoMapper userInterfaceInfoMapper;
 
-	@Resource
-	private InterfaceInfoService interfaceInfoService;
+ @Resource
+ private InterfaceInfoService interfaceInfoService;
 
-	@Override
-	public List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo(int limit) {
-		List<InvokeInterfaceInfoVO> vos = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(limit);
-		if (vos == null || vos.size() == 0) {
-			throw new BusinessException(ErrorCode.SYSTEM_ERROR);
-		}
-		// 根据id查询接口名称
-		LinkedHashMap<Long, InvokeInterfaceInfoVO> voHashMap = new LinkedHashMap<>(vos.size());
-		for (InvokeInterfaceInfoVO vo : vos) {
-			voHashMap.put(vo.getId(), vo);
-		}
-		LambdaQueryWrapper<InterfaceInfo> queryWrapper = new LambdaQueryWrapper<>();
-		queryWrapper.in(InterfaceInfo::getId, voHashMap.keySet());
-		List<InterfaceInfo> infoList = interfaceInfoService.list(queryWrapper);
+ @Override
+ public List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo(int limit) {
+  List<InvokeInterfaceInfoVO> vos = userInterfaceInfoMapper.listTopInvokeInterfaceInfo(limit);
+  if (vos == null || vos.size() == 0) {
+   throw new BusinessException(ErrorCode.SYSTEM_ERROR);
+  }
+  // 根据id查询接口名称
+  LinkedHashMap<Long, InvokeInterfaceInfoVO> voHashMap = new LinkedHashMap<>(vos.size());
+  for (InvokeInterfaceInfoVO vo : vos) {
+   voHashMap.put(vo.getId(), vo);
+  }
+  LambdaQueryWrapper<InterfaceInfo> queryWrapper = new LambdaQueryWrapper<>();
+  queryWrapper.in(InterfaceInfo::getId, voHashMap.keySet());
+  List<InterfaceInfo> infoList = interfaceInfoService.list(queryWrapper);
 
-		for (InterfaceInfo interfaceInfo : infoList) {
-			voHashMap.get(interfaceInfo.getId()).setName(interfaceInfo.getName());
-		}
+  for (InterfaceInfo interfaceInfo : infoList) {
+   voHashMap.get(interfaceInfo.getId()).setName(interfaceInfo.getName());
+  }
 
-		return new ArrayList<>(voHashMap.values());
-	}
-	
+  return new ArrayList<>(voHashMap.values());
+ }
+ 
 }
 
 ```
@@ -5311,14 +5283,14 @@ public class ChartServiceImpl implements ChartService {
 @RequestMapping("/chart")
 public class ChartController {
 
-	@Resource
-	private ChartService chartService;
+ @Resource
+ private ChartService chartService;
 
-	@GetMapping("/top/interface/invoke")
-	BaseResponse<List<InvokeInterfaceInfoVO>> listTopInvokeInterfaceInfo () {
-		List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo = chartService.listTopInvokeInterfaceInfo(3);
-		return ResultUtils.success(listTopInvokeInterfaceInfo);
-	}
+ @GetMapping("/top/interface/invoke")
+ BaseResponse<List<InvokeInterfaceInfoVO>> listTopInvokeInterfaceInfo () {
+  List<InvokeInterfaceInfoVO> listTopInvokeInterfaceInfo = chartService.listTopInvokeInterfaceInfo(3);
+  return ResultUtils.success(listTopInvokeInterfaceInfo);
+ }
 
 }
 
@@ -5327,8 +5299,6 @@ public class ChartController {
 ## 2、前端
 
 ---
-
-
 
 图表强烈推荐用现成的库！！！
 比如：
@@ -5347,7 +5317,7 @@ public class ChartController {
 6. 复制代码
 7. 改为真实数据
 
-这里选择使用了Echars再加上使用的是react 所以用这个库：https://github.com/hustcc/echarts-for-react
+这里选择使用了Echars再加上使用的是react 所以用这个库：<https://github.com/hustcc/echarts-for-react>
 
 config/routes.ts下新增路由
 
@@ -5449,10 +5419,3 @@ export default InterfaceChart;
 5. 功能增强
    可以针对不同的请求头或者接口类型来设计前端界面和表单，便于用户调用，获得更好的体验。
    可以参考 swagger、postman、knife4j 的页面。
-
-
-
-
-
-
-
