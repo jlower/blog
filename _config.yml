@@ -60,7 +60,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: false  # 启用文章资源文件夹, 默认 false ; 设置为 true 后新建文章会在source/_posts中会生成文章article_name.md和同名文件夹article_name。将图片资源放在article_name文件夹中，文章就可以使用相对路径引用图片资源了。
 relative_link: false
 future: true
 syntax_highlighter: highlight.js
