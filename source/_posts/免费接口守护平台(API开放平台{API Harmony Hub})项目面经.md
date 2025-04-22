@@ -1,7 +1,7 @@
 ---
 title: 免费接口守护平台(API开放平台{API Harmony Hub})项目面经
 date: 2024-02-22 03:00:00
-categories: [Java项目]
+categories: [面经,Java项目]
 keywords: [Java项目,接口,API开放平台,面经]
 tag: []
 description:
@@ -11,8 +11,8 @@ description:
 ### 别人的流程图(我简历上没有写网关、RPC、消息队列，要用自己的)
 
 ![流程图](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/image-20230112101821991.png)
-![流程图](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/屏幕截图 2024-03-12 191721.png)
-![流程图](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/屏幕截图 2024-03-12 191804.png)
+![流程图](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/屏幕截图> 2024-03-12 191721.png)
+![流程图](<https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/屏幕截图> 2024-03-12 191804.png)
 ![流程图](https://raw.githubusercontent.com/lowoneko/public-imgs-1/main/public-imgs/流程图.png)
 
 ### 问题1
