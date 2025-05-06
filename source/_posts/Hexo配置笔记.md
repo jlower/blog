@@ -36,7 +36,6 @@ description:
 [你好，世界]({% post_path "Hello-World" %})
 ```
 
-
 ## Hexo中插入PDF
 
 ### 安装hexo-pdf
