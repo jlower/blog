@@ -8,18 +8,34 @@ description:
 ---
 ## Hexo跳转自己的文章
 
+### post_link
+
 ```md
 {% post_link "文章文件名（不要后缀）" "文章标题（可选）" %}
 ```
 
 > **字段中间如果有空格要加上   " "   （默认都加上   " "   就行了）**
 
-假如同一目录下文章文件名为Hello-World.md：
+假如同一目录下（_posts目录下）文章文件名为Hello-World.md：
 
 ```md
 {% post_link "Hello-World" %}
 {% post_link "Hello-World" "你好世界" %}
 ```
+
+### post_path
+
+> 用来获取文章的链接地址，但是不是链接
+> 可以用 markdown 语法直接插入文件链接，也很方便。
+
+```md
+{% post_path "文章文件名（不要后缀）" %}
+```
+
+```md
+[你好，世界]({% post_path "Hello-World" %})
+```
+
 
 ## Hexo中插入PDF
 

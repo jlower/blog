@@ -490,6 +490,7 @@ Mockito能让代码对外部系统隔离，不需要进行各种初始化操作�
 ### 频繁 Full GC 排查
 
 > {% post_link "JVM调优(内存调优、GC调优、性能调优)与检测频繁Full GC" "JVM调优(内存调优、GC调优、性能调优)与检测频繁Full GC" %}
+> [JVM调优(内存调优、GC调优、性能调优)与检测频繁Full GC]({% post_path "JVM调优(内存调优、GC调优、性能调优)与检测频繁Full GC" %})
 > **元空间**满了也会导致 Full GC
 
 #### 为什么OOM(内存溢出后JVM不会崩溃)？
