@@ -14,6 +14,7 @@ nav:
   # Navigation bar logo image
   logo: /imgs/favicon-dark-128.png
   display_title: true
+  display_post_title: true
   # Whether to fix navigation bar
   fixed: false
 
@@ -165,8 +166,8 @@ photofigcaption: false
 copy:
   enable: true
   copyright:
-    enable: false
-    limit_count: 50
+    enable: true
+    limit_count: # 50 # the number of characters that can be copied
 
 # Post
 # --------------------------------------
@@ -238,8 +239,8 @@ footer:
     since: 2020
   # Copyright of theme and framework
   copyright:
-    enable: true
-    version: true
+    enable: false
+    version: false
   custom_text:
 
 # aside (側邊欄)
@@ -620,6 +621,12 @@ umami_analytics:
     # Umami Cloud (API key) / self-hosted Umami (token)
     token:
 
+# https://www.googletagmanager.com/
+google_tag_manager:
+  tag_id:
+  # optional
+  domain:
+
 # Advertisement
 # --------------------------------------
 
@@ -963,7 +970,9 @@ pangu:
 # https://github.com/verlok/vanilla-lazyload
 lazyload:
   enable: false
-  field: site # site/post
+  # Use browser's native lazyload instead of vanilla-lazyload
+  native: false
+  field: site # Specify the field to use lazyload (site or post)
   placeholder:
   blur: false
 
