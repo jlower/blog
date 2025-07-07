@@ -232,11 +232,15 @@ noticeOutdate:
 # Footer Settings
 # --------------------------------------
 footer:
+  nav:
   owner:
     enable: true
     since: 2020
+  # Copyright of theme and framework
+  copyright:
+    enable: true
+    version: true
   custom_text:
-  copyright: true # Copyright of theme and framework
 
 # aside (側邊欄)
 # --------------------------------------
@@ -361,7 +365,10 @@ rightside_scroll_percent: true
 rightside_item_order:
   enable: false
   hide: # readmode,translate,darkmode,hideAside
-  show: # toc,chat,comment
+  show: # Default: toc,chat,comment
+
+# Animation for the bottom right config button
+rightside_config_animation: true
 
 # Math (數學)
 # --------------------------------------
