@@ -166,8 +166,8 @@ photofigcaption: false
 copy:
   enable: true
   copyright:
-    enable: true
-    limit_count: # 50 # the number of characters that can be copied
+    enable: false
+    limit_count: 50 # the number of characters that can be copied
 
 # Post
 # --------------------------------------
