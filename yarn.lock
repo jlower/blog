@@ -1584,10 +1584,10 @@ hexo-symbols-count-time@^0.7.1:
   dependencies:
     hexo-util "1.9.0"
 
-hexo-theme-butterfly@^5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/hexo-theme-butterfly/-/hexo-theme-butterfly-5.4.1.tgz#fc1a7a13bfec79564735328e0433be2f6563b4e1"
-  integrity sha512-UDZbL9Fo6htCpRFqG8AajenpG5rbfOgHPUf9i4aq0FUEUJrOOTIlVQiy0edaJwjeYi2xkvrSbP/zCGZuYEIC6A==
+hexo-theme-butterfly@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/hexo-theme-butterfly/-/hexo-theme-butterfly-5.4.2.tgz#780ca02b44780ca24a9189588f34e97ee86c253f"
+  integrity sha512-94swRX9afOjaLZBNUVBaT93EKfn5lsbTwY9+gU8hztf0nJfm//qAI+JE/HTJXademRfUFSRL0KU4wEQjy2u90w==
   dependencies:
     hexo-renderer-pug "^3.0.0"
     hexo-renderer-stylus "^3.0.1"
