@@ -41,7 +41,7 @@ jobs:
       #     curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
       
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
       
@@ -53,12 +53,12 @@ jobs:
 
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: latest
           cache: pnpm # 或 pnpm / yarn / npm
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Install dependencies
         run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
