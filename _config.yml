@@ -70,10 +70,12 @@ highlight:
   tab_replace: ''
   wrap: true
   hljs: false
+  exclude_languages: ['mermaid']
 prismjs:
   preprocess: true
   line_number: true
   tab_replace: ''
+  exclude_languages: ['mermaid']
 index_generator:
   path: ''
   per_page: 10
