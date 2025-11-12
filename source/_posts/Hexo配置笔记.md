@@ -75,17 +75,26 @@ pnpm install --save hexo-pdf
 ## Hexo中支持mermaid代码块画图
 
 ```md
-    ```mermaid
-    sequenceDiagram
-        participant A as 用户
-        participant B as 系统
-        participant C as 数据库
-        
-        A->>B: 登录请求
-        B->>C: 验证用户信息
-        C-->>B: 返回验证结果
-        B-->>A: 登录成功/失败
-    ```
+      ```mermaid
+      sequenceDiagram
+          participant A as 用户
+          participant B as 系统
+          participant C as 数据库
+          
+          A->>B: 登录请求
+          B->>C: 验证用户信息
+          C-->>B: 返回验证结果
+          B-->>A: 登录成功/失败
+      ```
+```
+
+```md
+{% mermaid '{"themeVariables": { "fontSize": "16px" }, "layout": "elk", "look": "handDrawn"}' %}
+flowchart LR
+  A[Start] --> B{Decision}
+  B -->|Yes| C[Continue]
+  B -->|No| D[Stop]
+{% endmermaid %}
 ```
 
 ```mermaid
@@ -101,6 +110,7 @@ sequenceDiagram
 ```
 
 > [butterfly主题配置Mermaid的操作步骤](https://butterfly.js.org/posts/4aa8abbe/#Mermaid)
+> [Mermaid标签外挂写法](https://butterfly.js.org/posts/ceeb73f/#Mermaid)
 
 ## Hexo中支持站点地图
 
