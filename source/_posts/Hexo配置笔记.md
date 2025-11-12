@@ -72,6 +72,146 @@ pnpm install --save hexo-pdf
 {% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
 ```
 
+## Hexo中支持mermaid代码块画图
+
+```md
+    ```mermaid
+    sequenceDiagram
+        participant A as 用户
+        participant B as 系统
+        participant C as 数据库
+        
+        A->>B: 登录请求
+        B->>C: 验证用户信息
+        C-->>B: 返回验证结果
+        B-->>A: 登录成功/失败
+    ```
+```
+
+```mermaid
+sequenceDiagram
+    participant A as 用户
+    participant B as 系统
+    participant C as 数据库
+    
+    A->>B: 登录请求
+    B->>C: 验证用户信息
+    C-->>B: 返回验证结果
+    B-->>A: 登录成功/失败
+```
+
+> [butterfly主题配置Mermaid的操作步骤](https://butterfly.js.org/posts/4aa8abbe/#Mermaid)
+
+## Hexo中支持站点地图
+
+> [butterfly主题配置站点地图sitemap的操作步骤](https://butterfly.js.org/posts/4073eda/#%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%96%A6)
+
+## Hexo 的 _config.yml 配置注意事项
+
+```yaml
+# 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
+# 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
+# 编辑你的 _config.yml，将 url: 更改为 <你的 GitHub 用户名>.github.io/<repository 的名字>。
+# 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
+# Commit 并 push 到默认分支上。
+# 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
+url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
+```
+
+## Hexo中支持数学公式
+
+```md
+$$
+e = \lim_{x \to \infty} \left( 1 + \frac{1}{x} \right)^x
+$$
+```
+
+$$
+e = \lim_{x \to \infty} \left( 1 + \frac{1}{x} \right)^x
+$$
+
+> Hexo框架默认会使用 ``hexo-renderer-marked`` 来作为markdown的渲染器，但此渲染器不支持markdown的标准数学公式书写形式，即用 ``$$ $$`` 来包裹LaTeX公式，但此渲染器不支持。此渲染器用 ``hexo-math`` 插件来渲染数学公式，但此插件需要用hexo自定义的麻烦标签。
+> 解决方法：使用官方维护的 ``hexo-filter-mathjax`` 公式插件和其推荐的 ``hexo-renderer-pandoc`` 渲染引擎。
+
+1. 先移除原先的默认渲染器 ``pnpm uninstall hexo-renderer-marked`` 再移除之前下载的数学公式插件，例如 ``pnpm uninstall hexo-math``
+2. 在你的blog根目录下，安装新的渲染器Pandoc依赖 ``pnpm install hexo-renderer-pandoc --save``
+3. 安装Pandoc环境，[Pandoc官网安装页面](https://github.com/jgm/pandoc)。如果是使用 GitHub Actions 部署，可以参考上边写的 GitHub Actions 部署配置(要在 GitHub Actions 的环境中下载安装Pandoc并配置全局环境变量)。
+
+> blog根目录下打开 ``_config.yml`` 文件，在文件中加入 ``hexo-filter-mathjax`` 公式插件的配置
+
+```yml
+mathjax:
+  tags: none # or 'ams' or 'all'
+  single_dollars: true # enable single dollar signs as in-line math delimiters
+  cjk_width: 0.9 # relative CJK char width
+  normal_width: 0.6 # relative normal (monospace) width
+  append_css: true # add CSS to pages rendered by MathJax
+  every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
+  packages: # extra packages to load
+  extension_options: {}
+    # you can put your extension options here
+    # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
+```
+
+## Hexo中支持解析表情
+
+> 插件 ``markdown-it-emoji`` 支持 hexo-renderer-markdown-it 渲染器解析表情
+> 我要安装插件 ``hexo-filter-github-emojis`` 支持 Pandoc 渲染器解析表情
+> 先 ``pnpm install hexo-filter-github-emojis --save``
+> 然后在 ``_config.yml`` 文件中加入 ``hexo-filter-github-emojis`` 插件的配置
+
+```yaml
+githubEmojis:
+  enable: true
+  className: github-emoji
+  inject: true
+  styles:
+    display: inline
+    vertical-align: middle # Freemind适用
+  customEmojis:
+```
+
+## Hexo中支持短数字字母编码
+
+> 将文章链接从中文优化为短数字字母编码
+> 使用 ``hexo-abbrlink`` 插件实现，先 ``pnpm install hexo-abbrlink --save``
+> 然后在 ``_config.yml`` 文件中加入 ``hexo-abbrlink`` 插件的配置
+> 会自动为每个文章加上abbrlink，但我用GitHub Action部署，自动加的abbrlink不会上传到GitHub上，所以每次部署都会跟据当前的文章标题重新生成abbrlink，改了文章标题的话链接也会变，除非手动在文章上输入abbrlink
+
+```yml
+# 现在我的设置是要求在同一天内不能有同样标题的文章，否则生成的链接会重复，和默认设置 permalink: ':year/:month/:day/:title/' 一样 (这样要求每篇文章必须要填 date: 创建日期)
+# permalink: ':year/:month/:day/:title/' # 这是默认的
+permalink: posts/:year:month:day-:abbrlink/ # 设置了 :year:month:day- 所以改文章的创建日期链接会变(文章 date: 后面的是创建日期， update: 后面的是更新日期，不填 update: 则更新时间默认为最新一次网站的部署时间)
+# abbrlink config
+# 会自动为每篇文章生成 abbrlink (根据文章的标题)，也可以自己手动输入abbrlink(如果文章已经有abbrlink的话就不会再自动生成了，所以第一次自动生成abbrlink后再改文章标题链接也不会变)
+# 但我用的是 GitHub Action 部署，自动生成的 abbrlink 不会传到 GitHub 上(每篇文章都没有abbrlink，所以每次上传部署都会重新生成abbrlink)，所以改文章标题会让重新生成的 abbrlink 变掉，文章的链接也会变
+abbrlink:
+  alg: crc32      #support crc16(default) and crc32
+  rep: hex        #support dec(default) and hex
+  drafts: false   #(true)Process draft,(false)Do not process draft. false(default) 
+  # Generate categories from directory-tree
+  # depth: the max_depth of directory-tree you want to generate, should > 0
+  auto_category:
+     enable: true  #true(default)
+     depth:        #3(default)
+     over_write: false 
+  auto_title: false #enable auto title, it can auto fill the title by path
+  auto_date: false #enable auto date, it can auto fill the date by time today
+  force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink. This only updates abbrlink rather than other front variables.
+```
+
+> **注意** 目前主题主要使用 butterfly 了，不用 vivia
+
+```yaml
+# 会优先查找 ./themes 中有没有xxx同名文件夹(若有里面得放GitHub下载的源码，否则生成页面为空)
+# 若无则查找 ./node_moudules 中有没有 hexo-theme-xxx 
+# (推荐全用 npm/pnpm 下载，省的GitHub Action每次 都要改，因为有些主题作者自己的.gitignore设置了不上传GitHub)
+theme: butterfly # butterfly vivia
+# 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
+# archive_generator:
+#   per_page: 0
+```
+
 ## 使用 Github Action 构建 Hexo 站点并将其部署到 GitHub Pages 的示例工作流程
 
 ```yaml
@@ -253,94 +393,4 @@ updates:
   schedule:
     interval: daily
   open-pull-requests-limit: 20
-```
-
-## Hexo 的 _config.yml 配置注意事项
-
-```yaml
-# 如果你希望网站部署在 <你的 GitHub 用户名>.github.io 的子目录中：
-# 建立名为 <repository 的名字> 的储存库，这样你的博客网址为 <你的 GitHub 用户名>.github.io/<repository 的名字>，repository 的名字可以任意，例如 blog 或 hexo。
-# 编辑你的 _config.yml，将 url: 更改为 <你的 GitHub 用户名>.github.io/<repository 的名字>。
-# 在储存库中前往 Settings > Pages > Source，并将 Source 改为 GitHub Actions。
-# Commit 并 push 到默认分支上。
-# 部署完成后，前往 https://<你的 GitHub 用户名>.github.io/<repository 的名字> 查看网站。
-url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
-```
-
-> Hexo框架默认会使用 ``hexo-renderer-marked`` 来作为markdown的渲染器，但此渲染器不支持markdown的标准数学公式书写形式，即用 ``$$ $$`` 来包裹LaTeX公式，但此渲染器不支持。此渲染器用 ``hexo-math`` 插件来渲染数学公式，但此插件需要用hexo自定义的麻烦标签。
-> 解决方法：使用官方维护的 ``hexo-filter-mathjax`` 公式插件和其推荐的 ``hexo-renderer-pandoc`` 渲染引擎。
-
-1. 先移除原先的默认渲染器 ``pnpm uninstall hexo-renderer-marked`` 再移除之前下载的数学公式插件，例如 ``pnpm uninstall hexo-math``
-2. 在你的blog根目录下，安装新的渲染器Pandoc依赖 ``pnpm install hexo-renderer-pandoc --save``
-3. 安装Pandoc环境，[Pandoc官网安装页面](https://github.com/jgm/pandoc)。如果是使用 GitHub Actions 部署，可以参考上边写的 GitHub Actions 部署配置(要在 GitHub Actions 的环境中下载安装Pandoc并配置全局环境变量)。
-
-> blog根目录下打开 ``_config.yml`` 文件，在文件中加入 ``hexo-filter-mathjax`` 公式插件的配置
-
-```yml
-mathjax:
-  tags: none # or 'ams' or 'all'
-  single_dollars: true # enable single dollar signs as in-line math delimiters
-  cjk_width: 0.9 # relative CJK char width
-  normal_width: 0.6 # relative normal (monospace) width
-  append_css: true # add CSS to pages rendered by MathJax
-  every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
-  packages: # extra packages to load
-  extension_options: {}
-    # you can put your extension options here
-    # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
-```
-
-> 插件 ``markdown-it-emoji`` 支持 hexo-renderer-markdown-it 渲染器解析表情
-> 我要安装插件 ``hexo-filter-github-emojis`` 支持 Pandoc 渲染器解析表情
-> 先 ``pnpm install hexo-filter-github-emojis --save``
-> 然后在 ``_config.yml`` 文件中加入 ``hexo-filter-github-emojis`` 插件的配置
-
-```yaml
-githubEmojis:
-  enable: true
-  className: github-emoji
-  inject: true
-  styles:
-    display: inline
-    vertical-align: middle # Freemind适用
-  customEmojis:
-```
-
-> 将文章链接从中文优化为短数字字母编码
-> 使用 ``hexo-abbrlink`` 插件实现，先 ``pnpm install hexo-abbrlink --save``
-> 然后在 ``_config.yml`` 文件中加入 ``hexo-abbrlink`` 插件的配置
-> 会自动为每个文章加上abbrlink，但我用GitHub Action部署，自动加的abbrlink不会上传到GitHub上，所以每次部署都会跟据当前的文章标题重新生成abbrlink，改了文章标题的话链接也会变，除非手动在文章上输入abbrlink
-
-```yml
-# 现在我的设置是要求在同一天内不能有同样标题的文章，否则生成的链接会重复，和默认设置 permalink: ':year/:month/:day/:title/' 一样 (这样要求每篇文章必须要填 date: 创建日期)
-# permalink: ':year/:month/:day/:title/' # 这是默认的
-permalink: posts/:year:month:day-:abbrlink/ # 设置了 :year:month:day- 所以改文章的创建日期链接会变(文章 date: 后面的是创建日期， update: 后面的是更新日期，不填 update: 则更新时间默认为最新一次网站的部署时间)
-# abbrlink config
-# 会自动为每篇文章生成 abbrlink (根据文章的标题)，也可以自己手动输入abbrlink(如果文章已经有abbrlink的话就不会再自动生成了，所以第一次自动生成abbrlink后再改文章标题链接也不会变)
-# 但我用的是 GitHub Action 部署，自动生成的 abbrlink 不会传到 GitHub 上(每篇文章都没有abbrlink，所以每次上传部署都会重新生成abbrlink)，所以改文章标题会让重新生成的 abbrlink 变掉，文章的链接也会变
-abbrlink:
-  alg: crc32      #support crc16(default) and crc32
-  rep: hex        #support dec(default) and hex
-  drafts: false   #(true)Process draft,(false)Do not process draft. false(default) 
-  # Generate categories from directory-tree
-  # depth: the max_depth of directory-tree you want to generate, should > 0
-  auto_category:
-     enable: true  #true(default)
-     depth:        #3(default)
-     over_write: false 
-  auto_title: false #enable auto title, it can auto fill the title by path
-  auto_date: false #enable auto date, it can auto fill the date by time today
-  force: false #enable force mode,in this mode, the plugin will ignore the cache, and calc the abbrlink for every post even it already had abbrlink. This only updates abbrlink rather than other front variables.
-```
-
-> **注意** 目前主题主要使用 butterfly 了，不用 vivia
-
-```yaml
-# 会优先查找 ./themes 中有没有xxx同名文件夹(若有里面得放GitHub下载的源码，否则生成页面为空)
-# 若无则查找 ./node_moudules 中有没有 hexo-theme-xxx 
-# (推荐全用 npm/pnpm 下载，省的GitHub Action每次 都要改，因为有些主题作者自己的.gitignore设置了不上传GitHub)
-theme: butterfly # butterfly vivia
-# 使用  hexo-theme-vivia  主题要禁用归档页面的分页:  [若不添加此配置归档页最多只能显示 10 篇文章]  修改 _config.yml 填写下列配置:
-# archive_generator:
-#   per_page: 0
 ```
