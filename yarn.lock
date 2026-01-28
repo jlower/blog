@@ -1620,10 +1620,10 @@ hexo-symbols-count-time@^0.7.1:
   dependencies:
     hexo-util "1.9.0"
 
-hexo-theme-butterfly@^5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/hexo-theme-butterfly/-/hexo-theme-butterfly-5.5.3.tgz#9d067bf624b2c29b4be4305717ddf1124df89020"
-  integrity sha512-3VP/MYuO03I0svUqfccPlHYJHA53nf7tzfHdrul9BRqdxRerqGVY+QkOKKsCfEx88rQr/Ty4cFFNWXDBEdV2Kw==
+hexo-theme-butterfly@^5.5.4:
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/hexo-theme-butterfly/-/hexo-theme-butterfly-5.5.4.tgz#3377aa617c723e3bb9260eb1a9ed61fb17700b46"
+  integrity sha512-gk953p0P1c8QQHBm6xZAoPsYZuIMWsZR+riwT7By+1ygnEv9ZlEWqFflbZbKiXEJWy8VZhkV63k7SiwyifCkSw==
   dependencies:
     hexo-renderer-pug "^3.0.0"
     hexo-renderer-stylus "^3.0.1"
