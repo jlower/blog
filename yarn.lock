@@ -1090,6 +1090,11 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+fast-archy@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/fast-archy/-/fast-archy-1.0.0.tgz#26c8850718de3cecb15200e9257c09f1ad2fa0d0"
+  integrity sha512-j8CNf0sCX92BogtUZAMPhMj7p3nv7xxeETwfpVWQNQocC5b21FAa6bUzfuhcNoEa4f2RtDe5U3uY0NriH9nA7g==
+
 fast-equals@^3.0.1:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/fast-equals/-/fast-equals-3.0.3.tgz#8e6cb4e51ca1018d87dd41982ef92758b3e4197f"
@@ -1745,21 +1750,21 @@ hexo@^3.0.0:
     titlecase "^1.1.2"
     warehouse "^2.2.0"
 
-hexo@^8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/hexo/-/hexo-8.0.0.tgz#5b8268f77f70932d8f9af2cc9447a4985b7a3582"
-  integrity sha512-GFNUICrDWvrBrhq4Oe2BUKg4UFJpaU0PjoAm5WIwf6O0gV52vPCGkGWQxH6AhOfJ1BEHm3hJALRl7RqOcgQP+A==
+hexo@^8.1.2:
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/hexo/-/hexo-8.1.2.tgz#29d9d5d3281d85d59dfe05af93299f95a0e9f6a7"
+  integrity sha512-gmpNwL1KnbK12q551ZhGxqvSw8M88ZSjFKOhx6ybUYz1phjPdwGewMgBgwGmjcVcIYFq6tWQAv1MRil/sBrPHQ==
   dependencies:
     abbrev "^3.0.0"
-    archy "^1.0.0"
     bluebird "^3.7.2"
+    fast-archy "^1.0.0"
     fast-text-table "^1.0.1"
     hexo-cli "^4.3.2"
     hexo-front-matter "^4.2.1"
     hexo-fs "^5.0.0"
     hexo-i18n "^2.0.0"
     hexo-log "^4.1.0"
-    hexo-util "^3.3.0"
+    hexo-util "^4.0.0"
     js-yaml "^4.1.0"
     js-yaml-js-types "^1.0.1"
     micromatch "^4.0.8"
