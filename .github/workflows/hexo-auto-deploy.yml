@@ -28,6 +28,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       # # Github Action 使用官方的 pandoc 渲染器要此步骤
       # - uses: docker://pandoc/core
       #   with:
@@ -60,13 +61,23 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Install dependencies
-        run: pnpm install # 或 pnpm install / yarn install / bun install / npm ci
+        run: |
+
+          # 如果报错：
+          # [ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: ejs@2.7.4, hexo-util@3.3.0, hexo-util@4.0.0, highlight.js@9.18.5
+          # Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
+          # 那么就按他的提示在GitHub的Codespaces中执行pnpm approve-builds命令, 选择所有依赖脚本允许执行
+          # 得到的pnpm-workspace.yaml文件上传到GitHub仓库即可
+
+          pnpm install # 或 pnpm install / yarn install / bun install / npm ci
       - name: Build with Hexo
         run: |
+
           # add pandoc to PATH (自定义pandoc版本, 需配合上述下载pandoc的模块)
           # export PATH="$PATH:/opt/hostedtoolcache/pandoc-3.2.1/bin"
-          
+
           # ubuntu-latest 安装 pandoc
+
           sudo apt-get install pandoc
           pnpm build # 或 npm run build
       - name: Upload artifact
