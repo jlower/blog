@@ -42,7 +42,7 @@ jobs:
       #     curl -s -L https://github.com/jgm/pandoc/releases/download/3.2.1/pandoc-3.2.1-linux-amd64.tar.gz | tar xvzf - -C /opt/hostedtoolcache/
       
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
       
