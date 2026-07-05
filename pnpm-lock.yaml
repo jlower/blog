@@ -18,8 +18,8 @@ importers:
         specifier: ^3.0.5
         version: 3.0.5
       hexo-filter-mathjax:
-        specifier: ^0.10.0
-        version: 0.10.0
+        specifier: ^0.11.0
+        version: 0.11.0
       hexo-generator-archive:
         specifier: ^2.0.0
         version: 2.0.0
@@ -292,8 +292,8 @@ packages:
   brace-expansion@2.0.1:
     resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
 
-  brace-expansion@5.0.6:
-    resolution: {integrity: sha512-kLpxurY4Z4r9sgMsyG0Z9uzsBlgiU/EFKhj/h91/8yHu0edo7XuixOIH3VcJ8kkxs6/jPzoI6U9Vj3WqbMQ94g==}
+  brace-expansion@5.0.7:
+    resolution: {integrity: sha512-7oFy703dxfY3/NLxC1fh2SUCQ0H9rmAY+5EpDVfXjUTTs+HEwR2nYaqLv+GWcTsumwxPfiz6CzCNkwXwBUwqCA==}
     engines: {node: 18 || 20 || >=22}
 
   braces@2.3.2:
@@ -859,8 +859,8 @@ packages:
     resolution: {integrity: sha512-0Sy5I/9UK8IpwB4EGRKdg+G17qc6YA9R+Rjgme9Qm6kFnbKlFiximzWNmRkZUYEAlY0qm4HJh/t5s5AtXEDciA==}
     engines: {node: '>=8.0.0'}
 
-  hexo-filter-mathjax@0.10.0:
-    resolution: {integrity: sha512-RvF3OtA89v6PO6+G5dOZlDIaDJX5dnNSeLmhurk59kHEjxotxJaqY6KMwowCZXXudY0cAoHJQhq3qYCtLYbX7g==}
+  hexo-filter-mathjax@0.11.0:
+    resolution: {integrity: sha512-t/+uxNzHJuNUKUvUsNk/sDtTnakCpbm6VbO2Bfowokjoo147yG8sOjRPILM928WlwkpzHQjZA0Z/svU126BQNw==}
 
   hexo-front-matter@0.2.3:
     resolution: {integrity: sha512-GL/pGfYqsvjMgxjhOWv1zAc7t4JoGUow+CH9Tes/5N2wKxxTzt2woKEMHz1+c01CmhdVYUR4lO3R1ZAcxc0caA==}
@@ -2283,7 +2283,7 @@ snapshots:
     dependencies:
       balanced-match: 1.0.2
 
-  brace-expansion@5.0.6:
+  brace-expansion@5.0.7:
     dependencies:
       balanced-match: 4.0.4
 
@@ -2964,7 +2964,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  hexo-filter-mathjax@0.10.0:
+  hexo-filter-mathjax@0.11.0:
     dependencies:
       '@mathjax/mathjax-mhchem-font-extension': 4.1.2
       '@mathjax/src': 4.1.2
@@ -3598,7 +3598,7 @@ snapshots:
 
   minimatch@10.2.5:
     dependencies:
-      brace-expansion: 5.0.6
+      brace-expansion: 5.0.7
 
   minimatch@3.1.2:
     dependencies:
