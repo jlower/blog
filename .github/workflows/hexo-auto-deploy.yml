@@ -50,7 +50,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: latest
+          version: 11.13.0
 
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
       - name: Setup Node
@@ -61,8 +61,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v6
       - name: Install dependencies
-        env:
-          PNPM_SKIP_SUPPLY_CHAIN_CHECKS: true
+        # env:
+        #   PNPM_SKIP_SUPPLY_CHAIN_CHECKS: true
         run: |
 
           # 如果报错：
