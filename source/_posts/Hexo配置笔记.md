@@ -10,7 +10,7 @@ description:
 
 ### post_link
 
-```md
+```text
 {% post_link "文章文件名（不要后缀）" "文章标题（可选）" %}
 ```
 
@@ -18,7 +18,7 @@ description:
 
 假如同一目录下（_posts目录下）文章文件名为Hello-World.md：
 
-```md
+```text
 {% post_link "Hello-World" %}
 {% post_link "Hello-World" "你好世界" %}
 ```
@@ -28,11 +28,11 @@ description:
 > 用来获取文章的链接地址，但是不是链接
 > 可以用 markdown 语法直接插入文件链接，也很方便。
 
-```md
+```text
 {% post_path "文章文件名（不要后缀）" %}
 ```
 
-```md
+```text
 [你好，世界]({% post_path "Hello-World" %})
 ```
 
@@ -49,26 +49,26 @@ pnpm install --save hexo-pdf
 
 #### 引用本地文件夹中的pdf文件
 
-```md
+```text
 {% pdf "/文件夹名称/引用文档名字.pdf" %}
 ```
 
 > **字段中间如果有空格要加上   " "   （默认都加上   " "   就行了）**
 > 在source文件夹下创建一个叫pdf的文件夹，把xxx.pdf文件放在这里，然后在_post文件夹中的xxx.md直接使用
 
-```md
+```text
 {% pdf "/pdf/xxx.pdf" %}
 ```
 
 #### 最简单的引用方法：把相应pdf文件存到source文件夹下，引用格式为
 
-```md
+```text
 {% pdf "/引用文档名字.pdf" %}
 ```
 
 ### 引用网络上的PDF文件
 
-```md
+```text
 {% pdf "https://bugs.python.org/file47781/Tutorial_EDIT.pdf" %}
 ```
 
@@ -114,7 +114,21 @@ url: https://blog.lowoneko.eu.org # http://jlower.github.io/blog
 
 ## Hexo中支持数学公式
 
-```md
+### 行内公式
+
+使用单个 `$` 包围：
+
+```text
+爱因斯坦质能方程：$E = mc^2$
+```
+
+爱因斯坦质能方程：$E = mc^2$
+
+### 块级公式
+
+使用双 `$$` 包围：
+
+```text
 $$
 e = \lim_{x \to \infty} \left( 1 + \frac{1}{x} \right)^x
 $$
