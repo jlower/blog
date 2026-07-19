@@ -1,3 +1,5 @@
+# butterfly 之后不更新锁版本了 无法兼容
+
 # Basic `dependabot.yml` file with
 # minimum configuration for three package managers
 
