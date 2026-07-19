@@ -50,7 +50,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: 10
+          version: latest
 
       # - uses: oven-sh/setup-bun@v1 # 如果使用 Bun，请取消注释
       - name: Setup Node
