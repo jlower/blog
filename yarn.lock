@@ -1456,10 +1456,10 @@ hexo-filter-github-emojis@^3.0.5:
     node-fetch "^3.2.3"
     random-ua "^0.0.6"
 
-hexo-filter-mathjax@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/hexo-filter-mathjax/-/hexo-filter-mathjax-0.11.0.tgz#1f24b994aee1a87ea17348e468c32cff164e97b8"
-  integrity sha512-t/+uxNzHJuNUKUvUsNk/sDtTnakCpbm6VbO2Bfowokjoo147yG8sOjRPILM928WlwkpzHQjZA0Z/svU126BQNw==
+hexo-filter-mathjax@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/hexo-filter-mathjax/-/hexo-filter-mathjax-0.11.1.tgz#36d6d780eb70328d94f391286ee091199e3d866b"
+  integrity sha512-bpJW4V3C7rv5lVzIK2+ileAeWmB2WAgHuVnlFSdkGPqq1V+n5j+yl/R60hCBOLzH9EsFvil/Az39IWB4PXXLIA==
   dependencies:
     "@mathjax/mathjax-mhchem-font-extension" "4.1.2"
     "@mathjax/src" "4.1.2"
